@@ -118,9 +118,8 @@ class BudgetController extends Controller
 
     public function export()
     {
-        $budget = BudgetExport;
-        dd($budget);
-        #return Excel::download(new BudgetExport, 'anggaran.xlsx');
+        
+        return Excel::download(new BudgetExport, 'anggaran.xlsx');
     }
 
 }

@@ -38,7 +38,7 @@ class AuditController extends Controller
         $this->validate(request(), [
             'budget_id' => 'required',
             'surat_tugas' => 'required|min:4',
-            'nm_sarana' => 'required',
+            'sarana_id' => 'required',
         ]);
 
         # query ke anggaran dengan id $audit->id
@@ -52,7 +52,7 @@ class AuditController extends Controller
         $audit = Audit::create([
             'budget_id' => request('budget_id'),
             'surat_tugas' => request('surat_tugas'),
-            'nm_sarana' => request ('nm_sarana'),
+            'sarana_id' => request ('sarana_id'),
             'biaya' => request('biaya'),
             'keterangan' => request('keterangan'),
         ]);

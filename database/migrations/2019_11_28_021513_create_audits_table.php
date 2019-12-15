@@ -17,7 +17,8 @@ class CreateAuditsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('budget_id');
             $table->string('surat_tugas');
-            $table->string('nm_sarana');
+            $table->integer('sarana_id');
+         
             $table->float('biaya')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();

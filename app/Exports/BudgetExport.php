@@ -10,8 +10,7 @@ class BudgetExport implements FromCollection
     
     public function collection()
     {
-        $anggaran = Budget::all();
-        dd($anggaran);
-        #return Budget::all();
+       
+        return Budget::all();
     }
 }

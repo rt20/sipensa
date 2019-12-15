@@ -4,7 +4,7 @@
 @include ('shared.errors')
 <form action="/sarana" method="POST">
      @csrf
-    
+     
      <div class="col-md-6">
           <label>Nama Sarana</label>
           <input type="text" name="nama" class="form-control" value="{{old('nama')}}">
