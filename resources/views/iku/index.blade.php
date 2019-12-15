@@ -1,53 +1,48 @@
 @extends('lte.master')
 @section('content')
 
-<a href="{{ route('budget.create') }}" class="btn btn-primary mb-3">Tambah anggaran</a>
-<a href="{{ route('budget.export') }}" class="btn btn-success mb-3 ml-4">Export</a>
 
+<a href="{{ route('iku.create') }}" class="btn btn-primary mb-3">Tambah Indikator Kinerja</a>
 
 <table class="table">
      <thead class="thead-light">
           <tr>
                <th scope="col">No</th>
                <th scope="col">Kode</th>
-               <th scope="col">Uraian</th>
-               <th scope="col">Pagu</th>
+               <th scope="col">Sasaran Kegiatan</th>
+               <th scope="col">Target</th>
                <th scope="col">Realisasi</th>
-               <th scope="col">Sisa</th>
                <th scope="col">Keterangan</th>
                <th scope="col" colspan="2">Action</th>
           </tr>
      </thead>
      <tbody>
-     @forelse($data as $row)
+     @foreach($data as $row)
           <tr>
           <th>{{ $loop->index +1 }}</th>
                
                <td>{{ $row->kode }}</td>
-               <td>{{ $row->uraian }}</td>
-               <td>{{ $row->pagu }}</td>
+               <td>{{ $row->sasaran }}</td>
+               <td>{{ $row->target }}</td>
                <td>{{ $row->realisasi }}</td>
-               <td>{{ $row->sisa }}</td>
                <td>{{ $row->keterangan }}</td>
             
                <td>
-                    <a href="{{ route('budget.edit', $row->id) }}" class="btn btn-success">Edit</a>
+               
+                    <a href="{{ route('iku.edit', $row->id) }}" class="btn btn-success">Ubah</a>
+               
                </td>
                <td>
-                    <form action="{{ route('budget.destroy', $row->id) }}" method="POST">
+                    <form action="{{ route('iku.destroy', $row->id) }}" method="POST">
                          @csrf
                          {{ method_field('DELETE') }}
-                         <button type="submit" class="btn btn-danger">Delete</button>
+                         <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                     
                </td>
           </tr>
           
-          @empty
-          <tr>
-               <td colspan="8">Data tidak ditemukan</td>
-          </tr>
-          @endforelse
+          @endforeach
      </tbody>
 </table>
 {!! $data->render() !!}

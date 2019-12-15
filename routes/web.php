@@ -28,3 +28,4 @@ Route::resource('audit', 'AuditController');
 Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
 Route::resource('user', 'UserController');
 Route::resource('sarana', 'SaranaController');
+Route::resource('iku', 'IkuController');
