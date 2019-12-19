@@ -2,7 +2,7 @@
 
 @section('content')
 @include ('shared.errors')
-<form action="/sarana" method="POST">
+<form action="{{ asset("/sarana") }}" method="POST">
      @csrf
      
      <div class="col-md-6">
