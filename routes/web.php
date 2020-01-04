@@ -22,10 +22,12 @@ Route::resource('budget', 'BudgetController');
 
 
 Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
-
+Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data
 
 Route::resource('audit', 'AuditController');
 Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
+
+
 Route::resource('user', 'UserController');
 Route::resource('sarana', 'SaranaController');
 Route::resource('iku', 'IkuController');

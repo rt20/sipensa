@@ -23,7 +23,7 @@
           <th>{{ $loop->index +1 }}</th>
                <td>{{ $row->budget->kode }}</td>
                <td>{{ $row->surat_tugas }}</td>
-               <td>{{ $row->nm_sarana }}</td>
+               <td>{{ $row->sarana->nama }}</td>
                <td>{{ $row->biaya }}</td>
                <td>{{ $row->keterangan }}</td>
             

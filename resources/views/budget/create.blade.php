@@ -2,7 +2,7 @@
 
 @section('content')
 @include ('shared.errors')
-<form action="/budget" method="POST">
+<form action="{{ asset("/budget") }}" method="POST">
      @csrf
      <div class="col-md-6">
           <label>Kode Anggaran</label>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Exports\BudgetExport;
+use App\Imports\BudgetImport;
 use App\Models\Budget;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\BudgetExport;
+
 
 
 
@@ -120,6 +121,14 @@ class BudgetController extends Controller
     {
         
         return Excel::download(new BudgetExport, 'anggaran.xlsx');
+        # return redirect()->route('budget.index'); --> tidak bisa return, i dont know how to solve
+    }
+    public function import()
+    {
+        Excel::import(new BudgetImport, request()->file('file'));
+
+        flash('Success all good!')->success();
+        return redirect()->route('budget.index');
     }
 
 }
