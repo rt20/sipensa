@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Iku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class IkuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    #membatasi hak akses ke suatu menu
+    public function __construct(){
+        $this->middleware(function($request, $next){
+            
+            if(Gate::allows('manage-indikator')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+    
     public function index()
     {
         if (request()->search) {

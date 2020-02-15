@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -25,6 +25,24 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('manage-users', function($user){
+            return count(array_intersect(["ADMIN"], json_decode($user->roles)));
+        });
+
+        Gate::define('manage-budgets', function($user){
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT"], json_decode($user->roles)));
+        });
+
+        Gate::define('manage-sarana', function($user){
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT","STAF"], json_decode($user->roles)));
+        });
+
+        Gate::define('manage-audit', function($user){
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT","STAF"], json_decode($user->roles)));
+        });
+
+        Gate::define('manage-indikator', function($user){
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT"], json_decode($user->roles)));
+        });
     }
 }

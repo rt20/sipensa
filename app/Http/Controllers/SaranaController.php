@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Sarana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SaranaController extends Controller
 {
-    
+    #membatasi hak akses ke suatu menu
+    public function __construct(){
+        $this->middleware(function($request, $next){
+            
+            if(Gate::allows('manage-sarana')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function index()
     {
         if (request()->search) {

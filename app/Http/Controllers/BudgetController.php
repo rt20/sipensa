@@ -6,13 +6,22 @@ use App\Exports\BudgetExport;
 use App\Imports\BudgetImport;
 use App\Models\Budget;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Illuminate\Support\Facades\Gate;
 
 
 
 
 class BudgetController extends Controller
 {
+    #membatasi hak akses ke suatu menu
+    public function __construct(){
+        $this->middleware(function($request, $next){
+            
+            if(Gate::allows('manage-budgets')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
     # Tugasnya nampilin data di table
     public function index()
     {

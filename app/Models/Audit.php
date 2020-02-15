@@ -16,4 +16,9 @@ class Audit extends Model
 	{
 		return $this->belongsTo(Sarana::class, 'sarana_id');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
 }

@@ -1,33 +1,49 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function ($guard = null) {
+    if (Auth::guard($guard)->check()) {
+        return redirect('/home');
+    }
+    else {
+        return view('auth.login');
+    }
+    
 });
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('budget', 'BudgetController');
+   
+    Route::resource('user', 'UserController');
+    Route::resource('sarana', 'SaranaController');
+    Route::resource('iku', 'IkuController');
+    Route::resource('budget', 'BudgetController');
+    Route::resource('audit', 'AuditController');
 
 
-Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
-Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data
-
-Route::resource('audit', 'AuditController');
-Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
 
 
-Route::resource('user', 'UserController');
-Route::resource('sarana', 'SaranaController');
-Route::resource('iku', 'IkuController');
+    Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
+    Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data
+   
+    
+    Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
+   
+   
+    
+
+
+ 
+
+ 
+
+   
+   
+    
+
+
+
+
+

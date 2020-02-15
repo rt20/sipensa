@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
-    
+    public function __construct(){
+        $this->middleware(function($request, $next){
+            
+            if(Gate::allows('manage-users')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function index()
     {
+        // if(!auth()->user()->hasRole('admin')){
+        //     abort(404);
+        // }
+        
+        
         if (request()->search) {
             $data = User::where('name', 'like', '%' . request()->search . '%')->paginate(10);
         } else {

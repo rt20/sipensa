@@ -5,10 +5,11 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
+      <!--
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/home" class="nav-link">Home</a>
       </li>
-      <!--
+      
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li> -->
@@ -29,14 +30,19 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
+      <!--
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
+         
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
+        -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
+          
             <!-- Message Start -->
+<!--
             <div class="media">
               <img src="{{ asset("/adminlte/img/user1-128x128.jpg") }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
@@ -48,11 +54,15 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
+           -->
             <!-- Message End -->
+            <!-- 
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
+          -->
             <!-- Message Start -->
+            <!--
             <div class="media">
               <img src="{{ asset("/adminlte/img/user1-128x128.jpg") }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
@@ -64,11 +74,15 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
+            -->
             <!-- Message End -->
+            <!-- 
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
+          -->
             <!-- Message Start -->
+            <!--
             <div class="media">
               <img src="{{ asset("/adminlte/img/user3-128x128.jpg") }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
@@ -80,13 +94,17 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
+            -->
             <!-- Message End -->
+            
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
+    
       <!-- Notifications Dropdown Menu -->
+      <!--
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
@@ -119,7 +137,7 @@
         </a>
       </li>
     
-    
+    -->
     <!-- Sidebar toggle button-->
   <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
@@ -138,13 +156,17 @@
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
+              <!--
               <li class="user-header">
                 <img src="{{ asset("/adminlte/img/user9-160x160.png") }}" class="img-circle" alt="User Image">
 
                 <p>
-                  Hello {{ Auth::user()->name }}
+                  Selamat datang </p>
+                  <p>
+                 {{ Auth::user()->name }} 
                 </p>
               </li>
+              -->
               <!-- Menu Footer-->
               <li class="user-footer">
                @if (Auth::guest())
@@ -153,11 +175,11 @@
                   </div>
                @else
                  <div class="pull-left">
-                    <a href="{{ url('profile') }}" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{ url('profile') }}" class="dropdown-item">Profile</a>
                   </div>
 
                  <div class="pull-right">
-                    <a class="btn btn-default btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     Logout
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

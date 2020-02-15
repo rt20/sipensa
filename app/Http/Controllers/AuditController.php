@@ -8,18 +8,49 @@ use App\Models\Budget;
 use App\Models\Sarana;
 use App\Models\Audit;
 use App\Exports\AuditExport;
-
+use App\User;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class AuditController extends Controller
 {
-    
+    #membatasi hak akses ke suatu menu
+    public function __construct(){
+        $this->middleware(function($request, $next){
+            
+            if(Gate::allows('manage-audit')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function index()
     {
+        $user = Auth::user()->roles;
+        
         if (request()->search) {
-            $data = Audit::where('nm_sarana', 'like', '%' . request()->search . '%')->paginate(10);
-        } else {
-            $data = Audit::paginate(10);
+            $data = Audit::where('nm_sarana', 'like', '%' . request()->search . '%')->paginate(5);
+
+         } 
+        elseif ($user == '["ADMIN"]'){
+
+            $data = Audit::paginate(5);   
+        } 
+        elseif ($user == '["DIREKTUR"]'){
+            
+          
+            $data = Audit::paginate(5);   
+        } 
+        else {
+            #identifikasi siapa yang login
+            $user = Auth::user()->id;
+        
+            #hanya user yang entri data yang bisa melihat data yang dia entri
+            $data = Audit::where('user_id',$user)->paginate(5);
         }
+
+      
+        
         return view('audit.index', compact('data'));
     }
 
