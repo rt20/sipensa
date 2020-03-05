@@ -9,7 +9,7 @@
           <select name="budget_id" class="form-control">
                <option value="">Pilih Anggaran</option>
                @foreach($budgets as $budget) 
-                    <option value="{{ $budget->id }}" {{ old('budget_id') == $budget->id ? 'selected' : null }}>{{ $budget->sisa }}         - {{ $budget->uraian }}</option>
+                    <option value="{{ $budget->id }}" {{ old('budget_id') == $budget->id ? 'selected' : null }}>{{ $budget->sisa }} - {{ $budget->uraian }}</option>
                @endforeach
           </select>
      </div>
@@ -35,7 +35,7 @@
           <textarea name="keterangan" class="form-control"> {{old('keterangan')}}</textarea>
      </div>
      <div class="col-md-6 mt-3">
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
      </div>
 </form>
 @endsection

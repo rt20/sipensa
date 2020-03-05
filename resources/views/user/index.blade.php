@@ -1,12 +1,12 @@
 @extends('lte.master')
 @section('content')
 
-<a href="{{ route('user.create') }}" class="btn btn-primary mb-3">Tambah Pegawai</a>
+<!-- <a href="{{ route('user.create') }}" class="btn btn-primary mb-3">Tambah Pegawai</a> -->
 
 <table class="table">
      <thead class="thead-light">
           <tr>
-               <th scope="col">#</th>
+               <th scope="col">No</th>
                <th scope="col">Nama</th>
                <th scope="col">NIP/NIK</th>
                <th scope="col">Jabatan</th>
@@ -19,7 +19,7 @@
         
           @forelse($data as $row)
           <tr>
-               <th>{{ $row->id }}</th>
+               <th>{{ ($data->currentPage()-1) * $data->perPage()+$loop->index+1 }}</th>
                <td>{{ $row->name }}</td>
                <td>{{ $row->nip }}</td>
                <td>{{ $row->jabatan }}</td>

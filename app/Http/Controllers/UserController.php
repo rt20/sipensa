@@ -27,7 +27,7 @@ class UserController extends Controller
         if (request()->search) {
             $data = User::where('name', 'like', '%' . request()->search . '%')->paginate(10);
         } else {
-            $data = User::paginate(5);
+            $data = User::paginate(10);
         }
         return view('user.index', compact('data'));
     }

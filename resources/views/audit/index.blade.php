@@ -2,8 +2,8 @@
 @section('content')
 
 <a href="{{ route('audit.create') }}" class="btn btn-primary mb-3">Tambah Audit</a>
-<a href="{{ route('audit.export') }}" class="btn btn-success mb-3 ml-4">Ekspor</a>
-
+<!--<a href="{{ route('audit.export') }}" class="btn btn-success mb-3 ml-4">Ekspor</a>
+-->
 <table class="table">
      <thead class="thead-light">
           <tr>
@@ -20,7 +20,7 @@
         
           @forelse($data as $row)
           <tr>
-          <th>{{ $loop->index +1 }}</th>
+          <th>{{ ($data->currentPage()-1) * $data->perPage()+$loop->index+1 }}</th>
                <td>{{ $row->budget->kode }}</td>
                <td>{{ $row->surat_tugas }}</td>
                <td>{{ $row->sarana->nama }}</td>
@@ -28,15 +28,23 @@
                <td>{{ $row->keterangan }}</td>
             
                <td>
-                    <a href="{{ route('audit.edit', $row->id) }}" class="btn btn-success">Edit</a>
-               </td>
-               <td>
-                    <form action="{{ route('audit.destroy', $row->id) }}" method="POST">
+               <div class="d-flex justify-content-start">
+               <small><a class="fa fa-edit px-2 text-dark" href="{{ route('audit.edit', $row->id) }}">
+               </a></small>
+
+               <small><a class="fa fa-eye px-2 text-dark" href="{{ route('audit.show', $row->id) }}">
+              </a></small>
+                    
+                   
+                    <form action="{{ route('audit.destroy', $row->id) }}" class="p-0" method="POST">
                          @csrf
                          {{ method_field('DELETE') }}
-                         <button type="submit" class="btn btn-danger">Delete</button>
+                         <small
+                              ><button class="text-dark fa fa-trash p-0 " type="submit"></button>
+                        </small>
                     </form>
-                    
+
+                    </div>
                </td>
           </tr>
           @empty
@@ -47,6 +55,8 @@
          
      </tbody>
 </table>
+
+
 {!! $data->render() !!}
 
 @endsection

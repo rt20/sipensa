@@ -48,8 +48,6 @@ class AuditController extends Controller
             #hanya user yang entri data yang bisa melihat data yang dia entri
             $data = Audit::where('user_id',$user)->paginate(5);
         }
-
-      
         
         return view('audit.index', compact('data'));
     }
@@ -78,7 +76,8 @@ class AuditController extends Controller
             flash('Biaya tidak boleh lebih dari pagu')->error();
             return redirect()->back();
         }
-        
+        $user = Auth::user()->id;
+       
         # insert into table audit
         $audit = Audit::create([
             'budget_id' => request('budget_id'),
@@ -86,7 +85,9 @@ class AuditController extends Controller
             'sarana_id' => request ('sarana_id'),
             'biaya' => request('biaya'),
             'keterangan' => request('keterangan'),
+            'user_id' => $user
         ]);
+        
         # update anggaran
         $budget->update([
             'realisasi' => $budget->realisasi + $audit->biaya,
@@ -101,37 +102,39 @@ class AuditController extends Controller
     
     public function show($id)
     {
-        //
+        $audit = Audit::findOrFail($id);
+        $sarana = Sarana::all();
+        $budget = Budget::all();
+
+       
+        return view('audit.show', compact ('audit','budget','sarana'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
+        
         $audit = Audit::find($id);
+        $sarana = Sarana::all();
         $budget = Budget::all();
        
-        return view('audit.edit', compact('audit', 'budget'));
+        return view('audit.edit', compact('audit', 'budget','sarana'));
     }
    
     public function update($id)
     {
         $this->validate(request(), [
-            'nm_sarana' => 'required|min:4',
+            'surat_tugas' => 'required|min:4',
         ]);
         $audit = Audit::find($id);
         
+
         $audit->update([
-            'surat_tugas' => request('surat_tugas'),
-            'nm_sarana' => request('nm_sarana'),
+            'surat_tugas' => request('surat_tugas'),         
             'keterangan' => request('keterangan')
         ]);
         
-
+        
         flash('Data telah diupdate')->success();
         return redirect()->route('audit.index');
     }

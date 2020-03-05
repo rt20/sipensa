@@ -2,13 +2,13 @@
 @section('content')
 
 <a href="{{ route('budget.create') }}" class="btn btn-primary mb-3">Tambah anggaran</a>
-<a href="{{ route('budget.export') }}" class="btn btn-success mb-3 ml-4">Export</a>
+<!-- <a href="{{ route('budget.export') }}" class="btn btn-success mb-3 ml-4">Export</a> 
 <form action="{{ route('budget.import') }}" method="POST" enctype="multipart/form-data">
      @csrf
      <input type="file" name="file">
      <button type="submit" class="btn btn-info">Upload</button>
 </form>
-
+-->
 <table class="table">
      <thead class="thead-light">
           <tr>

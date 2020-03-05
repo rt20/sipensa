@@ -49,7 +49,7 @@
           </li>
          
           @endif
-
+          @if(Auth::user()->roles == '["SUBDIT"]' OR '["DIREKTUR"]' OR '["ADMIN"]')
           <li class="nav-item">
             <a href="{{ asset("/budget") }}" class="nav-link">
             <i class="nav-icon fa fa-money-bill-wave"></i>
@@ -59,7 +59,7 @@
               </p>
             </a>
           </li>
-         
+          @endif
           <li class="nav-item">
             <a href="{{ asset("/audit") }}" class="nav-link">
               <i class="nav-icon fas fa-clipboard-check"></i>

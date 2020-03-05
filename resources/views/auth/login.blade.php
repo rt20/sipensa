@@ -12,17 +12,13 @@
                 <a href="#"><img height="100px" width="100px" src="{{ asset("/adminlte/img/logo_big.png")}}"></a>
                 
                 </div> 
-               
-               
-                 
-                  
-               
+                     
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('NIP atau E-Mail') }}</label> 
+                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('NIP / E-Mail') }}</label> 
                             <div class="col-md-6">
                         
                                 <input type="text" class="form-control @error('email') is-invalid @enderror" 
@@ -82,4 +78,7 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection

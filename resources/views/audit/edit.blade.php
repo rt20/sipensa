@@ -19,8 +19,17 @@
      </div>
      <div class="col-md-6">
           <label>Nama Sarana</label>
-          <input type="text" name="nm_sarana" class="form-control" value="{{$audit->nm_sarana}}"required>
+          <select name="sarana_id" class="form-control" disabled>
+               <option value="">Pilih Sarana</option>
+               @foreach($sarana as $sarana) 
+                    <option value="{{ $sarana->id }}" {{ $audit->sarana_id == $sarana->id ? 'selected' : null }}>{{ $sarana->nama }} </option>
+               @endforeach
+          </select>     
      </div>
+
+    
+
+     
      <div class="col-md-6">
           <label>Biaya</label>
           <input type="number" name="biaya" class="form-control" value="{{$audit->biaya}}" disabled>
