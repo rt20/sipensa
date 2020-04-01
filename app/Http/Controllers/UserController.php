@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Subdit;
 use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
@@ -73,9 +74,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
-       
-        return view('user.edit', compact('user'));
+        $subdit = Subdit::all();
+      
+        return view('user.edit', compact('user', 'subdit'));
     }
 
     
@@ -93,6 +94,7 @@ class UserController extends Controller
             'name' => request('name'),
             'nip' => request('nip'),
             'jabatan' => request('jabatan'),
+            'subdit_id' => request('subdit_id'),
             'email' => request('email')
         ]);
         flash('Data telah diupdate')->success();

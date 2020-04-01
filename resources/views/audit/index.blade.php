@@ -8,7 +8,7 @@
      <thead class="thead-light">
           <tr>
                <th scope="col">No</th>
-               <th scope="col">Anggaran</th>
+               
                <th scope="col">Surat Tugas</th>
                <th scope="col">Nama Sarana</th>
                <th scope="col">Biaya</th>
@@ -21,7 +21,7 @@
           @forelse($data as $row)
           <tr>
           <th>{{ ($data->currentPage()-1) * $data->perPage()+$loop->index+1 }}</th>
-               <td>{{ $row->budget->kode }}</td>
+               
                <td>{{ $row->surat_tugas }}</td>
                <td>{{ $row->sarana->nama }}</td>
                <td>{{ $row->biaya }}</td>

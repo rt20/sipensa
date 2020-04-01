@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sarana;
+use App\Models\Audit;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -10,18 +13,20 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        
     }
 
    
     public function index()
     {
-        // if(!auth()->user()->hasRole('admin')){
-        //     abort(404);
-        // }
+        $sarana = Sarana::count();
+        $user = User::count();
+        $audit = Audit::count();
 
-        return view('home');
+        return view('home')->with([
+            'sarana' => $sarana,
+            'user' => $user,
+            'audit' => $audit
+        ]);
         
     }
 }

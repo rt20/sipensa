@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-budgets', function($user){
-            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT"], json_decode($user->roles)));
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT","STAF"], json_decode($user->roles)));
         });
 
         Gate::define('manage-sarana', function($user){

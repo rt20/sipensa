@@ -25,11 +25,61 @@
       <td>Nama Sarana</td>
       <td> {{ $audit->sarana->nama }}</td>
     </tr>
+    <tr>
     <th scope="row">4</th>
+      <td>Nama Auditor 1</td>
+      <td>
+    <select name="auditor1" class="form-control form-control-sm" disabled>
+               
+               @foreach($users as $user) 
+                    <option value="{{ $user->id }}" {{ $audit->auditor1 == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
+               @endforeach
+          </select>     
+          </td>
+    </tr>
+    <tr>
+    <th scope="row">5</th>
+    <td>Nama Auditor 2</td>
+    <td>
+    <select name="auditor1" class="form-control form-control-sm" disabled>
+               
+               @foreach($users as $user) 
+                    <option value="{{ $user->id }}" {{ $audit->auditor2 == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
+               @endforeach
+          </select>     
+          </td>
+          </tr>
+    <th scope="row">6</th>
+      <td>Nama Auditor 3</td>
+      <td>
+    <select name="auditor1" class="form-control form-control-sm" disabled>
+               
+               @foreach($users as $user) 
+                    <option value="{{ $user->id }}" {{ $audit->auditor3 == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
+               @endforeach
+          </select>     
+          </td>
+    </tr>
+    <tr>
+    <th scope="row">7</th>
+      <td>Lokasi</td>
+      <td>   {{ $audit->lokasi }}</td>
+    </tr>
+    
+  
+    <tr>
+    <th scope="row">8</th>
+      <td>Hasil Audit</td>
+      <td>   {{ $audit->hasil }}</td>
+    </tr>
+    
+    
+    <tr>
+    <th scope="row">9</th>
       <td>Biaya</td>
       <td>   {{ $audit->biaya }}</td>
     </tr>
-    <th scope="row">5</th>
+    <th scope="row">10</th>
       <td>Keterangan</td>
       <td> {{ $audit->keterangan }}</td>
     </tr>
@@ -39,19 +89,7 @@
 </div>
 
 
-<div class="container-fluid">
-  <div class="row">
-<div class="col-sm-3 col-md-2">Surat Tugas</div>
-<div class="col-sm-9 col-md-6">{{ $audit->surat_tugas }}</div>
-</div>
-<div class="row">
-<div class="col-sm-3 col-md-2">Kode Anggaran</div>
-<div class="col-sm-9 col-md-6">{{$audit->budget->kode}}</div>
-</div>
-<div class="row">
-<div class="col-sm-3 col-md-2">Nama Sarana</div>
-<div class="col-sm-9 col-md-6">{{ $audit->sarana->nama }}</div>
-</div>
+
 
 
 

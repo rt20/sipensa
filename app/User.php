@@ -31,5 +31,8 @@ class User extends Authenticatable
     public function audit(){
         return $this->hasMany('App\Audit');
     }
-
+    public function subdit()
+	{
+		return $this->belongsTo(Subdit::class, 'subdit_id');
+	}
 }

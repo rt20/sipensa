@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Audit extends Model
 {
-    protected $guarded = [];
+	protected $guarded = [];
+	protected $casts = [
+		'jenis_keg' => 'array',
+		'kesimpulan' => 'array',
+		'rating_produksi' => 'array',
+		'rating_distribusi' => 'array',
+		
+    ];
     public function budget()
 	{
 		return $this->belongsTo(Budget::class, 'budget_id');

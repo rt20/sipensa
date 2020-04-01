@@ -18,11 +18,23 @@
           <input type="text" name="jabatan" class="form-control" value="{{$user->jabatan}}" required>
      </div>
      <div class="col-md-6">
+          <label>Subdit</label>
+          <select name="subdit_id" class="form-control" >
+               <option value="">Pilih Subdit</option>
+               @foreach($subdit as $subdit) 
+                    <option value="{{ $subdit->id }}" {{ $user->subdit_id == $subdit->id ? 'selected' : null }}>{{ $subdit->subdit }} </option>
+               @endforeach
+          </select>     
+
+
+         
+     </div>
+     <div class="col-md-6">
           <label>Email</label>
           <input type="text" name="email" class="form-control" value="{{$user->email}}" required>
      </div>
      <div class="col-md-6 mt-3">
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
      </div>
 </form>
 @endsection
