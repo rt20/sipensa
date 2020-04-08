@@ -25,14 +25,20 @@
                <td>{{ $row->jabatan }}</td>
                <td>{{ $row->email }}</td>
                <td>
-                    <a href="{{ route('user.edit', $row->id) }}" class="btn btn-success">Edit</a>
-               </td>
-               <td>
-                    <form action="{{ route('user.destroy', $row->id) }}" method="POST">
-                         @csrf
-                         {{ method_field('DELETE') }}
-                         <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <a href="{{ route('user.edit', $row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+               
+               <form action="{{ route('user.destroy', $row->id)}}" 
+                                method="post" 
+                                class="d-inline">
+                                @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+
+
+                  
                     
                </td>
           </tr>

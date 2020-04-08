@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Audit extends Model
 {
+	#agar bisa entri/edit data
 	protected $guarded = [];
 	protected $casts = [
 		'jenis_keg' => 'array',

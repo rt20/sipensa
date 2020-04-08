@@ -2,6 +2,8 @@
 
 @section('content')
 @include ('shared.errors')
+<div class="card">
+  <div class="card-header">
 <form action="{{ asset("/budget") }}" method="POST">
      @csrf
      <div class="col-md-6">
@@ -32,4 +34,6 @@
           <button type="submit" class="btn btn-primary">Save</button>
      </div>
 </form>
+</div>
+</div>
 @endsection

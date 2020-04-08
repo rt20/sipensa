@@ -30,10 +30,10 @@
     
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-10">
-        <!--  <h1>Sistem Informasi Pemeriksaan Sarana Pangan</h1> -->
-          </div>
+        <div class="row mb-0">
+          <!-- <div class="col-sm-10">
+         <h1>Sistem Informasi Pemeriksaan Sarana Pangan</h1>
+          </div> -->
          <!-- <div class="col-sm-15">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/home">Home</a></li>

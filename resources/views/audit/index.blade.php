@@ -1,6 +1,7 @@
 @extends('lte.master')
 @section('content')
-
+<div class="card">
+  <div class="card-header">
 <a href="{{ route('audit.create') }}" class="btn btn-primary mb-3">Tambah Audit</a>
 <!--<a href="{{ route('audit.export') }}" class="btn btn-success mb-3 ml-4">Ekspor</a>
 -->
@@ -28,23 +29,22 @@
                <td>{{ $row->keterangan }}</td>
             
                <td>
-               <div class="d-flex justify-content-start">
-               <small><a class="fa fa-edit px-2 text-dark" href="{{ route('audit.edit', $row->id) }}">
-               </a></small>
+               <a href="{{ route('audit.edit', $row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+               <a href="{{ route('audit.show', $row->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+               <form action="{{ route('audit.destroy', $row->id)}}" 
+                                method="post" 
+                                class="d-inline">
+                                @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+             
+                        
 
-               <small><a class="fa fa-eye px-2 text-dark" href="{{ route('audit.show', $row->id) }}">
-              </a></small>
-                    
-                   
-                    <form action="{{ route('audit.destroy', $row->id) }}" class="p-0" method="POST">
-                         @csrf
-                         {{ method_field('DELETE') }}
-                         <small
-                              ><button class="text-dark fa fa-trash p-0 " type="submit"></button>
-                        </small>
-                    </form>
 
-                    </div>
+                  
                </td>
           </tr>
           @empty
@@ -56,6 +56,9 @@
      </tbody>
 </table>
 
+</div>
+
+</div>
 
 {!! $data->render() !!}
 

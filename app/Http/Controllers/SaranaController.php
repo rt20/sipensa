@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sarana;
+use App\Http\Requests\SaranaRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -88,24 +90,17 @@ class SaranaController extends Controller
     }
 
     
-    public function update($coba)
+    public function update(SaranaRequest $request, $coba)
     {
+        $data = $request->all();
+        
        # query database dengan id sekian
-       $row = Sarana::find($coba);
+       $row = Sarana::findOrFail($coba);
        if (!$row) return abort(404);
-       
+ 
        # update data
-       $row->update([
-            'nama' => request('nama'),
-            'jenis' => request('jenis'),
-            'telepon' => request('telepon'),
-            'alamat_kantor' => request('alamat_kantor'),
-            'alamat_sarana' => request('alamat_sarana'),
-            'nama_pangan' => request('nama_pangan'),
-            'merk' => request('merk'),
-            'penanggungjawab' => request('penanggungjawab'),
-            'keterangan' => request('keterangan'),
-        ]);
+       $row->update($data);
+    
         # Tampilin flash message
         flash('Selamat data telah berhasil di update')->success();
         # Kalo udah insert data, redirect ke halaman anggaran

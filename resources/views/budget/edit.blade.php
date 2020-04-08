@@ -1,7 +1,8 @@
 @extends('lte.master')
 
 @section('content')
-
+<div class="card">
+  <div class="card-header">
 <form action="{{ route('budget.update', $budget->id) }}" method="POST">
      @csrf
      {{ method_field("PATCH") }}
@@ -33,4 +34,6 @@
           <button type="submit" class="btn btn-primary">Save</button>
      </div>
 </form>
+
+</div>
 @endsection

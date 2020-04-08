@@ -1,7 +1,8 @@
 @extends('lte.master')
 @section('content')
-
-<a href="{{ route('budget.create') }}" class="btn btn-primary mb-3">Tambah anggaran</a>
+<div class="card">
+  <div class="card-header">
+<a href="{{ route('budget.create') }}" class="btn btn-primary mb-3">Tambah Anggaran</a>
 <!-- <a href="{{ route('budget.export') }}" class="btn btn-success mb-3 ml-4">Export</a> 
 <form action="{{ route('budget.import') }}" method="POST" enctype="multipart/form-data">
      @csrf
@@ -35,14 +36,17 @@
                <td>{{ $row->keterangan }}</td>
             
                <td>
-                    <a href="{{ route('budget.edit', $row->id) }}" class="btn btn-success">Edit</a>
-               </td>
-               <td>
-                    <form action="{{ route('budget.destroy', $row->id) }}" method="POST">
-                         @csrf
-                         {{ method_field('DELETE') }}
-                         <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <a href="{{ route('budget.edit', $row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                    <form action="{{ route('budget.destroy', $row->id)}}" 
+                                method="post" 
+                                class="d-inline">
+                                @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                    
                     
                </td>
           </tr>
@@ -54,6 +58,8 @@
           @endforelse
      </tbody>
 </table>
+</div>
+</div>
 {!! $data->render() !!}
 
 @endsection

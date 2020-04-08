@@ -5,8 +5,6 @@
 <form action="{{ asset("/audit") }}" method="POST">
      @csrf
 
-    
-
      <div class="container">
   <div class="row">
     <div class="col-sm-2">
@@ -162,8 +160,8 @@
                <input type="checkbox"  name="jenis_keg[]" value="Surveillan Sertifikasi CPPOB" >
                Surveillan Sertifikasi CPPOB
                <br>
-               <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_kegi')}}" >
-               Lainnya:<input type="text" name="jenis_kegi" class="form-control form-control-sm">
+               <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_keg[]')}}" >
+               Lainnya:<input type="text" name="jenis_keg[]" class="form-control form-control-sm"> -->
                </div>
                </div>
     <div class="row">
@@ -178,30 +176,27 @@
     <div class="col-sm-2"> 
     Kesimpulan 
     </div>
-    <div class="col-sm-2">
-    
-    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Label" >
-    TMK Label
-   <br>
-    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tanpa Izin Edar" >
-    Tanpa Izin Edar
-    <br>
-    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMS Produk" >
-    TMS Produk
-   
-    </div>
-    <div class="col-sm-4">
-    
-    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak memiliki SKI" >
-    Tidak memiliki SKI
-    <br>
-    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak ada Temuan" >
-    Tidak ada Temuan
-    <br>
-    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('kesi')}}" >
-    Lainnya:<input type="text" name="kesi" class="form-control form-control-sm">
-    </div>
-    </div>
+          <div class="col-sm-2">
+          <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Label" >
+          TMK Label
+          <br>
+          <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tanpa Izin Edar" >
+          Tanpa Izin Edar
+          <br>
+          <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMS Produk" >
+          TMS Produk
+          </div>
+          <div class="col-sm-4">
+          <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak memiliki SKI" >
+          Tidak memiliki SKI
+          <br>
+          <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak ada Temuan" >
+          Tidak ada Temuan
+          <br>
+          <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('isikesimpulan')}}" >
+          Lainnya:<input type="text" name="isikesimpulan" class="form-control form-control-sm"> -->
+          </div>
+          </div>
     <div class="row">
     <div class="col-sm-2"> <br>
     Rating Sarana Produksi

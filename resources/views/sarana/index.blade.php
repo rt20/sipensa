@@ -1,6 +1,7 @@
 @extends('lte.master')
 @section('content')
-
+<div class="card">
+  <div class="card-header">
 <a href="{{ route('sarana.create') }}" class="btn btn-primary mb-3">Tambah Sarana</a>
 <!-- <a href="{{ route('audit.export') }}" class="btn btn-success mb-3 ml-4">Ekspor</a>
 -->
@@ -11,12 +12,11 @@
                <th scope="col">Nama</th>
                <th scope="col">Jenis</th>
                <th scope="col">Telepon</th>
-               <th scope="col">Alamat Kantor</th>
+              
                <th scope="col">Alamat Sarana</th>
-               <th scope="col">Nama Pangan</th>
+               
                <th scope="col">Merk</th>
-               <th scope="col">Penanggungjawab</th>
-               <th scope="col">Keterangan</th>
+              
                <th scope="col" colspan="2">Action</th>
           </tr>
      </thead>
@@ -28,23 +28,25 @@
                <td>{{ $row->nama }}</td>
                <td>{{ $row->jenis }}</td>
                <td>{{ $row->telepon }}</td>
-               <td>{{ $row->alamat_kantor }}</td>
+              
                <td>{{ $row->alamat_sarana }}</td>
-               <td>{{ $row->nama_pangan }}</td>
+              
                <td>{{ $row->merk }}</td>
-               <td>{{ $row->penanggungjawab }}</td>
-               <td>{{ $row->keterangan }}</td>
+              
            
                <td>
-                    <a href="{{ route('sarana.edit', $row->id) }}" class="btn btn-success">Edit</a>
-               </td>
-                
-               <td>
-                    <form action="{{ route('sarana.destroy', $row->id) }}" method="POST">
-                         @csrf
-                         {{ method_field('DELETE') }}
-                         <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
+                    <a href="{{ route('sarana.edit', $row->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                    <form action="{{ route('sarana.destroy', $row->id)}}" 
+                                method="post" 
+                                class="d-inline">
+                                @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+
+                    
                     
                </td> 
           </tr>
@@ -56,6 +58,8 @@
          
      </tbody>
 </table>
+</div>
+</div>
 {!! $data->render() !!}
 
 @endsection
