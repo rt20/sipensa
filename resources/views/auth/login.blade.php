@@ -3,10 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-
+  
     
         <div class="col-md-6">
             <div class="card">
+            <div align ="center">
+           
+            <br>  <h3> Sistem Informasi Pengawasan Sarana Pangan </h3> 
+</div>
+           
                 <div class="row justify-content-center">
                 
                 <a href="#"><img height="100px" width="100px" src="{{ asset("/adminlte/img/logo_big.png")}}"></a>

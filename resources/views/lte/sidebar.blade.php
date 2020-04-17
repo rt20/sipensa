@@ -35,22 +35,32 @@
               </p>
             </a>
            
-          </li>
-          @if(Auth::user()->roles == '["ADMIN"]')
-      
-          <li class="nav-item">
-            <a href="{{ asset("/user") }}" class="nav-link">
-              <i class="nav-icon fas fa-user-secret"></i>
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
               <p>
-                Pegawai
-                
+                Master Data
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-          </li>
-         
-          @endif
-          
-          <li class="nav-item">
+            <ul class="nav nav-treeview">
+
+            @if(Auth::user()->roles == '["ADMIN"]')
+      
+      <li class="nav-item">
+        <a href="{{ asset("/user") }}" class="nav-link">
+          <i class="nav-icon fas fa-user-secret"></i>
+          <p>
+            Pegawai
+            
+          </p>
+        </a>
+      </li>
+     
+      @endif
+      <li class="nav-item">
             <a href="{{ asset("/budget") }}" class="nav-link">
             <i class="nav-icon fa fa-money-bill-wave"></i>
               <p>
@@ -59,6 +69,20 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ asset("/sarana") }}" class="nav-link">
+              <i class="nav-icon fas fa-warehouse"></i>
+              <p>
+                Sarana
+                
+              </p>
+            </a>
+          </li>
+
+           
+            </ul>
+          </li>
+          
           
           <li class="nav-item">
             <a href="{{ asset("/audit") }}" class="nav-link">
@@ -70,15 +94,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="{{ asset("/sarana") }}" class="nav-link">
-              <i class="nav-icon fas fa-warehouse"></i>
-              <p>
-                Sarana
-                
-              </p>
-            </a>
-          </li>
+          
          
           <!-- <li class="nav-item">
             <a href="{{ asset("/iku") }}" class="nav-link">

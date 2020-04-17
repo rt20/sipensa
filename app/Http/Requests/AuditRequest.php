@@ -24,25 +24,22 @@ class AuditRequest extends FormRequest
     public function rules()
     {
         return [
-            'budget_id' => 'required',
+            // 'budget_id' => 'required',
             'surat_tugas' => 'required|min:8',
             'tgl_st' => 'required|date',
-            'sarana_id' => 'required|integer|exists:saranas,id',
-            // 'user_id' => 'required|integer|exists:users,id',
+            // 'sarana_id' => 'required|integer',
             'subdit_id' => 'required',
             'tgl_audit' => 'required|date',
-            'auditor1' => 'required|integer|exists:users,id',
-            'auditor2' => 'required|integer|exists:users,id',
-            'auditor3' => 'required|max:255',
+            // 'auditor1' => 'required|integer',
+            // 'auditor2' => 'required|integer',
+            // 'auditor3' => 'required|max:255',
             'lokasi' => 'required|max:255',
-            'jenis_sarana' => 'required|integer',
-            'jenis_keg' => 'required',
-            'hasil' => 'required',
-            'kesimpulan' => 'required',
-            // 'rating_produksi' => 'required',
-            // 'rating_distribusi' => 'required',
-            'biaya' => 'required|integer',
-            // 'keterangan' => 'required|max:255',
+            // 'jenis_sarana' => 'required',
+            // 'jenis_keg' => 'required',
+            // 'hasil' => 'required',
+            // 'kesimpulan' => 'required',
+            // 'biaya' => 'required|integer',
+            
         ];
     }
 }

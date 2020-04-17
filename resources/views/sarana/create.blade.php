@@ -2,6 +2,11 @@
 
 @section('content')
 @include ('shared.errors')
+<div class="col-sm-8">
+            <h2>Data Sarana Produksi dan Distribusi Pangan</h2>
+          </div>
+          <div class="card">
+  <div class="card-header">
 <form action="{{ asset("/sarana") }}" method="POST">
      @csrf
      
@@ -48,4 +53,6 @@
           <button type="submit" class="btn btn-primary">Save</button>
      </div>
 </form>
+</div>
+</div>
 @endsection

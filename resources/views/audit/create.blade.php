@@ -2,6 +2,12 @@
 
 @section('content')
 @include ('shared.errors')
+<div class="col-sm-8">
+            <h3>Tambah Data Audit</h3>
+          </div>
+
+<div class="card">
+  <div class="card-header">
 <form action="{{ asset("/audit") }}" method="POST">
      @csrf
 
@@ -91,7 +97,7 @@
     Auditor 1 *
     </div>
     <div class="col-sm-4">
-    <select name="auditor1" class="form-control form-control-sm" required>
+    <select name="id_user[]" class="form-control form-control-sm" required>
                <option value="">- Pilih Nama Pemeriksa</option>
                @foreach($users as $user) 
                     <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
@@ -105,7 +111,7 @@
     </div>
     <div class="col-sm-4">
     <br>
-    <select name="auditor2" class="form-control form-control-sm" >
+    <select name="id_user[]" class="form-control form-control-sm" >
                <option value="">- Pilih Nama Pemeriksa</option>
                @foreach($users as $user) 
                     <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
@@ -245,5 +251,6 @@
           <button type="submit" class="btn btn-primary">Simpan</button>
      </div>
 </form>
-<br>
+</div>
+</div>
 @endsection

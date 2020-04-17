@@ -1,5 +1,10 @@
 @extends('lte.master')
 @section('content')
+
+<div class="col-sm-8">
+<h2>Data Sarana Produksi dan Distribusi Pangan</h2>
+          </div>
+
 <div class="card">
   <div class="card-header">
 <a href="{{ route('sarana.create') }}" class="btn btn-primary mb-3">Tambah Sarana</a>
@@ -13,7 +18,7 @@
                <th scope="col">Jenis</th>
                <th scope="col">Telepon</th>
               
-               <th scope="col">Alamat Sarana</th>
+             
                
                <th scope="col">Merk</th>
               
@@ -29,7 +34,7 @@
                <td>{{ $row->jenis }}</td>
                <td>{{ $row->telepon }}</td>
               
-               <td>{{ $row->alamat_sarana }}</td>
+              
               
                <td>{{ $row->merk }}</td>
               

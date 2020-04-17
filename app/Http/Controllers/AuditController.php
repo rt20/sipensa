@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Budget;
 use App\Models\Sarana;
 use App\Models\Audit;
-use App\Exports\AuditExport;
-use App\User;
 use App\Models\Subdit;
+use App\Models\Audit_has_user;
+use App\User;
+use App\Exports\AuditExport;
+
+
 use App\Http\Requests\AuditRequest;
 
 use Illuminate\Support\Facades\Gate;
@@ -70,10 +73,29 @@ class AuditController extends Controller
     public function store(AuditRequest $request)
     {
        
-        #mengambil semua data dari formrequest
-        $data = $request->all();
+        #mengambil semua data dari formrequest kecuali auditor
+        $data = new Audit(request([
+            'budget_id',
+            'surat_tugas',
+            'tgl_st',
+            'sarana_id',
+            'subdit_id',
+            'tgl_audit',
+            'auditor3',
+            'lokasi',
+            'jenis_sarana',
+            'jenis_keg',
+            'hasil',
+            'kesimpulan',
+            'rating_produksi',
+            'rating_distribusi',
+            'biaya',
+            'keterangan',
+        ]));
+       
         $data['user_id']=auth()->id();
-   
+        $data->save();
+        
         # query ke anggaran dengan id $audit->id
         $budget = Budget::find(request('budget_id'));
         if(request('biaya') > $budget->pagu) {
@@ -83,14 +105,21 @@ class AuditController extends Controller
         
        $biaya = $request->biaya;
 
-        Audit::create($data);
-
         # update anggaran
         $budget->update([
             'realisasi' => $budget->realisasi + $biaya,
             'sisa' => $budget->pagu - ($budget->realisasi + $biaya)
         ]);
-
+       
+        #insert ke tabel audit_has_user
+        foreach($request->id_user as $id_user){
+            $audit = Audit::latest()->first();
+            $check = new audit_has_user;
+            $check['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
+            $check->id_user = $id_user;
+            $check->save();
+        }
+        
         # redirect
         flash('Data has been created successfully')->success();
         return redirect()->route('audit.index');
@@ -131,11 +160,11 @@ class AuditController extends Controller
     public function update(AuditRequest $request, $id)
     {
         $data = $request->all();
-        
+       
         $audit = Audit::findOrFail($id);
         if (!$audit) return abort(404);
 
-        dd($audit);
+       
         $audit->update($data);
   
         flash('Data telah diupdate')->success();

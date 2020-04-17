@@ -43,7 +43,7 @@
           <textarea name="keterangan" class="form-control"> {{$sarana->keterangan}}</textarea>
      </div>
      <div class="col-md-6 mt-3">
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
      </div>
 </form>
 @endsection

@@ -93,7 +93,7 @@ class SaranaController extends Controller
     public function update(SaranaRequest $request, $coba)
     {
         $data = $request->all();
-        
+       
        # query database dengan id sekian
        $row = Sarana::findOrFail($coba);
        if (!$row) return abort(404);
