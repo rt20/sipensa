@@ -12,7 +12,7 @@ use App\Models\Audit_has_user;
 use App\User;
 use App\Exports\AuditExport;
 
-
+use DB;
 use App\Http\Requests\AuditRequest;
 
 use Illuminate\Support\Facades\Gate;
@@ -133,10 +133,7 @@ class AuditController extends Controller
         $budget = Budget::all();
         $subdit = Subdit::all();
         $users = User::all();
-        // $jenis_keg = array();
-        // foreach((array)$audit as $audit){
-        //      $jenis_keg[] =  $audit;
-        // }
+        
         $jenis_keg = Audit::where('id', $id)->pluck('jenis_keg')->toArray();
       
         return view('audit.show', compact ('audit','budget','sarana','subdit','users'));
@@ -147,26 +144,57 @@ class AuditController extends Controller
     {
         
         $audit = Audit::findOrFail($id);
-      
+     
+        $auditor = Audit::join('audit_has_users', 'audits.id', '=',  'audit_has_users.audit_id')
+                ->join('users','audit_has_users.id_user', '=',  'users.id')
+                ->select('users.name as name')
+                ->where('audits.id', $id)
+                ->get();
+
         $sarana = Sarana::all();
         $budget = Budget::all();
         $subdit = Subdit::all();
         $users = User::all();
+       
 
-
-        return view('audit.edit', compact('audit', 'budget','sarana','subdit','users'));
+        return view('audit.edit', compact('audit', 'budget','sarana','subdit','users','auditor' ));
     }
    
     public function update(AuditRequest $request, $id)
     {
-        $data = $request->all();
-       
+        // $data = $request->all();
+       #mengambil semua data dari formrequest kecuali auditor
+       $data = new Audit(request([
+        // 'budget_id',
+        // 'surat_tugas',
+        // 'tgl_st',
+        // 'sarana_id',
+        'subdit_id',
+        'tgl_audit',
+        // 'auditor3',
+        // 'lokasi',
+        // 'jenis_sarana',
+        // 'jenis_keg',
+        // 'hasil',
+        // 'kesimpulan',
+        // 'rating_produksi',
+        // 'rating_distribusi',
+        // 'biaya',
+        // 'keterangan',
+    ]));
+// dd($data);
+
+
         $audit = Audit::findOrFail($id);
         if (!$audit) return abort(404);
-
-       
-        $audit->update($data);
-  
+        
+        // $audit->update($data); // ()-> isinya array
+        
+        $audit->update([
+            'subdit_id',
+            'tgl_audit',
+        ]);
+  dd($audit);
         flash('Data telah diupdate')->success();
         return redirect()->route('audit.index');
     }

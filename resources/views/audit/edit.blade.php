@@ -16,19 +16,19 @@
           Surat Tugas *
           </div>
                <div class="col-sm-2">
-                    <input type="text" name="surat_tugas" class="form-control form-control-sm" value="{{old('surat_tugas',$audit->surat_tugas)}} " required>
+                    <input type="text" name="surat_tugas" class="form-control form-control-sm" value="{{old('surat_tugas',$audit->surat_tugas)}} "disabled required>
           </div>
           <div class="col-sm-auto">
                     Tanggal Surat Tugas *
           </div>
                <div class="col-sm-auto">
-                    <input type="date" name="tgl_st" class="form-control form-control-sm" value="{{ $audit->tgl_st }}" >
+                    <input type="date" name="tgl_st" class="form-control form-control-sm" value="{{ $audit->tgl_st }}"disabled >
                </div>
                <div class="col-sm-auto">
                     Tujuan *
           </div>
                <div class="col-sm-auto">
-               <input type="text" name="lokasi" placeholder="Lokasi Audit" class="form-control form-control-sm" value="{{old('lokasi',$audit->lokasi)}}" required>
+               <input type="text" name="lokasi" placeholder="Lokasi Audit" class="form-control form-control-sm" value="{{old('lokasi',$audit->lokasi)}}"disabled required>
           </div>
           </div> 
           <!-- nggak tau nutup div mana tapi bikin geser bawahnya-->
@@ -92,43 +92,28 @@
                     </select>     
                     </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
           <div class="col-sm-2"> <br>
-          Auditor 1 </br>
+          Auditor </br>
           </div>
           <div class="col-sm-4">
-          <br>
-          <select name="auditor2" class="form-control form-control-sm" >
-                         <option value="">- Pilih Nama Pemeriksa</option>
-                         @foreach($users as $user) 
-                              <option value="{{ $user->id }}"{{ $audit->auditor1 == $user->id ? 'selected':null }}>{{$user->name}} </option>
-                         @endforeach
-                    </select>    
+          <br> 
+          @foreach($auditor as $auditor) 
+          <div class="form-control form-control-sm">{{ $auditor->name }}</div> 
+          <br> 
+          @endforeach
           </div>
           </div>
-          <div class="row">
-          <div class="col-sm-2"> <br>
-          Auditor 2 </br>
-          </div>
-          <div class="col-sm-4">
-          <br>
-          <select name="auditor2" class="form-control form-control-sm" >
-                         <option value="">- Pilih Nama Pemeriksa</option>
-                         @foreach($users as $user) 
-                              <option value="{{ $user->id }}" {{ $audit->auditor2 == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
-                         @endforeach
-                    </select>     </br>
-          </div>
-          </div>
+        
           <div class="row">
           <div class="col-sm-2"> 
-          Auditor 3
+          Auditor Tambahan
           </div>
           <div class="col-sm-4">
           
           <input type="text" name="auditor3" placeholder="Nama Pemeriksa" class="form-control form-control-sm" value="{{old('auditor3',$audit->auditor3)}}" >
           </div>
-          </div>
+          </div> -->
 
           <!-- nanti taruh sini -->
                <div class="col-md-6 mt-3">
