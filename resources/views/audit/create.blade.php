@@ -17,7 +17,7 @@
     Surat Tugas *
     </div>
      <div class="col-sm-2">
-          <input type="text" name="surat_tugas" class="form-control form-control-sm" value="{{old('surat_tugas')}} " required>
+          <input type="text" name="surat_tugas" placeholder="Surat Tugas" class="form-control form-control-sm" value="{{old('surat_tugas')}} " required>
     </div>
      <div class="col-sm-auto">
           Tanggal Surat Tugas *
@@ -82,23 +82,23 @@
     <div class="col-sm-2"> <br>
     Jenis Sarana *</br>
     </div>
-    <div class="col-sm-2"><br>
+    <div class="col-sm-3"><br>
     <select name="jenis_sarana" class="form-control form-control-sm" required>
                <option value="">- Pilih Jenis Sarana</option>
                <option value="Produksi">Produksi</option>
                <option value="Distribusi">Distribusi</option>
+               <option value="Produksi & Distribusi">Produksi & Distribusi</option>
           </select>     
           </br>
     </div>
-   
     </div>
     <div class="row">
     <div class="col-sm-2"> 
     Auditor 1 *
     </div>
     <div class="col-sm-4">
-    <select name="id_user[]" class="form-control form-control-sm" required>
-               <option value="">- Pilih Nama Pemeriksa</option>
+    <select name="user_id" class="form-control form-control-sm" required>
+    <option value="">- Pilih Nama Pemeriksa</option>
                @foreach($users as $user) 
                     <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : null }}>{{ $user->name }} </option>
                @endforeach
@@ -128,12 +128,15 @@
     <input type="text" name="auditor3" placeholder="Nama Pemeriksa" class="form-control form-control-sm" value="{{old('auditor3')}}" >
     </div>
     </div>
+    <div class="card-header">
+  </div>
                <div class="row">
                <div class="col-sm-2"> <br>
                Jenis Kegiatan *</br>
                </div>
                <div class="col-sm-4">
                <br>
+               <input type="hidden"  name="jenis_keg[]" value=" " >
                <input type="checkbox"  name="jenis_keg[]" value="Pemeriksaan Sarana (Verifikasi/Rutin)" >
                Pemeriksaan Sarana (Verifikasi/Rutin)
                <br>
@@ -183,6 +186,7 @@
     Kesimpulan 
     </div>
           <div class="col-sm-2">
+          <input type="hidden"  name="kesimpulan[]" value=" " >
           <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Label" >
           TMK Label
           <br>

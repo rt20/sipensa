@@ -30,6 +30,7 @@ Route::get('/home', 'HomeController@index')->name('home');
    
     
     Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
+    Route::get('export','AuditController@export')->name('export'); # export data
    
    
     

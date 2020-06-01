@@ -19,7 +19,10 @@ class Audit extends Model
 	{
 		return $this->belongsTo(Budget::class, 'budget_id');
 	}
-
+	public function subdit()
+	{
+		return $this->belongsTo(Subdit::class, 'subdit_id');
+	}
 	public function sarana()
 	{
 		return $this->belongsTo(Sarana::class, 'sarana_id');

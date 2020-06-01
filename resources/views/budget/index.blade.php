@@ -30,9 +30,9 @@
                
                <td>{{ $row->kode }}</td>
                <td>{{ $row->uraian }}</td>
-               <td>{{ $row->pagu }}</td>
-               <td>{{ $row->realisasi }}</td>
-               <td>{{ $row->sisa }}</td>
+               <td>{{ number_format($row->pagu) }}</td>
+               <td>{{ number_format($row->realisasi) }}</td>
+               <td>{{ number_format($row->sisa) }}</td>
                <td>{{ $row->keterangan }}</td>
             
                <td>
@@ -45,9 +45,7 @@
                                     <button class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
                                     </button>
-                                </form>
-                    
-                    
+                    </form>
                </td>
           </tr>
           

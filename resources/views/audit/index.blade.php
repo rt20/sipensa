@@ -1,14 +1,15 @@
 @extends('lte.master')
 @section('content')
+
 <div class="col-sm-8">
             <h3>Data Audit Sarana Produksi dan Distribusi Pangan</h3>
           </div>
-
+            
 <div class="card">
   <div class="card-header">
 <a href="{{ route('audit.create') }}" class="btn btn-primary mb-3">Tambah Audit</a>
-<!--<a href="{{ route('audit.export') }}" class="btn btn-success mb-3 ml-4">Ekspor</a>
--->
+<a href="{{ route('export') }}" class="btn btn-success mb-3 ml-4">Ekspor</a>
+
 <table class="table">
      <thead class="thead-light">
           <tr>
@@ -43,11 +44,7 @@
                                     <button class="btn btn-danger btn-sm " onclick="return confirm('Apakah anda yakin ?')">
                                     <i class="fa fa-trash"></i>
                                     </button>
-                                </form>
-             
-                        
-                                
-                  
+                                </form>  
                </td>
           </tr>
           @empty
