@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-0">
             <div class="col-sm-6">
-                <h1>Indikator Kinerja Unit Kerja</h1>
+                <h1>Indikator Kinerja {{ Auth::user()->name }}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -21,32 +21,26 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        @if(Auth::user()->roles == '["ADMIN"]')
-        <a href="{{ route('iku.create') }}" class="btn btn-primary mb-3">Tambah Indikator Kinerja</a>
-        @endif
         <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">No</th>
                     <!-- <th scope="col">Kode</th> -->
-                    <th scope="col">Sasaran Strategis</th>
-                    <th scope="col">Indikator Kinerja</th>
+                    <th scope="col">Kegiatan Tugas Jabatan</th>
                     <th scope="col">Target</th>
-                    <th scope="col">Realisasi</th>
-                    @if(Auth::user()->roles == '["ADMIN"]')
+                    <th scope="col">Realisasi</th>                    
                     <th scope="col" colspan="2">Action</th>
-                    @endif
+                   
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $row)
                 <tr>
                     <th>{{ ($data->currentPage()-1) * $data->perPage()+$loop->index+1 }}</th>
-                    <td>{{ $row->sasaran }}</td>
-                    <td>{{ $row->indikator}}</td>
+                    <td>{{ $row->tugas_jab }}</td>
                     <td>{{ $row->target }}</td>
-                    <td>{{ $row->realisasi }}</td>
-                    @if(Auth::user()->roles == '["ADMIN"]')
+                    <td>{{ $audit }}</td>
+                   
                     <td>
 
                         <a href="{{ route('iku.edit', $row->id) }}" class="btn btn-success">Ubah</a>
@@ -59,7 +53,7 @@
                             <button type="submit" class="btn btn-danger">Hapus</button>
                         </form>
                     </td>
-                    @endif
+                   
                 </tr>
 
                 @endforeach
@@ -72,6 +66,5 @@
     <!-- /.card-footer-->
 </div>
 {!! $data->render() !!}
-    
 </section>
 @endsection

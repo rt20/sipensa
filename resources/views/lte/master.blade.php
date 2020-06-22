@@ -7,7 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+  <link rel="shortcut icon" href="{{ asset("/adminlte/img/favicon.ico") }}">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fontawesome-free/css/all.min.css") }}">
   <!-- Ionicons -->
@@ -50,25 +50,10 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-0">
-          <!-- <div class="col-sm-10">
-         <h1>Sistem Informasi Pemeriksaan Sarana Pangan</h1>
-          </div> -->
-         <!-- <div class="col-sm-15">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/home">Home</a></li>
-              <li class="breadcrumb-item active"><a href="/home">Link</a></li>
-            </ol>
-          </div> -->
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+   
 
     <!-- Main content -->
-    <section class="content">
+    <!-- <section class="content"> -->
     @include ('flash::message')
     @yield('content')
       <!-- Default box -->
@@ -79,7 +64,7 @@
       <!-- </div> -->
       <!-- /.card -->
 
-    </section>
+    <!-- </section> -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

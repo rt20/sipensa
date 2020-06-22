@@ -1,6 +1,25 @@
 @extends('lte.master')
 
 @section('content')
+<!-- Content Header (Page header) -->
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-0">
+          <div class="col-sm-9">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="col-sm-3">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('home')}}">Dashboard</a></li>
+              
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">       
+<div class="card">
+  <div class="card-header">
 <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -15,7 +34,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="{{ asset("/sarana") }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ asset("/sarana") }}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -45,7 +64,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="{{ asset("/user") }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ asset("/user") }}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -60,7 +79,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="{{ asset("/audit") }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ asset("/audit") }}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -69,6 +88,7 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
+          </section>
           <section class="col-lg-7 connectedSortable">
           
             <!-- Custom tabs (Charts with tabs)-->
@@ -105,11 +125,11 @@
                   <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
                     <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>                         
                   </div>  
-                </div>
+                </div>-->
               </div>
-               -->
+               
               <!-- /.card-body -->
-            <!-- </div> -->
+            </div>
             <!-- /.card -->
 
             

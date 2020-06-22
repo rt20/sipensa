@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuditRequest extends FormRequest
+class CapaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,18 +13,14 @@ class AuditRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+   
     public function rules()
     {
         return [
-            // 'budget_id' => 'required',
+            'audit_id' => 'required',
             // 'surat_tugas' => 'required|min:8',
             // 'tgl_st' => 'required|date',
             // 'sarana_id' => 'required|integer',
@@ -34,8 +30,6 @@ class AuditRequest extends FormRequest
             // 'auditor2' => 'required|integer',
             // 'auditor3' => 'required|max:255',
             // 'lokasi' => 'required|max:255',
-           
-            
         ];
     }
 }

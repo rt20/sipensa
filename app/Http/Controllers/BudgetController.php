@@ -101,8 +101,8 @@ class BudgetController extends Controller
             'kode' => request('kode'),
             'uraian' => request('uraian'),
             'pagu' => request('pagu'),
-            'realisasi' => request('realisasi'),
-            'sisa' => request('sisa'),
+            // 'realisasi' => request('realisasi'),
+            'sisa' => request('pagu'),
             'keterangan' => request('keterangan'),
         ]);
         

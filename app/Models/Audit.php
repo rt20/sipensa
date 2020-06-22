@@ -32,5 +32,6 @@ class Audit extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+	
 }
  

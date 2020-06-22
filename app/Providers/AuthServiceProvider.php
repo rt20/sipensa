@@ -42,7 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-indikator', function($user){
-            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT"], json_decode($user->roles)));
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT","STAF"], json_decode($user->roles)));
         });
     }
 }

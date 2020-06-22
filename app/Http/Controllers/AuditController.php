@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Budget;
 use App\Models\Sarana;
 use App\Models\Audit;
+use App\Models\Capa;
 use App\Models\Subdit;
 use App\Models\Audit_has_user;
 use App\User;
+use App\Models\Iku;
 use App\Exports\AuditExport;
 
 use DB;
@@ -55,6 +57,7 @@ class AuditController extends Controller
         
             #hanya user yang entri data yang bisa melihat data yang dia entri
             $data = Audit::where('user_id',$user)
+                            ->orWhere('auditor2',$user)
                             ->orderBy('id', 'desc')
                             ->paginate(10);
         }
@@ -74,7 +77,10 @@ class AuditController extends Controller
 
     public function store(AuditRequest $request)
     {
-       
+        // $data = $request->all();
+
+        // Audit::create($data);
+
         #mengambil semua data dari formrequest kecuali auditor
         $data = new Audit(request([
             'budget_id',
@@ -93,9 +99,8 @@ class AuditController extends Controller
             'rating_produksi',
             'rating_distribusi',
             'biaya',
-            'keterangan',
+            'status_capa',
         ]));
-    
         $data->save();
         
         # query ke anggaran dengan id $audit->id
@@ -113,15 +118,23 @@ class AuditController extends Controller
             'sisa' => $budget->pagu - ($budget->realisasi + $biaya)
         ]);
        
-        #insert ke tabel audit_has_user
-        foreach($request->id_user as $id_user){
+        #insert ke tabel capa       
+            $user = Auth::user()->id;
             $audit = Audit::latest()->first();
-            $check = new audit_has_user;
+            $check = new capa;
             $check['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
-            $check->id_user = $id_user;
+            $check->user_id = $user;
+            $check ['status_capa'] = $audit->status_capa;
             $check->save();
-        }
-        
+    
+        $totalaudit = Audit::count();
+        #update tabel kinerja
+        $keputusan = Iku::findOrFail(8);
+        # update kinerja
+        $keputusan->update([
+            'realisasi' => ($totalaudit / 4000) * 100
+        ]);
+
         # redirect
         flash('Data has been created successfully')->success();
         return redirect()->route('audit.index');
@@ -130,41 +143,49 @@ class AuditController extends Controller
     
     public function show($id)
     {
-        $audit = Audit::findOrFail($id);
-        // $auditor = Audit_has_user::where('audit_id', $id)->get();
-        $auditor = Audit::join('audit_has_users', 'audits.id', '=',  'audit_has_users.audit_id')
-                ->join('users','audit_has_users.id_user', '=',  'users.id')
-                ->select('users.name')
-                ->where('audits.id', $id)->pluck('users.name')->toArray();
-                // ->get();         
-        $sarana = Sarana::all();
-        $budget = Budget::all();
-        $subdit = Subdit::all();
-        $users = User::all();
-    
-        $jenis_keg = Audit::where('id', $id)->pluck('jenis_keg')->toArray();
-      
-        return view('audit.show', compact ('audit','budget','sarana','subdit','users','auditor'));
-    }
 
-   
+    $audit = Audit::findOrFail($id);
+    // $auditor = Audit_has_user::where('audit_id', $id)->get();
+    // $auditor = Audit::join('audit_has_users', 'audits.id', '=', 'audit_has_users.audit_id')
+    // ->join('users','audit_has_users.id_user', '=', 'users.id')
+    // ->select('users.name')
+    // ->where('audits.id', $id)->pluck('users.name')->toArray();
+    // ->get();
+    $capa = Capa::where('audit_id', $id)
+    ->orderBy('id', 'desc')
+    ->get();
+
+
+    $auditor = Audit::join('users','audits.auditor2','=','users.id')
+    ->select('users.name')
+    ->where('audits.id', $id)
+    ->get();
+
+    $sarana = Sarana::all();
+    $budget = Budget::all();
+    $subdit = Subdit::all();
+    $users = User::all();
+
+    $jenis_keg = Audit::where('id', $id)->pluck('jenis_keg')->toArray();
+
+    return view('audit.show', compact ('audit','budget','sarana','subdit','users','auditor','capa'));
+    }
     public function edit($id)
     {
         
         $audit = Audit::findOrFail($id);
      
-        $auditor = Audit::join('audit_has_users', 'audits.id', '=',  'audit_has_users.audit_id')
-                ->join('users','audit_has_users.id_user', '=',  'users.id')
-                ->select('users.name as name')
+        $auditor = Audit::join('users','audits.auditor2','=','users.id')
+                ->select('users.name')               
                 ->where('audits.id', $id)
-                ->get();
-
+                ->get();    
+              
         $sarana = Sarana::all();
         $budget = Budget::all();
         $subdit = Subdit::all();
         $users = User::all();
        $jenis_keg = Audit::where('id', $id)->pluck('jenis_keg');
-       # $jenis_keg = explode(",", $audit->jenis_keg);
+      
         return view('audit.edit', compact('audit', 'budget','sarana','subdit','users','auditor' ));
     }
    
@@ -176,20 +197,19 @@ class AuditController extends Controller
         if (!$item) return abort(404);
       
         # query ke anggaran dengan id $audit->id
-       # $budget = Budget::find(request('budget_id'));
        $budget = Budget::findOrFail($item->budget_id);
-
-        # balikin lagi nilainya
-        $budget->update([
-            'realisasi' => $budget->realisasi - $item->biaya,
-            'sisa' => $budget->sisa + $item->biaya
-        ]);
 
         # cek apakah biaya melebihi pagu ?
         if(request('biaya') > $budget->pagu) {
             flash('Biaya tidak boleh lebih dari pagu')->error();
             return redirect()->back();
         }
+        # balikin lagi nilainya
+        $budget->update([
+            'realisasi' => $budget->realisasi - $item->biaya,
+            'sisa' => $budget->sisa + $item->biaya
+        ]);
+     
 
         $item->update($data); // ()-> isinya array
         
@@ -200,7 +220,14 @@ class AuditController extends Controller
             'realisasi' => $budget->realisasi + $biaya,
             'sisa' => $budget->pagu - ($budget->realisasi + $biaya)
         ]);
-       
+
+        #insert ke tabel capa       
+        $user = Auth::user()->id;
+        $check = new capa;
+        $check['audit_id'] = $item->id; # gimana cara memasukkan id audit ke column audit_id?
+        $check->user_id = $user;
+        $check ['status_capa'] = $item->status_capa;
+        $check->save();
         flash('Data telah diupdate')->success();
         return redirect()->route('audit.index');
     }
@@ -219,6 +246,24 @@ class AuditController extends Controller
         flash('Data berhasil dihapus')->error();
         return redirect()->route('audit.index');
     }
+
+    public function setStatus (Request $request, $id)
+    {
+        $request->validate([
+            'status_capa' => 'required|in:PENUGASAN,HASIL AUDIT,TINDAK LANJUT,CAPA,EVALUASI,SELESAI'
+        ]);
+
+        $item = Audit::findOrFail($id);
+        $item->status_capa = $request->status_capa;
+
+        $item->save();
+       
+        // return redirect()->route('transactions.index');
+        flash('Data telah diupdate')->success();
+        return redirect()->back(); 
+    }
+
+
 
     public function export()
     {

@@ -4,7 +4,7 @@
     <a href="{{ asset("/home") }}" class="brand-link">
       <img src="{{ asset("/adminlte/img/logobpom.png") }}"
            alt="AdminLTE Logo"
-           class="brand-image img-circle elevation-3"
+           class="brand-image"
            style="opacity: .9">
       <span class="brand-text font-weight-light">SIPENSA</span>
     </a>
@@ -34,9 +34,6 @@
                 <i class="right fas "></i>
               </p>
             </a>
-           
-
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -51,7 +48,7 @@
       
       <li class="nav-item">
         <a href="{{ asset("/user") }}" class="nav-link">
-          <i class="nav-icon fas fa-user-secret"></i>
+          <i class="nav-icon far fa-grin-beam"></i>
           <p>
             Pegawai
             
@@ -78,10 +75,38 @@
               </p>
             </a>
           </li>
-
-           
-            </ul>
+            </ul> 
           </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-forward"></i>
+              <p>
+                Kinerja
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+            <a href="{{ asset("/iku") }}" class="nav-link">
+              <i class="nav-icon fas fa-landmark"></i>
+              <p>
+                Unit Kerja
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('individu.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
+              <p>
+                Individu
+              </p>
+            </a>
+          </li>
+            </ul> 
+          </li>
+
+
           
           
           <li class="nav-item">
@@ -93,18 +118,7 @@
               </p>
             </a>
           </li>
-
-          
          
-          <!-- <li class="nav-item">
-            <a href="{{ asset("/iku") }}" class="nav-link">
-              <i class="nav-icon fas fa-forward"></i>
-              <p>
-                Indikator Kinerja
-                
-              </p>
-            </a>
-          </li> -->
       
         </ul>
       </nav> 

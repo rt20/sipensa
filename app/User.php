@@ -35,7 +35,7 @@ class User extends Authenticatable
 	{
 		return $this->belongsTo(Subdit::class, 'subdit_id');
     }
-    public function audit_has_user(){
-        return $this->hasMany('App\Audit_has_user');
+    public function capa(){
+        return $this->hasMany('App\Capa');
     }
 }

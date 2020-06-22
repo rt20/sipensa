@@ -12,4 +12,8 @@ class Audit_has_user extends Model
 	{
 		return $this->hasMany('App\User');
 	}
+	public function audit()
+	{
+		return $this->hasMany('App\Audit');
+	}
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Iku;
+use App\Models\Sarana;
+use App\Models\Audit;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -20,6 +23,7 @@ class IkuController extends Controller
     
     public function index()
     {
+       
         if (request()->search) {
             $data = Iku::where('kode', 'like', '%' . request()->search . '%')->paginate(10);
         } else {
@@ -39,22 +43,22 @@ class IkuController extends Controller
     {
         # validasi form input
         $this->validate(request(), [
-            'kode' => 'required|min:4',
-            'sasaran' => 'required|min:4',
-            'target' => 'required|numeric',  
+            'sasaran' => 'required',
+            'target' => 'required',  
         ]);
         # Insert ke database
         # insert into anggaran blablabla
         Iku::create([
-            'kode' => request('kode'),
             'sasaran' => request('sasaran'),
+            'indikator' => request('indikator'),
             'target' => request('target'),
             'realisasi' => request('realisasi'),
-            'keterangan' => request('keterangan'),
+            
         ]);
+        
      # Tampilin flash message
      flash('Selamat data telah berhasil di buat')->success();
-
+     
      # Kalo udah insert data, redirect ke halaman anggaran
      return redirect()->route('iku.index');
     }
@@ -84,11 +88,10 @@ class IkuController extends Controller
 
         # update data
         $row->update([
-            'kode' => request('kode'),
             'sasaran' => request('sasaran'),
             'target' => request('target'),
             'realisasi' => request('realisasi'),
-            'keterangan' => request('keterangan'),
+            'indikator' => request('indikator'),
         ]);
       # Tampilin flash message
       flash('Selamat data telah berhasil di update')->success();
