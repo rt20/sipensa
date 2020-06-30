@@ -90,7 +90,8 @@ class AuditController extends Controller
             'subdit_id',
             'tgl_audit',
             'user_id',
-            'auditor3',
+            'auditor2',
+            'tambahan',
             'lokasi',
             'jenis_sarana',
             'jenis_keg',
@@ -125,6 +126,7 @@ class AuditController extends Controller
             $check['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
             $check->user_id = $user;
             $check ['status_capa'] = $audit->status_capa;
+           
             $check->save();
     
         $totalaudit = Audit::count();
@@ -227,6 +229,7 @@ class AuditController extends Controller
         $check['audit_id'] = $item->id; # gimana cara memasukkan id audit ke column audit_id?
         $check->user_id = $user;
         $check ['status_capa'] = $item->status_capa;
+       
         $check->save();
         flash('Data telah diupdate')->success();
         return redirect()->route('audit.index');
@@ -250,14 +253,35 @@ class AuditController extends Controller
     public function setStatus (Request $request, $id)
     {
         $request->validate([
-            'status_capa' => 'required|in:PENUGASAN,HASIL AUDIT,TINDAK LANJUT,CAPA,EVALUASI,SELESAI'
+            'status_capa' => 'required'
         ]);
 
         $item = Audit::findOrFail($id);
         $item->status_capa = $request->status_capa;
 
         $item->save();
-       
+
+        if ($request->status_capa == '["Ditugaskan melakukan audit"]'){
+
+            $kegiatan = 'ditugaskan melakukan audit';  
+        } 
+        elseif ($request->status_capa == '["Telah melaksanakan audit"]'){
+
+            $kegiatan = 'membuat laporan audit sarana';  
+        } 
+        else {
+            $kegiatan = 'menyelesaikan audit';
+         #insert ke tabel capa       
+         $user = Auth::user()->id;
+         $check = new capa;
+         $check['audit_id'] = $item->id; # gimana cara memasukkan id audit ke column audit_id?
+         $check->user_id = $user;
+         $check ['status_capa'] = $item->status_capa;
+         $check['kegiatan'] = $kegiatan;
+         $check->deskripsi = $request->deskripsi;
+
+         $check->save();
+        }
         // return redirect()->route('transactions.index');
         flash('Data telah diupdate')->success();
         return redirect()->back(); 

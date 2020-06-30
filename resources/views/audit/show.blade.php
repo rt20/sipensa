@@ -165,7 +165,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-2"><br>
-                    Hasil Pemeriksaan
+                    Hasil Pemeriksaan / Temuan
                 </div>
                 <div class="col-sm-8"><br>
                     {{old('hasil', $audit->hasil)}}
@@ -190,19 +190,34 @@
                     TMS Produk
 
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
 
-                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak memiliki SKI"
-                        {{ in_array("Tidak memiliki SKI",$audit->kesimpulan)?"checked":""}} disabled>
-                    Tidak memiliki SKI
+                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Memiliki SKI"
+                        {{ in_array("Tidak Memiliki SKI",$audit->kesimpulan)?"checked":""}} disabled>
+                    Tidak Memiliki SKI
                     <br>
-                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak ada Temuan"
-                        {{ in_array("Tidak ada Temuan",$audit->kesimpulan)?"checked":""}} disabled>
-                    Tidak ada Temuan
-                    <br>
-                    <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('kesi')}}" >
+                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Mayor"
+                                {{ in_array("Mayor",$audit->kesimpulan)?"checked":""}} disabled>
+                            Mayor
+                            <br>
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Minor"
+                                {{ in_array("Minor",$audit->kesimpulan)?"checked":""}} disabled>
+                            Minor
+                            <br>
+                            <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('kesi')}}" >
                Lainnya:<input type="text" name="kesi" class="form-control form-control-sm"> -->
-                </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius"
+                                {{ in_array("Kritis Serius",$audit->kesimpulan)?"checked":""}} disabled>
+                                Kritis Serius
+                            <br>
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Ada Temuan"
+                                {{ in_array("Tidak Ada Temuan",$audit->kesimpulan)?"checked":""}} disabled>
+                                Tidak Ada Temuan
+                            <br>
+                            </div>
             </div>
             <div class="row">
                 <div class="col-sm-2"> <br>
@@ -240,8 +255,8 @@
                     Biaya
                 </div>
                 <div class="col-sm-4">
-                    Rp{{$audit->biaya}},00
-
+                    Rp{{number_format($audit->biaya)}}
+                   
                 </div>
             </div>
             <div class="row">
@@ -257,7 +272,7 @@
     </div>
 </div>
 </section>
-@if($audit->status_capa !== 'PENUGASAN')
+@if($audit->status_capa !== 'Ditugaskan melakukan audit')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-0">
@@ -279,13 +294,14 @@
                     </div>
                 <div class="col-md-6">
                     
-                    <select name="status" class="form-control form-control-sm" required>
+                    <select name="status_capa" class="form-control form-control-sm" required>
                             <option value="">- Pilih Status</option>
-                            <option value="HASIL AUDIT">Hasil Audit</option>
-                            <option value="TINDAK LANJUT">Tindak Lanjut</option>
-                            <option value="CAPA">CAPA</option>
-                            <option value="EVALUASI">Evaluasi</option>
-                            <option value="SELESAI">Selesai</option>
+                            <option value="Ditugaskan melakukan audit">Ditugaskan melakukan audit</option>
+                            <option value="Telah melaksanakan audit">Telah melaksanakan audit</option>
+                            <option value="Mengirimkan hasil audit ke sarana">Mengirimkan hasil audit ke sarana</option>
+                            <option value="Menerima laporan TL CAPA">Menerima laporan TL CAPA	</option>
+                            <option value="Melakukan evaluasi CAPA">Melakukan evaluasi CAPA</option>
+                            <option value="Menyelesaikan audit sarana">Menyelesaikan audit sarana</option>
                         </select>
                 </div>
                 </div>

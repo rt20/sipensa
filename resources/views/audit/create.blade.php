@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-0">
             <div class="col-sm-6">
-                <h1>Tambah Data Audit</h1>
+                <h1>Tambah Audit</h1>
                 * harus diisi
             </div>
             <div class="col-sm-6">
@@ -20,7 +20,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<section class="content">
+<section class="content"> 
     <div class="card">
         <div class="card-header">
             <form action="{{ asset("/audit") }}" method="POST">
@@ -201,7 +201,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-2"><br>
-                            Hasil Pemeriksaan
+                            Hasil Pemeriksaan / Temuan
                         </div>
                         <div class="col-sm-8"><br>
                             <textarea name="hasil" class="form-control" required> {{old('hasil')}}</textarea></br>
@@ -222,12 +222,23 @@
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMS Produk">
                             TMS Produk
                         </div>
-                        <div class="col-sm-4">
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak memiliki SKI">
-                            Tidak memiliki SKI
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Memiliki SKI">
+                            Tidak Memiliki SKI
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak ada Temuan">
-                            Tidak ada Temuan
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Mayor">
+                            Mayor
+                            <br>
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Minor">
+                            Minor
+                            <br>
+                            </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius">
+                            Kritis Serius
+                            <br>
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Ada Temuan">
+                            Tidak Ada Temuan
                             <br>
                             <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('isikesimpulan')}}" >
           Lainnya:<input type="text" name="isikesimpulan" class="form-control form-control-sm"> -->
@@ -268,9 +279,8 @@
                         </div>
                     </div>
                     <input type="hidden" name="status_capa" 
-                        class="form-control form-control-sm" value="PENUGASAN" required>
-                    <input type="hidden" name="kegiatan" 
-                        class="form-control form-control-sm" value="ditugaskan melakukan audit" required>
+                        class="form-control form-control-sm" value="Ditugaskan melakukan audit" required>
+                   
                     <div class="col-sm-8">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>

@@ -175,7 +175,7 @@
                   </div>
                @else
                  <div class="pull-left">
-                    <a href="{{ url('profile') }}" class="dropdown-item">Profile</a>
+                    <a href="{{ route('user.edit', Auth::user()->id ) }}" class="dropdown-item">Profile</a>
                   </div>
 
                  <div class="pull-right">

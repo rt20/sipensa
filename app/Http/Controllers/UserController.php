@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Subdit;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,20 +16,24 @@ class UserController extends Controller
             if(Gate::allows('manage-users')) return $next($request);
 
             abort(403, 'Anda tidak memiliki cukup hak akses');
+
+            
         });
     }
 
     public function index()
     {
-        // if(!auth()->user()->hasRole('admin')){
-        //     abort(404);
-        // }
-        
-        
+
         if (request()->search) {
             $data = User::where('name', 'like', '%' . request()->search . '%')->paginate(10);
         } else {
-            $data = User::paginate(10);
+            // $data = User::paginate(10);
+                #identifikasi siapa yang login
+                $user = Auth::user()->id;
+                        
+                #hanya user yang entri data yang bisa melihat data yang dia entri
+                $data = User::where('id',$user)->paginate(10);
+
         }
         return view('user.index', compact('data'));
     }
@@ -70,7 +75,7 @@ class UserController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function edit($id)
     {
         $user = User::find($id);

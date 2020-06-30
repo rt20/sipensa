@@ -7,6 +7,7 @@ use App\Imports\BudgetImport;
 use App\Models\Budget;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Crypt;
 
 
 
@@ -30,6 +31,7 @@ class BudgetController extends Controller
         } else {
             $data = Budget::paginate(10);
         }
+
          return view('budget.index', compact('data'));
     }
 
@@ -73,7 +75,7 @@ class BudgetController extends Controller
     {
         //
     }
-
+ 
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,6 +88,7 @@ class BudgetController extends Controller
         # select * from anggarans where id = $param
         $budget = Budget::find($param);
         if (!$budget) return abort(404);
+        
         return view('budget.edit', compact('budget'));
     }
 
@@ -96,13 +99,13 @@ class BudgetController extends Controller
         $row = Budget::find($param);
         if (!$row) return abort(404);
 
-        # update data
+        # update data 
         $row->update([
-            'kode' => request('kode'),
-            'uraian' => request('uraian'),
+            // 'kode' => request('kode'),
+            // 'uraian' => request('uraian'),
             'pagu' => request('pagu'),
             // 'realisasi' => request('realisasi'),
-            'sisa' => request('pagu'),
+            // 'sisa' => request('pagu'),
             'keterangan' => request('keterangan'),
         ]);
         

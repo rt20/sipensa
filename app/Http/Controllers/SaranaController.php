@@ -19,13 +19,13 @@ class SaranaController extends Controller
             abort(403, 'Anda tidak memiliki cukup hak akses');
         });
     }
-
+ 
     public function index()
     {
         if (request()->search) {
             $data = Sarana::where('nama', 'like', '%' . request()->search . '%')->paginate(10);
         } else {
-            $data = Sarana::paginate(10);
+            $data = Sarana::orderBy('id', 'desc')->paginate(10);
         }
          return view('sarana.index', compact('data'));
     }

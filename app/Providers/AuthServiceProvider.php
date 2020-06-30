@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('manage-users', function($user){
-            return count(array_intersect(["ADMIN"], json_decode($user->roles)));
+            return count(array_intersect(["ADMIN", "DIREKTUR","SUBDIT","STAF"], json_decode($user->roles)));
         });
 
         Gate::define('manage-budgets', function($user){

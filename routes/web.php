@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('iku', 'IkuController');
     Route::resource('budget', 'BudgetController');
     Route::resource('audit', 'AuditController');
-    Route::get('audit/{id}/set-status', 'AuditController@setStatus')
+    Route::post('audit/{id}/set-status', 'AuditController@setStatus')
     ->name('audit.status');
 
     Route::resource('capa', 'CapaController');

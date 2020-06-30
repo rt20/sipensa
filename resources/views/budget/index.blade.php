@@ -38,7 +38,7 @@
                     @forelse($data as $row)
                     <tr>
                         <th>{{ $loop->index +1 }}</th>
-
+ 
                         <td>{{ $row->kode }}</td>
                         <td>{{ $row->uraian }}</td>
                         <td>{{ number_format($row->pagu) }}</td>

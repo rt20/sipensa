@@ -42,17 +42,17 @@
                     <td>{{ date('d-M-y', strtotime($row->tgl_audit)) }}</td>
                     <td>{{ $row->lokasi }}</td>
                     <td>
-                        @if($row->status_capa == 'PENUGASAN')
+                        @if($row->status_capa == 'Ditugaskan melakukan audit')
                         <span class="badge badge-dark">
-                            @elseif($row->status_capa == 'HASIL AUDIT')
+                            @elseif($row->status_capa == 'Telah melaksanakan audit')
                             <span class="badge badge-primary">
-                                @elseif($row->status_capa == 'TINDAK LANJUT')
+                                @elseif($row->status_capa == 'Mengirimkan hasil audit ke sarana')
                                 <span class="badge badge-danger">
-                                    @elseif($row->status_capa == 'CAPA')
+                                    @elseif($row->status_capa == 'Menerima laporan TL CAPA')
                                     <span class="badge badge-warning">
-                                        @elseif($row->status_capa == 'EVALUASI')
+                                        @elseif($row->status_capa == 'Melakukan evaluasi CAPA')
                                         <span class="badge badge-info">
-                                            @elseif($row->status_capa == 'SELESAI')
+                                            @elseif($row->status_capa == 'Menyelesaikan audit sarana')
                                             <span class="badge badge-success">
                                                 @else
                                                 <span>
@@ -61,7 +61,7 @@
                                                 </span>
                     </td>
                     <td align=right>
-                        @if($row->status_capa == 'PENUGASAN')
+                        @if($row->status_capa == 'Ditugaskan melakukan audit')
                         <a href="{{ route('audit.edit', $row->id) }}" class="btn btn-success btn-sm">
                             <i class="fa fa-edit"></i></a>
                         @endif

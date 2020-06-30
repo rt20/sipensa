@@ -2,9 +2,26 @@
 
 @section('content')
 @include ('shared.errors')
-<div class="col-sm-8">
-            <h2>Data Sarana Produksi dan Distribusi Pangan</h2>
-          </div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-0">
+            <div class="col-sm-6">
+                <h1>Tambah Sarana</h1>
+                * harus diisi
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('sarana.index')}}">Sarana</a></li>
+                    <li class="breadcrumb-item active">Tambah</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content"> 
           <div class="card">
   <div class="card-header">
 <form action="{{ asset("/sarana") }}" method="POST">
@@ -55,4 +72,5 @@
 </form>
 </div>
 </div>
+</section>
 @endsection
