@@ -61,7 +61,7 @@ class AuditController extends Controller
                             ->orderBy('id', 'desc')
                             ->paginate(10);
         }
-        
+       
         return view('audit.index', compact('data'));
     }
 
@@ -147,12 +147,6 @@ class AuditController extends Controller
     {
 
     $audit = Audit::findOrFail($id);
-    // $auditor = Audit_has_user::where('audit_id', $id)->get();
-    // $auditor = Audit::join('audit_has_users', 'audits.id', '=', 'audit_has_users.audit_id')
-    // ->join('users','audit_has_users.id_user', '=', 'users.id')
-    // ->select('users.name')
-    // ->where('audits.id', $id)->pluck('users.name')->toArray();
-    // ->get();
     $capa = Capa::where('audit_id', $id)
     ->orderBy('id', 'desc')
     ->get();
@@ -176,7 +170,9 @@ class AuditController extends Controller
     {
         
         $audit = Audit::findOrFail($id);
-     
+        
+
+
         $auditor = Audit::join('users','audits.auditor2','=','users.id')
                 ->select('users.name')               
                 ->where('audits.id', $id)
@@ -194,7 +190,7 @@ class AuditController extends Controller
     public function update(AuditRequest $request, $id)
     {
         $data = $request->all();
-
+ 
         $item = Audit::findOrFail($id);
         if (!$item) return abort(404);
       

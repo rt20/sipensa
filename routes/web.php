@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('capa', 'CapaController');
     Route::resource('individu', 'IndividuController');
+    Route::resource('calendar', 'CalendarController');
 
 
 

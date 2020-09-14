@@ -29,6 +29,7 @@ class LoginController extends Controller
     public function username()
     {
         return 'login';
+       
     }
     protected function sendLoginResponse(User $user, Request $request)
     {
@@ -54,8 +55,9 @@ class LoginController extends Controller
         $user = User::where($loginIsEmail ? 'email' : 'nip', $login)->first(); #->where('active', true)->first();
 
         if (!$user) {
-            flash('Email atau NIP tidak ditemukan di database!')->error();
-            return redirect('/login');
+            flash('NIP tidak ditemukan di database!')->error();
+           return redirect('/login');
+           
         }
 
         if (Hash::check($request->input('password'), $user->password)) {

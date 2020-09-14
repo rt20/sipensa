@@ -186,6 +186,14 @@
                             <input type="checkbox" name="jenis_keg[]" value="Sertifikasi CPPOB"
                                 {{ in_array("Sertifikasi CPPOB",$audit->jenis_keg)?"checked":""}}>
                             Sertifikasi CPPOB
+                            <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Pemeriksaan Sarana Baru (PSB)"
+                                {{ in_array("Pemeriksaan Sarana Baru (PSB)",$audit->jenis_keg)?"checked":""}}>
+                            Pemeriksaan Sarana Baru (PSB)
+                            <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Pembukaan Segel"
+                                {{ in_array("Pembukaan Segel",$audit->jenis_keg)?"checked":""}}>
+                            Pembukaan Segel
                         </div>
                         <div class="col-sm-4">
                             <br>
@@ -271,7 +279,7 @@
                         <div class="col-sm-2"> <br>
                             Rating Sarana Produksi
                         </div>
-                        <div class="col-sm-8 radio"><br>
+                        <div class="col-sm-2 radio"><br>
                             <input type="radio" name="rating_produksi" value="A"
                                 @if(old('rating_produksi',$audit->rating_produksi)=="A") checked @endif> A
                             <input type="radio" name="rating_produksi" value="B"
@@ -281,6 +289,24 @@
                             <input type="radio" name="rating_produksi" value="D"
                                 @if(old('rating_produksi',$audit->rating_produksi)=="D") checked @endif> D
                         </div>
+
+                        <div class="col-sm-4 radio"><br>
+                            <input type="radio" name="rating_produksi" value="Level I"
+                            @if(old('rating_produksi',$audit->rating_produksi)=="Level I") checked @endif> Level I
+                            <input type="radio" name="rating_produksi" value="Level II"
+                            @if(old('rating_produksi',$audit->rating_produksi)=="Level II") checked @endif> Level II
+                            <input type="radio" name="rating_produksi" value="Level III"
+                            @if(old('rating_produksi',$audit->rating_produksi)=="Level III") checked @endif> Level III
+                            <input type="radio" name="rating_produksi" value="Level IV"
+                            @if(old('rating_produksi',$audit->rating_produksi)=="Level IV") checked @endif> Level IV
+                            </div>
+                            <div class="col-sm-2 radio"><br>
+                            <input type="radio" name="rating_produksi" value="TDP"
+                            @if(old('rating_produksi',$audit->rating_produksi)=="TDP") checked @endif> TDP
+                            <input type="radio" name="rating_produksi" value="TTP"
+                            @if(old('rating_produksi',$audit->rating_produksi)=="TTP") checked @endif> TTP
+                        </div>
+
                         </br>
                     </div>
 
@@ -295,7 +321,10 @@
                                 @if(old('rating_distribusi',$audit->rating_distribusi)=="Cukup") checked @endif> Cukup
                             <input type="radio" name="rating_distribusi" value="Kurang"
                                 @if(old('rating_distribusi',$audit->rating_distribusi)=="Kurang") checked @endif> Kurang
-
+                                <input type="radio" name="rating_distribusi" value="Kurang"
+                                @if(old('rating_distribusi',$audit->rating_distribusi)=="TDP") checked @endif> TDP
+                                <input type="radio" name="rating_distribusi" value="Kurang"
+                                @if(old('rating_distribusi',$audit->rating_distribusi)=="TTP") checked @endif> TTP
                         </div>
                         </br>
                     </div>

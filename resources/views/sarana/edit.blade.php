@@ -39,7 +39,7 @@
                     <label>Alamat Kantor</label>
                     <input type="text" name="alamat_kantor" class="form-control" value="{{$sarana->alamat_kantor}}"
                         required>
-                </div>
+                </div> 
                 <div class="col-md-6">
                     <label>Alamat Sarana</label>
                     <input type="text" name="alamat_sarana" class="form-control" value="{{$sarana->alamat_sarana}}">

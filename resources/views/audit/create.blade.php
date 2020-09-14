@@ -180,6 +180,12 @@
                             <br>
                             <input type="checkbox" name="jenis_keg[]" value="Sertifikasi CPPOB">
                             Sertifikasi CPPOB
+                            <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Pemeriksaan Sarana Baru (PSB)">
+                            Pemeriksaan Sarana Baru (PSB)
+                            <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Pembukaan Segel">
+                            Pembukaan Segel
                         </div>
                         <div class="col-sm-4">
                             <br>
@@ -248,11 +254,22 @@
                         <div class="col-sm-2"> <br>
                             Rating Sarana Produksi
                         </div>
-                        <div class="col-sm-8 radio"><br>
+                       
+                        <div class="col-sm-2 radio"><br>
                             <input type="radio" name="rating_produksi" value="A"> A
                             <input type="radio" name="rating_produksi" value="B"> B
                             <input type="radio" name="rating_produksi" value="C"> C
                             <input type="radio" name="rating_produksi" value="D"> D
+                            </div>
+                            <div class="col-sm-4 radio"><br>
+                            <input type="radio" name="rating_produksi" value="Level I"> Level I
+                            <input type="radio" name="rating_produksi" value="Level II"> Level II
+                            <input type="radio" name="rating_produksi" value="Level III"> Level III
+                            <input type="radio" name="rating_produksi" value="Level IV"> Level IV
+                        </div>
+                        <div class="col-sm-2 radio"><br>
+                        <input type="radio" name="rating_produksi" value="TDP"> TDP
+                        <input type="radio" name="rating_produksi" value="TTP"> TTP
                         </div>
                         </br>
                     </div>
@@ -264,7 +281,8 @@
                             <input type="radio" name="rating_distribusi" value="Baik"> Baik
                             <input type="radio" name="rating_distribusi" value="Cukup"> Cukup
                             <input type="radio" name="rating_distribusi" value="Kurang"> Kurang
-
+                            <input type="radio" name="rating_distribusi" value="TDP"> TDP
+                            <input type="radio" name="rating_distribusi" value="TTP"> TTP
                         </div>
                         </br>
                     </div>

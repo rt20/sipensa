@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item"><a href="{{ route('home')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active">Audit</li>
                 </ol>
-            </div>
+            </div>  
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -62,12 +62,12 @@
                     </td>
                     <td align=right>
                         @if($row->status_capa == 'Ditugaskan melakukan audit')
-                        <a href="{{ route('audit.edit', $row->id) }}" class="btn btn-success btn-sm">
+                        <a href="{{ route('audit.edit', $row->id) }}" class="btn btn-success btn-sm" title="Ubah">
                             <i class="fa fa-edit"></i></a>
                         @endif
-                        <a href="{{ route('audit.show', $row->id) }}" class="btn btn-info btn-sm">
+                        <a href="{{ route('audit.show', $row->id) }}" class="btn btn-info btn-sm" title="Detail">
                             <i class="fa fa-eye"></i></a>
-                        <form action="{{ route('audit.destroy', $row->id)}}" method="post" class="d-inline">
+                        <form action="{{ route('audit.destroy', $row->id)}}" method="post" class="d-inline" title="Hapus">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger btn-sm " onclick="return confirm('Apakah anda yakin ?')">

@@ -23,7 +23,12 @@ class UserController extends Controller
 
     public function index()
     {
+ 
 
+
+
+
+        
         if (request()->search) {
             $data = User::where('name', 'like', '%' . request()->search . '%')->paginate(10);
         } else {

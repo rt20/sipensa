@@ -29,15 +29,16 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+ <!-- fullCalendar -->
+ <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar/main.min.css") }}">
+  <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar-daygrid/main.min.css") }}">
+  <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar-timegrid/main.min.css") }}">
+  <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar-bootstrap/main.min.css") }}">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fontawesome-free/css/all.min.css") }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset("/adminlte/css/adminlte.min.css") }}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -102,21 +103,34 @@
 <script src="{{ asset("/adminlte/plugins/jquery-knob/jquery.knob.min.js") }}"></script>
 <!-- daterangepicker -->
 <script src="{{ asset("/adminlte/plugins/moment/moment.min.js") }}"></script>
-<script src="asset("/adminlte/plugins/daterangepicker/daterangepicker.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/daterangepicker/daterangepicker.js") }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset("/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js") }}"></script>
 <!-- Summernote -->
 <script src="{{ asset("/adminlte/plugins/summernote/summernote-bs4.min.js") }}"></script>
 <!-- overlayScrollbars -->
-<script src="passet("/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset("/adminlte/js/adminlte.js")}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset("/adminlte/js/pages/dashboard.js") }}"></script>
+
+<!-- fullCalendar 2.2.5 -->
+<script src="{{ asset("/adminlte/plugins/moment/moment.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/fullcalendar/main.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/fullcalendar-daygrid/main.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/fullcalendar-timegrid/main.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/fullcalendar-interaction/main.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/fullcalendar-bootstrap/main.min.js") }}"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset("/adminlte/js/demo.js") }}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Page specific script -->
+<script src="{{ asset("/adminlte/js/calendar.js") }}"></script>
 <script type="text/javascript">
+
     $(document).ready(function(){
           $('ul li a').click(function(){
             $('li a').removeClass("active");
@@ -124,5 +138,7 @@
         });
     });
 </script>
+
+
 </body>
 </html>

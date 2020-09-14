@@ -118,7 +118,15 @@
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{{ asset("/calendar") }}" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Jadwal Rapat
+                
+              </p>
+            </a>
+          </li>   
       
         </ul>
       </nav> 

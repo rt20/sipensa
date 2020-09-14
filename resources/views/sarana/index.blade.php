@@ -17,7 +17,7 @@
 </section>
 
 <section class="content">
-
+ 
 <div class="card">
     <div class="card-header">
         <a href="{{ route('sarana.create') }}" class="btn btn-primary mb-3">Tambah Sarana</a>
@@ -58,7 +58,7 @@
                         <form action="{{ route('sarana.destroy', $row->id)}}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger btn-sm">
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ?')">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </form>

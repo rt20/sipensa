@@ -52,7 +52,7 @@
                             <form action="{{ route('budget.destroy', $row->id)}}" method="post" class="d-inline">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-danger btn-sm">
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ?')">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </form>
