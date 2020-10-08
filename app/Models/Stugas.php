@@ -4,16 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Audit extends Model
+class Stugas extends Model
 {
-	#agar bisa entri/edit data
-	protected $guarded = [];
+    protected $guarded = [];
 	protected $casts = [
-		'jenis_keg' => 'array',
-		'kesimpulan' => 'array',
-		'rating_produksi' => 'array',
-		'rating_distribusi' => 'array',
-		
+		'user_id' => 'array',	
     ];
     public function budget()
 	{
@@ -27,14 +22,13 @@ class Audit extends Model
 	{
 		return $this->belongsTo(Sarana::class, 'sarana_id');
 	}
-	public function stugas()
-	{
-		return $this->belongsTo(Stugas::class, 'stugas_id');
-	}
+
 	public function user()
 	{
 		return $this->belongsTo('App\User');
 	}
-	
+	public function audit(){
+        return $this->hasMany('App\Audit');
+    }
 }
- 
+

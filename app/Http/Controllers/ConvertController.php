@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Imports\ConvertImport;
+use App\Imports\InswImport;
+use App\Models\Convert;
+use App\Models\Insw;
+use App\Exports\ConvertsExport;
 
-class CalendarController extends Controller
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
+class ConvertController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +21,11 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return view('calendar.index');
+        $user = Auth::user()->roles;
+
+       
+      
+        return view('convert.index');
     }
 
     /**
@@ -79,6 +91,25 @@ class CalendarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $insw = Insw::all();
+        $convert = Convert::all();
+        $insw->delete();
+        $convert->delete();
+        flash('Data berhasil dihapus')->error();
+        return redirect()->route('convert.index');
+    }
+    public function import()
+    {
+
+        Excel::import(new ConvertImport, request()->file('ebpom'));
+        Excel::import(new InswImport, request()->file('insw'));
+
+        flash('Data telah diunggah')->success();
+        return redirect()->route('convert.index');
+    }
+    public function export()
+    {
+        
+        return Excel::download(new ConvertsExport, 'ski.xls');
     }
 }

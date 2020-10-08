@@ -28,44 +28,24 @@
                         Surat Tugas
                     </div>
                     <div class="col-sm-4">
-                        {{ $audit->surat_tugas }}
+                        <select name="stugas_id" class="form-control form-control-sm" disabled required>
+                            <option value="">- Pilih Surat Tugas</option>
+                            @foreach($stugas as $stugas)
+                            <option value="{{ $stugas->no_st | $stugas->lokasi}}" {{$stugas->id ? 'selected':null}}>
+                                {{$stugas->no_st}} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} |
+                                {{ $stugas->lokasi }} </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">
-                        Tanggal Surat Tugas
-                    </div>
-                    <div class="col-sm-2">
-                        {{ date('d-M-y', strtotime ($audit->tgl_st)) }}
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">
-                        Kode Anggaran
-                    </div>
-                    <div class="col-sm-10">
-
-                        {{$audit->budget->kode}} - {{$audit->budget->uraian}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">
-                        Subdit Pengampu
-                    </div>
-                    <div class="col-sm-6">
-                        {{$audit->subdit->subdit}}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-2"> <br>
-                        Nama Sarana </br>
+                        Nama Sarana
                     </div>
                     <div class="col-sm-4">
-                        <br>
+
                         {{$audit->sarana->nama}}
-                        </br>
+
                     </div>
                 </div>
                 <div class="row">
@@ -79,11 +59,11 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2">
-                        Lokasi
+                        Alamat
                     </div>
                     <div class="col-sm-4">
-                        {{ $audit->lokasi }}
-                    </div> 
+                        {{ $audit->alamat }}
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">
@@ -93,24 +73,7 @@
                         {{date('d-M-y', strtotime($audit->tgl_audit))}}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-2">
-                        Auditor
-                    </div>
-                    <div class="col-sm-4">
-                        {{$audit->user->name}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">
 
-                    </div>
-                    <div class="col-sm-4">
-                        @foreach($auditor as $a)
-                        {{$a}}<br>
-                        @endforeach
-                    </div>
-                </div><br>
                 <div class="row">
                     <div class="col-sm-2">
                         Jenis Kegiatan
@@ -143,12 +106,12 @@
                         Sertifikasi CPPOB
                         <br>
                         <input type="checkbox" name="jenis_keg[]" value="Pemeriksaan Sarana Baru (PSB)"
-                                {{ in_array("Pemeriksaan Sarana Baru (PSB)",$audit->jenis_keg)?"checked":""}} disabled>
-                            Pemeriksaan Sarana Baru (PSB)
-                            <br>
-                            <input type="checkbox" name="jenis_keg[]" value="Pembukaan Segel"
-                                {{ in_array("Pembukaan Segel",$audit->jenis_keg)?"checked":""}} disabled>
-                            Pembukaan Segel
+                            {{ in_array("Pemeriksaan Sarana Baru (PSB)",$audit->jenis_keg)?"checked":""}} disabled>
+                        Pemeriksaan Sarana Baru (PSB)
+                        <br>
+                        <input type="checkbox" name="jenis_keg[]" value="Pembukaan Segel"
+                            {{ in_array("Pembukaan Segel",$audit->jenis_keg)?"checked":""}} disabled>
+                        Pembukaan Segel
                     </div>
                     <div class="col-sm-4">
                         <br>
@@ -168,8 +131,8 @@
                             {{ in_array("Surveillan Sertifikasi CPPOB",$audit->jenis_keg)?"checked":""}} disabled>
                         Surveillan Sertifikasi CPPOB
                         <br>
-                       
-                           
+
+
                         <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_kegi')}}" >
                          Lainnya:<input type="text" name="jenis_kegi" class="form-control form-control-sm"> -->
                     </div>
@@ -218,7 +181,7 @@
                         <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('kesi')}}" >
                Lainnya:<input type="text" name="kesi" class="form-control form-control-sm"> -->
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
 
                         <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius"
                             {{ in_array("Kritis Serius",$audit->kesimpulan)?"checked":""}} disabled>
@@ -229,72 +192,49 @@
                         Tidak Ada Temuan
                         <br>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2"> <br>
-                        Rating Sarana Produksi
                     </div>
-                    <div class="col-sm-2 radio"><br>
-
-                        <input type="radio" name="rating_produksi" value="A"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="A") checked @endif disabled> A
-                        <input type="radio" name="rating_produksi" value="B"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="B") checked @endif disabled> B
-                        <input type="radio" name="rating_produksi" value="C"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="C") checked @endif disabled> C
-                        <input type="radio" name="rating_produksi" value="D"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="D") checked @endif disabled> D
+                    <div class="row">
+                        <div class="col-sm-2"> <br>
+                            Rating Sarana Produksi
+                        </div></br>
+                        <div class="col-sm-9"><br>
+                            <input type="checkbox" name="rating_produksi[]" value="A"
+                                {{ in_array("A",$audit->rating_produksi)?"checked":""}} disabled> A
+                            <input type="checkbox" name="rating_produksi[]" value="B"
+                                {{ in_array("B",$audit->rating_produksi)?"checked":""}} disabled> B
+                            <input type="checkbox" name="rating_produksi[]" value="C"
+                                {{ in_array("C",$audit->rating_produksi)?"checked":""}} disabled> C
+                            <input type="checkbox" name="rating_produksi[]" value="D"
+                                {{ in_array("D",$audit->rating_produksi)?"checked":""}} disabled> D
+                            <input type="checkbox" name="rating_produksi[]" value="Level I"
+                                {{ in_array("Level I",$audit->rating_produksi)?"checked":""}} disabled> Level I
+                            <input type="checkbox" name="rating_produksi[]" value="Level II"
+                                {{ in_array("Level II",$audit->rating_produksi)?"checked":""}} disabled> Level II
+                            <input type="checkbox" name="rating_produksi[]" value="Level III"
+                                {{ in_array("Level III",$audit->rating_produksi)?"checked":""}} disabled> Level III
+                            <input type="checkbox" name="rating_produksi[]" value="Level IV"
+                                {{ in_array("Level IV",$audit->rating_produksi)?"checked":""}} disabled> Level IV
+                            <input type="checkbox" name="rating_produksi[]" value="TDP"
+                                {{ in_array("TDP",$audit->rating_produksi)?"checked":""}} disabled> TDP
+                            <input type="checkbox" name="rating_produksi[]" value="TTP"
+                                {{ in_array("TTP",$audit->rating_produksi)?"checked":""}} disabled> TTP
+                        </div></br>
                     </div>
-                    <div class="col-sm-4 radio"><br>
-
-                        <input type="radio" name="rating_produksi" value="Level I"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level I") checked @endif disabled>
-                        Level I
-                        <input type="radio" name="rating_produksi" value="Level II"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level II") checked @endif disabled>
-                        Level II
-                        <input type="radio" name="rating_produksi" value="Level III"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level III") checked @endif disabled>
-                        Level III
-                        <input type="radio" name="rating_produksi" value="Level IV"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level IV") checked @endif disabled>
-                        Level IV
-                    </div>
-                    <div class="col-sm-2 radio"><br>
-                        <input type="radio" name="rating_produksi" value="TDP"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="TDP") checked @endif> TDP
-                        <input type="radio" name="rating_produksi" value="TTP"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="TTP") checked @endif> TTP
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-sm-2">
                         Rating Sarana Distribusi
                     </div>
-                    <div class="col-sm-8 radio">
-                        <input type="radio" name="rating_distribusi" value="Baik"
-                            @if(old('rating_distribusi',$audit->rating_distribusi)=="Baik") checked @endif disabled>
-                        Baik
-                        <input type="radio" name="rating_distribusi" value="Cukup"
-                            @if(old('rating_distribusi',$audit->rating_distribusi)=="Cukup") checked @endif disabled>
-                        Cukup
-                        <input type="radio" name="rating_distribusi" value="Kurang"
-                            @if(old('rating_distribusi',$audit->rating_distribusi)=="Kurang") checked @endif disabled>
-                        Kurang
-                        <input type="radio" name="rating_distribusi" value="Kurang"
-                            @if(old('rating_distribusi',$audit->rating_distribusi)=="TDP") checked @endif disabled> TDP
-                        <input type="radio" name="rating_distribusi" value="Kurang"
-                            @if(old('rating_distribusi',$audit->rating_distribusi)=="TTP") checked @endif disabled> TTP
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">
-                        Biaya
-                    </div>
-                    <div class="col-sm-4">
-                        Rp{{number_format($audit->biaya)}}
-
+                    <div class="col-sm-8 checkbox>
+                        <input type=" checkbox" name="rating_distribusi" value="Baik"
+                        {{ in_array("Baik",$audit->rating_distribusi)?"checked":""}} disabled> Baik
+                        <input type="checkbox" name="rating_distribusi" value="Cukup"
+                            {{ in_array("Cukup",$audit->rating_distribusi)?"checked":""}} disabled> Cukup
+                        <input type="checkbox" name="rating_distribusi" value="Kurang"
+                            {{ in_array("Kurang",$audit->rating_distribusi)?"checked":""}} disabled> Kurang
+                        <input type="checkbox" name="rating_distribusi" value="Kurang"
+                            {{ in_array("TDP",$audit->rating_distribusi)?"checked":""}} disabled> TDP
+                        <input type="checkbox" name="rating_distribusi" value="Kurang"
+                            {{ in_array("TTP",$audit->rating_distribusi)?"checked":""}} disabled> TTP
                     </div>
                 </div>
                 <div class="row">
@@ -302,13 +242,12 @@
                         Keterangan
                     </div>
                     <div class="col-sm-8">
-
                         {{$audit->keterangan}}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+   
 </section>
 @if($audit->status_capa !== 'Ditugaskan melakukan audit')
 <section class="content-header">

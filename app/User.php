@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function capa(){
         return $this->hasMany('App\Capa');
     }
+    public function stugas()
+	{
+		return $this->hasMany('App\Stugas');
+    }
 }

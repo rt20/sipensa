@@ -26,10 +26,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('capa', 'CapaController');
     Route::resource('individu', 'IndividuController');
-    Route::resource('calendar', 'CalendarController');
+    Route::resource('event', 'EventController');
 
+    Route::resource('convert', 'ConvertController');
+    Route::post('convert/import', 'ConvertController@import')->name('convert.import');   # import data
+    Route::get('convert.export', 'ConvertController@export')->name('convert.export');   # export data
 
-
+    Route::resource('stugas', 'StugasController');
 
     Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
     Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data

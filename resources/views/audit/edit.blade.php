@@ -28,67 +28,26 @@
                         <div class="col-sm-2">
                             Surat Tugas *
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="surat_tugas" class="form-control form-control-sm"
-                                value="{{old('surat_tugas',$audit->surat_tugas)}} " disabled required>
-                        </div>
-                        <div class="col-sm-auto">
-                            Tanggal Surat Tugas *
-                        </div>
-                        <div class="col-sm-auto">
-                            <input type="date" name="tgl_st" class="form-control form-control-sm"
-                                value="{{ $audit->tgl_st }}" disabled>
-                        </div>
-                        <div class="col-sm-auto">
-                            Tujuan *
-                        </div>
-                        <div class="col-sm-auto">
-                            <input type="text" name="lokasi" placeholder="Lokasi Audit"
-                                class="form-control form-control-sm" value="{{old('lokasi',$audit->lokasi)}}" disabled
-                                required>
-                        </div>
-                    </div>
-                    <!-- nggak tau nutup div mana tapi bikin geser bawahnya-->
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Kode Anggaran *</br>
-                        </div>
-                        <div class="col-sm-10">
-                            <br>
-                            <select name="budget_id" class="form-control form-control-sm" disabled required>
-                                <option value="">- Pilih Anggaran</option>
-                                @foreach($budget as $budget)
-                                <option value="{{ $budget->id }}"
-                                    {{ $audit->budget_id == $budget->id ? 'selected' : null }}>{{ $budget->sisa }} -
-                                    {{ $budget->uraian }} </option>
 
-                                @endforeach
-                            </select> </br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            Subdit Pengampu *
-                        </div>
                         <div class="col-sm-4">
-                            <select name="subdit_id" class="form-control form-control-sm" required disabled>
-                                <option value="">- Pilih Subdit</option>
-                                @foreach($subdit as $subdit)
-                                <option value="{{ $subdit->id }}"
-                                    {{ $audit->subdit_id == $subdit->id ? 'selected' : null }}>{{ $subdit->subdit }}
-                                </option>
+                            <select name="stugas_id" class="form-control form-control-sm" disabled required>
+                                <option value="">- Pilih Surat Tugas</option>
+                                @foreach($stugas as $stugas)
+                                <option value="{{ $stugas->no_st | $stugas->lokasi}}" {{$stugas->id ? 'selected':null}}>
+                                    {{$stugas->no_st}} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} |
+                                    {{ $stugas->lokasi }} </option>
                                 @endforeach
                             </select>
-
                         </div>
-                        <div class="col-sm-auto">
+                        <div class="col-sm-3">
                             Tanggal Pemeriksaan *
                         </div>
-                        <div class="col-sm-auto">
+                        <div class="col-sm-2">
                             <input type="date" name="tgl_audit" class="form-control form-control-sm"
                                 value="{{ $audit->tgl_audit }}" disabled>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-sm-2"> <br>
                             Nama Sarana *</br>
@@ -107,7 +66,7 @@
                         <div class="col-sm-2"> <br>
                             Jenis Sarana *</br>
                         </div>
-                        <div class="col-sm-2"><br>
+                        <div class="col-sm-3"><br>
                             <select name="jenis_sarana" class="form-control form-control-sm" disabled required>
                                 <!-- <option value="">- Pilih Jenis Sarana</option> -->
                                 <option value="{{ $audit->jenis_sarana }}" {{$audit->jenis_sarana ? 'selected':null}}>
@@ -116,41 +75,15 @@
                                 <option value="Distribusi">Distribusi</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Auditor 1 * </br>
-                        </div>
-                        <div class="col-sm-4">
-                            <br>
-                            <input type="text" name="user_id" placeholder="Nama Pemeriksa"
-                                class="form-control form-control-sm" value="{{old('user_id',$audit->user->name)}}"
-                                disabled required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Auditor 2 </br>
-                        </div>
-                        <div class="col-sm-4">
-                            <br>
-                            <input type="text" name="auditor2" placeholder="Nama Pemeriksa"
-                                class="form-control form-control-sm" value="{{old('auditor2',$auditor)}}" disabled
-                                required>
-                        </div>
-                    </div>
-                    </br>
+                    </div><br>
                     <div class="row">
                         <div class="col-sm-2">
-                            Auditor Tambahan
+                            Alamat Sarana
                         </div>
                         <div class="col-sm-4">
-
-                            <input type="text" name="tambahan" placeholder="Nama Pemeriksa"
-                                class="form-control form-control-sm" value="{{old('tambahan',$audit->tambahan)}}">
+                            <textarea name="alamat" class="form-control" required> {{old('alamat',$audit->alamat)}}</textarea>
                         </div>
                     </div>
-
                     <div class="card-header">
                     </div>
 
@@ -267,77 +200,67 @@
 
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius"
                                 {{ in_array("Kritis Serius",$audit->kesimpulan)?"checked":""}}>
-                                Kritis Serius
+                            Kritis Serius
                             <br>
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Ada Temuan"
                                 {{ in_array("Tidak Ada Temuan",$audit->kesimpulan)?"checked":""}}>
-                                Tidak Ada Temuan
+                            Tidak Ada Temuan
                             <br>
-                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-2"> <br>
                             Rating Sarana Produksi
                         </div>
-                        <div class="col-sm-2 radio"><br>
-                            <input type="radio" name="rating_produksi" value="A"
-                                @if(old('rating_produksi',$audit->rating_produksi)=="A") checked @endif> A
-                            <input type="radio" name="rating_produksi" value="B"
-                                @if(old('rating_produksi',$audit->rating_produksi)=="B") checked @endif> B
-                            <input type="radio" name="rating_produksi" value="C"
-                                @if(old('rating_produksi',$audit->rating_produksi)=="C") checked @endif> C
-                            <input type="radio" name="rating_produksi" value="D"
-                                @if(old('rating_produksi',$audit->rating_produksi)=="D") checked @endif> D
+                        <div class="col-sm-2"><br>
+                            <input type="checkbox" name="rating_produksi[]" value="A"
+                                {{ in_array("A",$audit->rating_produksi)?"checked":""}}> A
+                            <input type="checkbox" name="rating_produksi[]" value="B"
+                                {{ in_array("B",$audit->rating_produksi)?"checked":""}}> B
+                            <input type="checkbox" name="rating_produksi[]" value="C"
+                                {{ in_array("C",$audit->rating_produksi)?"checked":""}}> C
+                            <input type="checkbox" name="rating_produksi[]" value="D"
+                                {{ in_array("D",$audit->rating_produksi)?"checked":""}}> D
                         </div>
 
-                        <div class="col-sm-4 radio"><br>
-                            <input type="radio" name="rating_produksi" value="Level I"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level I") checked @endif> Level I
-                            <input type="radio" name="rating_produksi" value="Level II"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level II") checked @endif> Level II
-                            <input type="radio" name="rating_produksi" value="Level III"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level III") checked @endif> Level III
-                            <input type="radio" name="rating_produksi" value="Level IV"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="Level IV") checked @endif> Level IV
-                            </div>
-                            <div class="col-sm-2 radio"><br>
-                            <input type="radio" name="rating_produksi" value="TDP"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="TDP") checked @endif> TDP
-                            <input type="radio" name="rating_produksi" value="TTP"
-                            @if(old('rating_produksi',$audit->rating_produksi)=="TTP") checked @endif> TTP
+                        <div class="col-sm-4"><br>
+                            <input type="checkbox" name="rating_produksi[]" value="Level I"
+                                {{ in_array("Level I",$audit->rating_produksi)?"checked":""}}> Level I
+                            <input type="checkbox" name="rating_produksi[]" value="Level II"
+                                {{ in_array("Level II",$audit->rating_produksi)?"checked":""}}> Level II
+                            <input type="checkbox" name="rating_produksi[]" value="Level III"
+                                {{ in_array("Level III",$audit->rating_produksi)?"checked":""}}> Level III
+                            <input type="checkbox" name="rating_produksi[]" value="Level IV"
+                                {{ in_array("Level IV",$audit->rating_produksi)?"checked":""}}> Level IV
                         </div>
-
+                        <div class="col-sm-2 checkbox"><br>
+                            <input type="checkbox" name="rating_produksi[]" value="TDP"
+                                {{ in_array("TDP",$audit->rating_produksi)?"checked":""}}> TDP
+                            <input type="checkbox" name="rating_produksi[]" value="TTP"
+                                {{ in_array("TTP",$audit->rating_produksi)?"checked":""}}> TTP
+                        </div>
                         </br>
                     </div>
-
                     <div class="row">
                         <div class="col-sm-2"> <br>
                             Rating Sarana Distribusi
                         </div>
-                        <div class="col-sm-8 radio"><br>
-                            <input type="radio" name="rating_distribusi" value="Baik"
-                                @if(old('rating_distribusi',$audit->rating_distribusi)=="Baik") checked @endif> Baik
-                            <input type="radio" name="rating_distribusi" value="Cukup"
-                                @if(old('rating_distribusi',$audit->rating_distribusi)=="Cukup") checked @endif> Cukup
-                            <input type="radio" name="rating_distribusi" value="Kurang"
-                                @if(old('rating_distribusi',$audit->rating_distribusi)=="Kurang") checked @endif> Kurang
-                                <input type="radio" name="rating_distribusi" value="Kurang"
-                                @if(old('rating_distribusi',$audit->rating_distribusi)=="TDP") checked @endif> TDP
-                                <input type="radio" name="rating_distribusi" value="Kurang"
-                                @if(old('rating_distribusi',$audit->rating_distribusi)=="TTP") checked @endif> TTP
+                        <div class="col-sm-8 checkbox"><br>
+                            <input type="checkbox" name="rating_distribusi[]" value="Baik"
+                                {{ in_array("Baik",$audit->rating_distribusi)?"checked":""}}> Baik
+                            <input type="checkbox" name="rating_distribusi[]" value="Cukup"
+                                {{ in_array("Cukup",$audit->rating_distribusi)?"checked":""}}> Cukup
+                            <input type="checkbox" name="rating_distribusi[]" value="Kurang"
+                                {{ in_array("Kurang",$audit->rating_distribusi)?"checked":""}}> Kurang
+                            <input type="checkbox" name="rating_distribusi[]" value="TDP"
+                                {{ in_array("TDP",$audit->rating_distribusi)?"checked":""}}> TDP
+                            <input type="checkbox" name="rating_distribusi[]" value="TTP"
+                                {{ in_array("TTP",$audit->rating_distribusi)?"checked":""}}> TTP
                         </div>
                         </br>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Biaya </br>
-                        </div>
-                        <div class="col-sm-4">
-                            <br> <input type="number" name="biaya" class="form-control" value="{{$audit->biaya}}">
-                            </br>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-sm-2">
                             Status
@@ -347,7 +270,8 @@
                                 <option value="">- Pilih Status Audit</option>
                                 <option value="Ditugaskan melakukan audit">Ditugaskan melakukan audit</option>
                                 <option value="Telah melaksanakan audit">Telah melaksanakan audit</option>
-                                <option value="Mengirimkan hasil audit ke sarana">Mengirimkan hasil audit ke sarana</option>
+                                <option value="Mengirimkan hasil audit ke sarana">Mengirimkan hasil audit ke sarana
+                                </option>
                             </select>
                         </div>
                     </div>

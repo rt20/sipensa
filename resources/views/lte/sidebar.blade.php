@@ -106,28 +106,52 @@
             </ul> 
           </li>
 
-
-          
-          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-industry"></i>
+              <p>
+                Pemeriksaan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+            <a href="{{ asset("/stugas") }}" class="nav-link">
+              <i class="nav-icon fas fa-battery-full"></i>
+              <p>
+                Surat Tugas
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="{{ asset("/audit") }}" class="nav-link">
-              <i class="nav-icon fas fa-clipboard-check"></i>
+            <i class="nav-icon fas fa-clipboard-check"></i>
               <p>
                 Audit
                 
               </p>
             </a>
           </li>
+            </ul> 
+          </li>
           <li class="nav-item">
-            <a href="{{ asset("/calendar") }}" class="nav-link">
+            <a href="{{ asset("/event") }}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Jadwal Rapat
+                Agenda
                 
               </p>
             </a>
           </li>   
-      
+          <li class="nav-item">
+            <a href="{{ asset("/convert") }}" class="nav-link">
+              <i class="nav-icon far fa-file-excel"></i>
+              <p>
+                Konversi
+                
+              </p>
+            </a>
+          </li>   
         </ul>
       </nav> 
       <!-- /.sidebar-menu -->

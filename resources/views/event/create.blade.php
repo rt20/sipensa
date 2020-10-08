@@ -31,7 +31,7 @@
                         value="{{old('kode')}}">
                 </div>
                 <div class="col-md-6">
-                    <label>Nama Kegiatan</label>
+                    <label>Name</label>
                     <input type="text" name="uraian" class="form-control" value="{{old('uraian')}}">
                 </div>
                 <div class="col-md-6">

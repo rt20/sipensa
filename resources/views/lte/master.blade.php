@@ -34,11 +34,6 @@
   <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar-daygrid/main.min.css") }}">
   <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar-timegrid/main.min.css") }}">
   <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar-bootstrap/main.min.css") }}">
-
-
-
-
-  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->

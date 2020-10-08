@@ -30,64 +30,36 @@
                         <div class="col-sm-2">
                             Surat Tugas *
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="surat_tugas" placeholder="Surat Tugas"
-                                class="form-control form-control-sm" value="{{old('surat_tugas')}} " required>
-                        </div>
-                        <div class="col-sm-auto">
-                            Tanggal Surat Tugas *
-                        </div>
-                        <div class="col-sm-auto">
-                            <input type="date" name="tgl_st" class="form-control form-control-sm"
-                                value="{{old('tgl_st')}} " required>
-                        </div>
-                        <div class="col-sm-auto">
-                            Tujuan *
-                        </div>
-                        <div class="col-sm-auto">
-                            <input type="text" name="lokasi" placeholder="Lokasi Audit"
-                                class="form-control form-control-sm" value="{{old('lokasi')}}" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Kode Anggaran *</br>
-                        </div>
-                        <div class="col-sm-10">
-                            <br>
-                            <select name="budget_id" class="form-control form-control-sm" required>
-                                <option value="">- Pilih Anggaran</option>
-                                @foreach($budgets as $budget)
-                                <option value="{{ $budget->id }}"
-                                    {{ old('budget_id') == $budget->id ? 'selected' : null }}>
-                                    {{ $budget->sisa }} - {{ $budget->uraian }}</option>
-                                @endforeach
-                            </select> </br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            Subdit Pengampu *
-                        </div>
                         <div class="col-sm-4">
-                            <select name="subdit_id" class="form-control form-control-sm" required>
-                                <option value="">- Pilih Subdit</option>
-                                @foreach($subdits as $subdit)
-                                <option value="{{ $subdit->id }}"
-                                    {{ old('subdit_id') == $subdit->id ? 'selected' : null }}>
-                                    {{ $subdit->subdit }} </option>
+                                <select name="stugas_id" class="form-control form-control-sm" required>
+                                <option value="">- Pilih Surat Tugas</option>
+                                @foreach($stugas as $stugas)
+                                <option value="{{ $stugas->id }}"
+                                    {{ old('stugas_id') == $stugas->id ? 'selected' : null }}>
+                                    {{ $stugas->no_st }} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} | {{ $stugas->lokasi }}  </option>
                                 @endforeach
-                            </select>
+                            </select> 
 
                         </div>
-                        <div class="col-sm-auto">
-                            Tanggal Pemeriksaan *
+                        <div class="col-sm-2"> 
+                            Jenis Sarana *
                         </div>
-                        <div class="col-sm-auto">
-                            <input type="date" name="tgl_audit" class="form-control form-control-sm"
-                                value="{{old('tgl_audit')}}">
+                        <div class="col-sm-3">
+                            <select name="jenis_sarana" class="form-control form-control-sm" required>
+                                <option value="">- Pilih Jenis Sarana</option>
+                                <option value="Produksi">Sarana Produksi IRTP</option>
+                                <option value="Produksi">Sarana Produksi MD</option>
+                                <option value="Produksi">Sarana Produksi ML</option>
+                                <option value="Distribusi">Sarana Distribusi Importir</option>
+                                <option value="Distribusi">Sarana Distribusi Retail</option>
+                                <option value="Distribusi">Gudang Distribusi</option>
+                                <option value="Produksi & Distribusi">Produksi & Distribusi</option>
+                            </select>
+                          
                         </div>
                     </div>
+                    
+                   
                     <div class="row">
                         <div class="col-sm-2"> <br>
                             Nama Sarana *</br>
@@ -103,55 +75,20 @@
                                 @endforeach
                             </select></br>
                         </div>
-                        <div class="col-sm-2"> <br>
-                            Jenis Sarana *</br>
-                        </div>
+                        <div class="col-sm-auto"><br>
+                            Tanggal Pemeriksaan*
+                        </div></br>
                         <div class="col-sm-3"><br>
-                            <select name="jenis_sarana" class="form-control form-control-sm" required>
-                                <option value="">- Pilih Jenis Sarana</option>
-                                <option value="Produksi">Produksi</option>
-                                <option value="Distribusi">Distribusi</option>
-                                <option value="Produksi & Distribusi">Produksi & Distribusi</option>
-                            </select>
-                            </br>
-                        </div>
+                            <input type="date" name="tgl_audit" class="form-control form-control-sm"
+                                value="{{old('tgl_audit')}}">
+                        </div></br>
                     </div>
                     <div class="row">
                         <div class="col-sm-2">
-                            Auditor 1 *
+                            Alamat Sarana
                         </div>
                         <div class="col-sm-4">
-                            <select name="user_id" class="form-control form-control-sm" required>
-                                <option value="">- Pilih Nama Pemeriksa</option>
-                                @foreach($users as $user)
-                                <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : null }}>
-                                    {{ $user->name }} </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Auditor 2 </br>
-                        </div>
-                        <div class="col-sm-4">
-                            <br>
-                            <select name="auditor2" class="form-control form-control-sm">
-                                <option value="">- Pilih Nama Pemeriksa</option>
-                                @foreach($users as $user)
-                                <option value="{{ $user->id }}" {{ old('auditor2') == $user->id ? 'selected' : null }}>
-                                    {{ $user->name }} </option>
-                                @endforeach
-                            </select> </br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            Auditor 3
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="text" name="tambahan" placeholder="Nama Pemeriksa"
-                                class="form-control form-control-sm" value="{{old('tambahan')}}">
+                            <textarea name="alamat" class="form-control" required> {{old('alamat')}}</textarea>
                         </div>
                     </div>
                     <div class="card-header">
@@ -255,21 +192,22 @@
                             Rating Sarana Produksi
                         </div>
                        
-                        <div class="col-sm-2 radio"><br>
-                            <input type="radio" name="rating_produksi" value="A"> A
-                            <input type="radio" name="rating_produksi" value="B"> B
-                            <input type="radio" name="rating_produksi" value="C"> C
-                            <input type="radio" name="rating_produksi" value="D"> D
+                        <div class="col-sm-2"><br>
+                        <input type="hidden" name="rating_produksi[]" value=" ">
+                            <input type="checkbox" name="rating_produksi[]" value="A"> A
+                            <input type="checkbox" name="rating_produksi[]" value="B"> B
+                            <input type="checkbox" name="rating_produksi[]" value="C"> C
+                            <input type="checkbox" name="rating_produksi[]" value="D"> D
                             </div>
-                            <div class="col-sm-4 radio"><br>
-                            <input type="radio" name="rating_produksi" value="Level I"> Level I
-                            <input type="radio" name="rating_produksi" value="Level II"> Level II
-                            <input type="radio" name="rating_produksi" value="Level III"> Level III
-                            <input type="radio" name="rating_produksi" value="Level IV"> Level IV
+                            <div class="col-sm-4 checkbox"><br>
+                            <input type="checkbox" name="rating_produksi[]" value="Level I"> Level I
+                            <input type="checkbox" name="rating_produksi[]" value="Level II"> Level II
+                            <input type="checkbox" name="rating_produksi[]" value="Level III"> Level III
+                            <input type="checkbox" name="rating_produksi[]" value="Level IV"> Level IV
                         </div>
-                        <div class="col-sm-2 radio"><br>
-                        <input type="radio" name="rating_produksi" value="TDP"> TDP
-                        <input type="radio" name="rating_produksi" value="TTP"> TTP
+                        <div class="col-sm-2 checkbox"><br>
+                        <input type="checkbox" name="rating_produksi[]" value="TDP"> TDP
+                        <input type="checkbox" name="rating_produksi[]" value="TTP"> TTP
                         </div>
                         </br>
                     </div>
@@ -278,24 +216,16 @@
                             Rating Sarana Distribusi
                         </div>
                         <div class="col-sm-8 radio"><br>
-                            <input type="radio" name="rating_distribusi" value="Baik"> Baik
-                            <input type="radio" name="rating_distribusi" value="Cukup"> Cukup
-                            <input type="radio" name="rating_distribusi" value="Kurang"> Kurang
-                            <input type="radio" name="rating_distribusi" value="TDP"> TDP
-                            <input type="radio" name="rating_distribusi" value="TTP"> TTP
+                        <input type="hidden" name="rating_distribusi[]" value=" ">
+                            <input type="checkbox" name="rating_distribusi[]" value="Baik"> Baik
+                            <input type="checkbox" name="rating_distribusi[]" value="Cukup"> Cukup
+                            <input type="checkbox" name="rating_distribusi[]" value="Kurang"> Kurang
+                            <input type="checkbox" name="rating_distribusi[]" value="TDP"> TDP
+                            <input type="checkbox" name="rating_distribusi[]" value="TTP"> TTP
                         </div>
                         </br>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Biaya </br>
-                        </div>
-                        <div class="col-sm-4">
-                            <br>
-                            <input type="number" name="biaya" class="form-control form-control-sm"
-                                value="{{old('biaya')}}"></br>
-                        </div>
-                    </div>
+                    
                     <input type="hidden" name="status_capa" 
                         class="form-control form-control-sm" value="Ditugaskan melakukan audit" required>
                    
