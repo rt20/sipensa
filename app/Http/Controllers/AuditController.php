@@ -46,7 +46,15 @@ class AuditController extends Controller
          } 
         elseif ($user == '["ADMIN"]'){
 
-            $data = Audit::orderBy('id', 'desc')->paginate(10);  
+            $data = DB::table('saranas')
+                    ->join('audits','saranas.id','=','audits.sarana_id')
+                    ->join('stugas','audits.stugas_id','=','stugas.id')
+                   
+                  
+                    ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','audits.status_capa')
+                  
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
         } 
         elseif ($user == '["DIREKTUR"]'){
             

@@ -39,7 +39,7 @@
                     <th>{{ ($data->currentPage()-1) * $data->perPage()+$loop->index+1 }}</th>
                     <td>{{ $row->tugas_jab }}</td>
                     <td>{{ $row->target }}</td>
-                    <td>{{ $audit }}</td>
+                    <td>{{ $stugas }}</td>
                    
                     <td>
 

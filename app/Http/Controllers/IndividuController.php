@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Iku;
 use App\Models\Skp;
-use App\Models\Audit;
+use App\Models\Stugas_has_user;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -25,8 +25,7 @@ class IndividuController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $audit = Audit::where('user_id',$user)
-                ->orWhere('auditor2',$user)
+        $stugas = Stugas_has_user::where('user_id',$user)
                 ->count();
 
         if (request()->search) {
@@ -36,7 +35,7 @@ class IndividuController extends Controller
 
             $data = Skp::paginate(10);
         }
-         return view('kinerja.individu.index', compact('data','audit'));
+         return view('kinerja.individu.index', compact('data','stugas'));
     }
 
     /**

@@ -23,20 +23,13 @@
                 @csrf
                 <div class="row">
                     <div class="col-sm-2">Unggah SKI e-BPOM*</div>
-                    <div class="col-sm-3"><input type="file" name="ebpom" required></div><br></br>
+                    <div class="col-sm-4"><input type="file" name="ebpom" required></div><br></br>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Unggah File INSW*</div>
-                    <div class="col-sm-3"><input type="file" name="insw" required></div>
+                    <div class="col-sm-4"><input type="file" name="insw" required></div>
                     <button type="submit" class="btn bg-purple">Unggah</button>
                     <a href="{{ route('convert.export') }}" class="btn btn-success">Unduh</a>
-                    <form action="{{ route('convert.destroy', all)}}" method="post" class="d-inline" title="Hapus">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-sm " onclick="return confirm('Apakah anda yakin ?')">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
                 </div>
             </form>
         </div>

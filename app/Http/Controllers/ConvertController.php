@@ -100,7 +100,9 @@ class ConvertController extends Controller
     }
     public function import()
     {
-
+        Convert::truncate();
+        Insw::truncate();
+        
         Excel::import(new ConvertImport, request()->file('ebpom'));
         Excel::import(new InswImport, request()->file('insw'));
 

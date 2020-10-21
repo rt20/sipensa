@@ -198,6 +198,7 @@
                             Rating Sarana Produksi
                         </div></br>
                         <div class="col-sm-9"><br>
+                        <input type="hidden" name="rating_produksi[]" value="">
                             <input type="checkbox" name="rating_produksi[]" value="A"
                                 {{ in_array("A",$audit->rating_produksi)?"checked":""}} disabled> A
                             <input type="checkbox" name="rating_produksi[]" value="B"
@@ -224,16 +225,17 @@
                     <div class="col-sm-2">
                         Rating Sarana Distribusi
                     </div>
-                    <div class="col-sm-8 checkbox>
-                        <input type=" checkbox" name="rating_distribusi" value="Baik"
-                        {{ in_array("Baik",$audit->rating_distribusi)?"checked":""}} disabled> Baik
-                        <input type="checkbox" name="rating_distribusi" value="Cukup"
+                    <div class="col-sm-8">
+                    <input type="hidden" name="rating_distribusi[]" value="">
+                        <input type="checkbox" name="rating_distribusi[]" value="Baik"
+                            {{ in_array("Baik",$audit->rating_distribusi)?"checked":""}} disabled> Baik
+                        <input type="checkbox" name="rating_distribusi[]" value="Cukup"
                             {{ in_array("Cukup",$audit->rating_distribusi)?"checked":""}} disabled> Cukup
-                        <input type="checkbox" name="rating_distribusi" value="Kurang"
+                        <input type="checkbox" name="rating_distribusi[]" value="Kurang"
                             {{ in_array("Kurang",$audit->rating_distribusi)?"checked":""}} disabled> Kurang
-                        <input type="checkbox" name="rating_distribusi" value="Kurang"
+                        <input type="checkbox" name="rating_distribusi[]" value="Kurang"
                             {{ in_array("TDP",$audit->rating_distribusi)?"checked":""}} disabled> TDP
-                        <input type="checkbox" name="rating_distribusi" value="Kurang"
+                        <input type="checkbox" name="rating_distribusi[]" value="Kurang"
                             {{ in_array("TTP",$audit->rating_distribusi)?"checked":""}} disabled> TTP
                     </div>
                 </div>
