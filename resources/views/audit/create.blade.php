@@ -1,4 +1,4 @@
-@extends('lte.master')
+@extends('layouts.calendar')
 
 @section('content')
 @include ('shared.errors')
@@ -20,7 +20,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<section class="content"> 
+<section class="content">
     <div class="card">
         <div class="card-header">
             <form action="{{ asset("/audit") }}" method="POST">
@@ -31,21 +31,25 @@
                             Surat Tugas *
                         </div>
                         <div class="col-sm-4">
-                                <select name="stugas_id" class="form-control form-control-sm" required>
+                            <select name="stugas_id" class="form-control select2" style="width: 100%;">
                                 <option value="">- Pilih Surat Tugas</option>
                                 @foreach($stugas as $stugas)
                                 <option value="{{ $stugas->id }}"
                                     {{ old('stugas_id') == $stugas->id ? 'selected' : null }}>
-                                    {{ $stugas->no_st }} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} | {{ $stugas->lokasi }}  </option>
+                                    {{ $stugas->no_st }} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} |
+                                    {{ $stugas->lokasi }} </option>
                                 @endforeach
-                            </select> 
-
+                            </select>
                         </div>
-                        <div class="col-sm-2"> 
+                        <a href="{{ route('audit.create') }}" class="btn btn-primary" title="Tambah surat tugas"><i
+                                    class="nav-icon fas fa-plus-circle"></i> </a>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-2">
                             Jenis Sarana *
                         </div>
-                        <div class="col-sm-3">
-                            <select name="jenis_sarana" class="form-control form-control-sm" required>
+                        <div class="col-sm-4">
+                            <select name="jenis_sarana" class="form-control select2" style="width: 100%;" required>
                                 <option value="">- Pilih Jenis Sarana</option>
                                 <option value="Produksi">Sarana Produksi IRTP</option>
                                 <option value="Produksi">Sarana Produksi MD</option>
@@ -55,34 +59,39 @@
                                 <option value="Distribusi">Gudang Distribusi</option>
                                 <option value="Produksi & Distribusi">Produksi & Distribusi</option>
                             </select>
-                          
                         </div>
                     </div>
-                    
-                   
                     <div class="row">
-                        <div class="col-sm-2"> <br>
-                            Nama Sarana *</br>
+                        <div class="col-sm-2"><br>
+                            Tanggal Audit*
+                        </div></br>
+                        <div class="col-sm-4"><br>
+                            <input type="date" name="tgl_audit" class="form-control form-control-sm"
+                                style="width: 100%;" value="{{old('tgl_audit')}}">
+                        </div></br>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Nama Perusahaan*
                         </div>
                         <div class="col-sm-4">
-                            <br>
-                            <select name="sarana_id" class="form-control form-control-sm" required>
-                                <option value="">- Pilih Sarana</option>
+                            <select name="sarana_id" class="form-control select2bs4" style="width: 100%;">
+                                <option value="">- Pilih Perusahaan</option>
                                 @foreach($saranas as $sarana)
                                 <option value="{{ $sarana->id }}"
                                     {{ old('sarana_id') == $sarana->id ? 'selected' : null }}>
                                     {{ $sarana->nama }} </option>
                                 @endforeach
-                            </select></br>
+                            </select>
                         </div>
-                        <div class="col-sm-auto"><br>
-                            Tanggal Pemeriksaan*
-                        </div></br>
-                        <div class="col-sm-3"><br>
-                            <input type="date" name="tgl_audit" class="form-control form-control-sm"
-                                value="{{old('tgl_audit')}}">
-                        </div></br>
-                    </div>
+                        <a href="#mymodal" class="btn btn-primary" title="Tambah Sarana"
+                                  data-remote="{{ route('sarana.addsarana' ) }}"
+                                  data-toggle="modal"
+                                  data-target="#mymodal">
+                                  <!-- data-title="Tambah Sarana"> -->
+                                  <i class="nav-icon fas fa-plus-circle"></i>
+                                </a>
+                    </div></br>
                     <div class="row">
                         <div class="col-sm-2">
                             Alamat Sarana
@@ -175,7 +184,7 @@
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Minor">
                             Minor
                             <br>
-                            </div>
+                        </div>
                         <div class="col-sm-2">
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius">
                             Kritis Serius
@@ -191,23 +200,23 @@
                         <div class="col-sm-2"> <br>
                             Rating Sarana Produksi
                         </div>
-                       
+
                         <div class="col-sm-2"><br>
-                        <input type="hidden" name="rating_produksi[]" value=" ">
+                            <input type="hidden" name="rating_produksi[]" value=" ">
                             <input type="checkbox" name="rating_produksi[]" value="A"> A
                             <input type="checkbox" name="rating_produksi[]" value="B"> B
                             <input type="checkbox" name="rating_produksi[]" value="C"> C
                             <input type="checkbox" name="rating_produksi[]" value="D"> D
-                            </div>
-                            <div class="col-sm-4 checkbox"><br>
+                        </div>
+                        <div class="col-sm-4 checkbox"><br>
                             <input type="checkbox" name="rating_produksi[]" value="Level I"> Level I
                             <input type="checkbox" name="rating_produksi[]" value="Level II"> Level II
                             <input type="checkbox" name="rating_produksi[]" value="Level III"> Level III
                             <input type="checkbox" name="rating_produksi[]" value="Level IV"> Level IV
                         </div>
                         <div class="col-sm-2 checkbox"><br>
-                        <input type="checkbox" name="rating_produksi[]" value="TDP"> TDP
-                        <input type="checkbox" name="rating_produksi[]" value="TTP"> TTP
+                            <input type="checkbox" name="rating_produksi[]" value="TDP"> TDP
+                            <input type="checkbox" name="rating_produksi[]" value="TTP"> TTP
                         </div>
                         </br>
                     </div>
@@ -216,7 +225,7 @@
                             Rating Sarana Distribusi
                         </div>
                         <div class="col-sm-8 radio"><br>
-                        <input type="hidden" name="rating_distribusi[]" value=" ">
+                            <input type="hidden" name="rating_distribusi[]" value=" ">
                             <input type="checkbox" name="rating_distribusi[]" value="Baik"> Baik
                             <input type="checkbox" name="rating_distribusi[]" value="Cukup"> Cukup
                             <input type="checkbox" name="rating_distribusi[]" value="Kurang"> Kurang
@@ -225,10 +234,26 @@
                         </div>
                         </br>
                     </div>
-                    
-                    <input type="hidden" name="status_capa" 
-                        class="form-control form-control-sm" value="Ditugaskan melakukan audit" required>
-                   
+
+                    <!-- <input type="hidden" name="status_capa" 
+                        class="form-control form-control-sm" value="Ditugaskan melakukan audit" required> -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Status
+                        </div>
+                        <div class="col-sm-4">
+                            <select name="status_capa" class="form-control form-control-sm" required>
+                                <option value="">- Pilih Status Audit</option>
+                                <option value="Ditugaskan melakukan audit">Ditugaskan melakukan audit</option>
+                                <option value="Telah melaksanakan audit">Telah melaksanakan audit</option>
+                                <option value="Mengirimkan hasil audit ke sarana">Mengirimkan hasil audit ke sarana
+                                </option>
+                                <option value="Menerima laporan TL CAPA">Menerima laporan TL CAPA </option>
+                                <option value="Melakukan evaluasi CAPA">Melakukan evaluasi CAPA</option>
+                                <option value="Menyelesaikan audit sarana">Menyelesaikan audit sarana</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-sm-8">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>

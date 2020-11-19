@@ -134,7 +134,7 @@
           </li>
             </ul> 
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a href="{{ asset("/event") }}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
@@ -142,7 +142,7 @@
                 
               </p>
             </a>
-          </li>    -->
+          </li>   
           <!-- <li class="nav-item">
             <a href="{{ asset("/convert") }}" class="nav-link">
               <i class="nav-icon far fa-file-excel"></i>

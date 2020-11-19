@@ -42,9 +42,7 @@ class SaranaController extends Controller
         # validasi form input
         $this->validate(request(), [
             'nama' => 'required|min:4',
-            'jenis' => 'required|min:4',
-            'alamat_kantor' => 'required|min:4',
-            'nama_pangan' => 'required|min:4',
+
         ]);
 
           # Insert ke database
@@ -62,7 +60,7 @@ class SaranaController extends Controller
         ]);
       
          # Tampilin flash message
-         flash('Selamat data telah berhasil di buat')->success();
+         flash('Selamat data telah berhasil ditambahkan')->success();
 
          # Kalo udah insert data, redirect ke halaman anggaran
          return redirect()->route('sarana.index');
@@ -118,5 +116,23 @@ class SaranaController extends Controller
         flash('Data telah berhasil dihapus')->error();
         # Kalo udah insert data, redirect ke halaman anggaran
         return redirect()->route('sarana.index');
+    }
+    public function addsarana()
+    {
+       
+        return view('sarana.addsarana');
+    }
+    public function storeAddsarana (Request $request)
+    {
+        $data = Sarana::create([
+            'nama' => request('nama'),          
+            'telepon' => request('telepon'),
+            'penanggungjawab' => request('penanggungjawab'),
+            'keterangan' => request('keterangan'),
+        ]);
+
+         return response()->json([
+            'bool'=>true
+        ]);
     }
 }

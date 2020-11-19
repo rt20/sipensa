@@ -21,8 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('iku', 'IkuController');
     Route::resource('budget', 'BudgetController');
     Route::resource('audit', 'AuditController');
-    Route::post('audit/{id}/set-status', 'AuditController@setStatus')
-    ->name('audit.status');
+    Route::post('audit/{id}/set-status', 'AuditController@setStatus')->name('audit.status');
+   
+   
+   // Route::get('/addsarana', 'AuditController@addsarana')->name('audit.addsarana');
+   
+    Route::get('/addsarana', 'SaranaController@addsarana')->name('sarana.addsarana');
+    Route::post('/storeAddsarana', 'SaranaController@storeAddsarana')->name('sarana.storeAddsarana');
 
     Route::resource('capa', 'CapaController');
     Route::resource('individu', 'IndividuController');
@@ -40,7 +45,7 @@ Route::get('/home', 'HomeController@index')->name('home');
     
     Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
     Route::get('export','AuditController@export')->name('export'); # export data
-   
+    
    
     
 

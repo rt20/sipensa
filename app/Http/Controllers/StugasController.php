@@ -39,7 +39,7 @@ class StugasController extends Controller
         $user = Auth::user()->roles;
         
         if (request()->search) {
-            $data = Audit::where('nm_sarana', 'like', '%' . request()->search . '%')->paginate(10);
+            $data = Stugas::where('no_st', 'like', '%' . request()->search . '%')->paginate(10);
 
          } 
         elseif ($user == '["ADMIN"]'){

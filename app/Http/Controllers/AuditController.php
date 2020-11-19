@@ -41,7 +41,17 @@ class AuditController extends Controller
         $user = Auth::user()->roles;
         
         if (request()->search) {
-            $data = Audit::where('nm_sarana', 'like', '%' . request()->search . '%')->paginate(10);
+
+            $data = DB::table('saranas')
+                    ->join('audits','saranas.id','=','audits.sarana_id')
+                    ->join('stugas','audits.stugas_id','=','stugas.id')
+                   
+                  
+                    ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','audits.status_capa')
+                    ->where('saranas.nama', 'like', '%' . request()->search . '%')
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
+            // $data = Audit::where('nama', 'like', '%' . request()->search . '%')->paginate(10);
 
          } 
         elseif ($user == '["ADMIN"]'){
@@ -84,6 +94,7 @@ class AuditController extends Controller
     {
         $budgets = Budget::all();
         $saranas = Sarana::all();
+
         $subdits = Subdit::all();
         $users = User::all();
         $userlogin = Auth::user()->id;
@@ -241,10 +252,10 @@ class AuditController extends Controller
         return redirect()->back(); 
     }
 
-
-
+    
     public function export()
     {
         return Excel::download(new AuditExport, 'audit.xls');
     }
+
 }

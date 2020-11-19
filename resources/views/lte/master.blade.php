@@ -6,7 +6,6 @@
   <title>SIPENSA | Sistem Informasi Pemeriksaan Sarana Pangan</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="shortcut icon" href="{{ asset("/adminlte/img/favicon.ico") }}">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fontawesome-free/css/all.min.css") }}">
@@ -18,6 +17,7 @@
   <link rel="stylesheet" href="{{ asset("/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css") }}">
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{ asset("/adminlte/plugins/jqvmap/jqvmap.min.css") }}">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset("/adminlte/css/adminlte.min.css") }}">
   <!-- overlayScrollbars -->
@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="{{ asset("/adminlte/plugins/summernote/summernote-bs4.css") }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 
  <!-- fullCalendar -->
  <link rel="stylesheet" href="{{ asset("/adminlte/plugins/fullcalendar/main.min.css") }}">
@@ -79,6 +80,8 @@
 
 <!-- jQuery -->
 <script src="{{ asset("/adminlte/plugins/jquery/jquery.min.js") }}"></script>
+<!-- Select2 -->
+<script src="{{ asset("adminlte/plugins/select2/js/select2.full.min.js") }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset("/adminlte/plugins/jquery-ui/jquery-ui.min.js") }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -87,6 +90,7 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset("/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+
 <!-- ChartJS -->
 <script src="{{ asset("/adminlte/plugins/chart.js/Chart.min.js") }}"></script>
 <!-- Sparkline -->
@@ -107,23 +111,18 @@
 <script src="{{ asset("/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset("/adminlte/js/adminlte.js")}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset("/adminlte/js/pages/dashboard.js") }}"></script>
 
-<!-- fullCalendar 2.2.5 -->
-<script src="{{ asset("/adminlte/plugins/moment/moment.min.js") }}"></script>
-<script src="{{ asset("/adminlte/plugins/fullcalendar/main.min.js") }}"></script>
-<script src="{{ asset("/adminlte/plugins/fullcalendar-daygrid/main.min.js") }}"></script>
-<script src="{{ asset("/adminlte/plugins/fullcalendar-timegrid/main.min.js") }}"></script>
-<script src="{{ asset("/adminlte/plugins/fullcalendar-interaction/main.min.js") }}"></script>
-<script src="{{ asset("/adminlte/plugins/fullcalendar-bootstrap/main.min.js") }}"></script>
+
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset("/adminlte/js/demo.js") }}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+
+
+
 <!-- Page specific script -->
-<script src="{{ asset("/adminlte/js/calendar.js") }}"></script>
+<!-- <script src="{{ asset("/adminlte/js/calendar.js") }}"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -132,7 +131,8 @@
             $(this).addClass("active");
         });
     });
-</script>
+</script> -->
+
 
 
 </body>
