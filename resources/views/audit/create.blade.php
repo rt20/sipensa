@@ -1,5 +1,4 @@
 @extends('layouts.calendar')
-
 @section('content')
 @include ('shared.errors')
 <!-- Content Header (Page header) -->
@@ -17,7 +16,7 @@
                     <li class="breadcrumb-item active">Tambah</li>
                 </ol>
             </div>
-        </div> 
+        </div>
     </div><!-- /.container-fluid -->
 </section>
 <section class="content">
@@ -31,15 +30,26 @@
                             Surat Tugas *
                         </div>
                         <div class="col-sm-4">
-                            <select name="stugas_id" class="form-control select2" style="width: 100%;">   
+                            <select name="stugas_id" class="form-control select2" style="width: 100%;">
                             </select>
                         </div>
                         <a href="#modalsurat" class="btn btn-primary" title="Tambah Surat Tugas"
-                                  data-remote="{{ route('stugas.addstugas' ) }}"
-                                  data-toggle="modal"
-                                  data-target="#modalsurat">
-                                  <i class="nav-icon fas fa-plus-circle"></i>
-                                </a>
+                            data-remote="{{ route('stugas.addstugas' ) }}" data-toggle="modal"
+                            data-target="#modalsurat">
+                            <i class="nav-icon fas fa-plus-circle"></i>
+                        </a>
+                        <div class="col-sm-auto">
+                            Referensi
+                        </div>
+                        <div class="col-sm-4">
+                            <select name="audit_id" class="select2ref" multiple="multiple" data-placeholder="Pilih referensi audit sebelumnya" style="width: 100%;">
+                            </select>
+                        </div>
+                        <a href="#modalref" class="btn btn-primary" title="Tambah Referensi"
+                            data-remote="{{ route('audit.refer' ) }}" data-toggle="modal"
+                            data-target="#modalref">
+                            <i class="nav-icon fas fa-plus-circle"></i>
+                        </a>
                     </div><br>
                     <div class="row">
                         <div class="col-sm-2">
@@ -77,11 +87,9 @@
                             </select>
                         </div>
                         <a href="#mymodal" class="btn btn-primary" title="Tambah Sarana"
-                                  data-remote="{{ route('sarana.addsarana' ) }}"
-                                  data-toggle="modal"
-                                  data-target="#mymodal">
-                                  <i class="nav-icon fas fa-plus-circle"></i>
-                                </a>
+                            data-remote="{{ route('sarana.addsarana' ) }}" data-toggle="modal" data-target="#mymodal">
+                            <i class="nav-icon fas fa-plus-circle"></i>
+                        </a>
                     </div></br>
                     <div class="row">
                         <div class="col-sm-2">
@@ -183,29 +191,44 @@
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Ada Temuan">
                             Tidak Ada Temuan
                             <br>
-                            <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('isikesimpulan')}}" >
-          Lainnya:<input type="text" name="isikesimpulan" class="form-control form-control-sm"> -->
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="MK Sarana">
+                            MK Sarana
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Sarana">
+                            TMK Sarana
+                            <br>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-2"> <br>
+                        </div>
+                        <div class="col-sm-2"> <br>
+                            <b>MD/ML</b>
+                        </div>
+                        <div class="col-sm-2"> <br>
+                            <b>PIRT</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
                             Rating Sarana Produksi
                         </div>
-
-                        <div class="col-sm-2"><br>
+                        <div class="col-sm-2">
                             <input type="hidden" name="rating_produksi[]" value=" ">
                             <input type="checkbox" name="rating_produksi[]" value="A"> A
                             <input type="checkbox" name="rating_produksi[]" value="B"> B
                             <input type="checkbox" name="rating_produksi[]" value="C"> C
                             <input type="checkbox" name="rating_produksi[]" value="D"> D
                         </div>
-                        <div class="col-sm-4 checkbox"><br>
+                        <div class="col-sm-4 checkbox">
                             <input type="checkbox" name="rating_produksi[]" value="Level I"> Level I
                             <input type="checkbox" name="rating_produksi[]" value="Level II"> Level II
                             <input type="checkbox" name="rating_produksi[]" value="Level III"> Level III
                             <input type="checkbox" name="rating_produksi[]" value="Level IV"> Level IV
                         </div>
-                        <div class="col-sm-2 checkbox"><br>
+                        <div class="col-sm-2 checkbox">
                             <input type="checkbox" name="rating_produksi[]" value="TDP"> TDP
                             <input type="checkbox" name="rating_produksi[]" value="TTP"> TTP
                         </div>
@@ -226,8 +249,7 @@
                         </br>
                     </div>
 
-                    <!-- <input type="hidden" name="status_capa" 
-                        class="form-control form-control-sm" value="Ditugaskan melakukan audit" required> -->
+                    <br>
                     <div class="row">
                         <div class="col-sm-2">
                             Status

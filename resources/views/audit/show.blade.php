@@ -131,10 +131,6 @@
                             {{ in_array("Surveillan Sertifikasi CPPOB",$audit->jenis_keg)?"checked":""}} disabled>
                         Surveillan Sertifikasi CPPOB
                         <br>
-
-
-                        <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_kegi')}}" >
-                         Lainnya:<input type="text" name="jenis_kegi" class="form-control form-control-sm"> -->
                     </div>
                 </div>
                 <div class="row">
@@ -182,7 +178,6 @@
                Lainnya:<input type="text" name="kesi" class="form-control form-control-sm"> -->
                     </div>
                     <div class="col-sm-2">
-
                         <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius"
                             {{ in_array("Kritis Serius",$audit->kesimpulan)?"checked":""}} disabled>
                         Kritis Serius
@@ -191,13 +186,32 @@
                             {{ in_array("Tidak Ada Temuan",$audit->kesimpulan)?"checked":""}} disabled>
                         Tidak Ada Temuan
                         <br>
+                        <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="MK Sarana"
+                            {{ in_array("MK Sarana",$audit->kesimpulan)?"checked":""}} disabled>
+                        MK Sarana
+                        <br>
+                    </div>
+                    <div class="col-sm-2">
+                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Sarana"
+                            {{ in_array("TMK Sarana",$audit->kesimpulan)?"checked":""}} disabled>
+                        TMK Sarana
                     </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-2"> <br>
+                        </div>
+                        <div class="col-sm-2"> <br>
+                        <b>MD/ML</b>
+                        </div>
+                        <div class="col-sm-2"> <br>
+                            <b>PIRT</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"> 
                             Rating Sarana Produksi
-                        </div></br>
-                        <div class="col-sm-9"><br>
+                        </div>
+                        <div class="col-sm-2"> 
                         <input type="hidden" name="rating_produksi[]" value="">
                             <input type="checkbox" name="rating_produksi[]" value="A"
                                 {{ in_array("A",$audit->rating_produksi)?"checked":""}} disabled> A
@@ -207,6 +221,8 @@
                                 {{ in_array("C",$audit->rating_produksi)?"checked":""}} disabled> C
                             <input type="checkbox" name="rating_produksi[]" value="D"
                                 {{ in_array("D",$audit->rating_produksi)?"checked":""}} disabled> D
+                        </div>
+                        <div class="col-sm-3"> 
                             <input type="checkbox" name="rating_produksi[]" value="Level I"
                                 {{ in_array("Level I",$audit->rating_produksi)?"checked":""}} disabled> Level I
                             <input type="checkbox" name="rating_produksi[]" value="Level II"
@@ -215,11 +231,13 @@
                                 {{ in_array("Level III",$audit->rating_produksi)?"checked":""}} disabled> Level III
                             <input type="checkbox" name="rating_produksi[]" value="Level IV"
                                 {{ in_array("Level IV",$audit->rating_produksi)?"checked":""}} disabled> Level IV
+                        </div>
+                        <div class="col-sm-2"> 
                             <input type="checkbox" name="rating_produksi[]" value="TDP"
                                 {{ in_array("TDP",$audit->rating_produksi)?"checked":""}} disabled> TDP
                             <input type="checkbox" name="rating_produksi[]" value="TTP"
                                 {{ in_array("TTP",$audit->rating_produksi)?"checked":""}} disabled> TTP
-                        </div></br>
+                        </div>
                     </div>
                 <div class="row">
                     <div class="col-sm-2">

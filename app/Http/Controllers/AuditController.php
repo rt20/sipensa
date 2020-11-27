@@ -45,8 +45,6 @@ class AuditController extends Controller
             $data = DB::table('saranas')
                     ->join('audits','saranas.id','=','audits.sarana_id')
                     ->join('stugas','audits.stugas_id','=','stugas.id')
-                   
-                  
                     ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','audits.status_capa')
                     ->where('saranas.nama', 'like', '%' . request()->search . '%')
                     ->orderBy('id', 'desc')
@@ -59,10 +57,7 @@ class AuditController extends Controller
             $data = DB::table('saranas')
                     ->join('audits','saranas.id','=','audits.sarana_id')
                     ->join('stugas','audits.stugas_id','=','stugas.id')
-                   
-                  
-                    ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','audits.status_capa')
-                  
+                    ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','audits.status_capa') 
                     ->orderBy('id', 'desc')
                     ->paginate(10);
         } 
@@ -251,11 +246,16 @@ class AuditController extends Controller
         flash('Data telah diupdate')->success();
         return redirect()->back(); 
     }
-
-    
     public function export()
     {
         return Excel::download(new AuditExport, 'audit.xls');
     }
+    public function referAudit()
+    {
+        $userlogin = Auth::user()->id;
 
+        $data = Audit::orderBy('id', 'desc')->paginate(10);
+       
+        return view('audit.refer', compact('data'));
+    }
 }

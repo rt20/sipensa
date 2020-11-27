@@ -193,10 +193,8 @@
                                 {{ in_array("Minor",$audit->kesimpulan)?"checked":""}}>
                             Minor
                             <br>
-                            <!-- <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="{{old('kesi')}}" >
-               Lainnya:<input type="text" name="kesi" class="form-control form-control-sm"> -->
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-2">
 
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius"
                                 {{ in_array("Kritis Serius",$audit->kesimpulan)?"checked":""}}>
@@ -206,13 +204,32 @@
                                 {{ in_array("Tidak Ada Temuan",$audit->kesimpulan)?"checked":""}}>
                             Tidak Ada Temuan
                             <br>
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="MK Sarana"
+                            {{ in_array("MK Sarana",$audit->kesimpulan)?"checked":""}} >
+                        MK Sarana
+                        <br>
+                    </div>
+                    <div class="col-sm-2">
+                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Sarana"
+                            {{ in_array("TMK Sarana",$audit->kesimpulan)?"checked":""}} >
+                        TMK Sarana
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-2"> <br>
+                        </div>
+                        <div class="col-sm-2"> <br>
+                        <b>MD/ML</b>
+                        </div>
+                        <div class="col-sm-2"> <br>
+                            <b>PIRT</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
                             Rating Sarana Produksi
                         </div>
-                        <div class="col-sm-2"><br>
+                      <div class="col-sm-2">
                             <input type="checkbox" name="rating_produksi[]" value="A"
                                 {{ in_array("A",$audit->rating_produksi)?"checked":""}}> A
                             <input type="checkbox" name="rating_produksi[]" value="B"
@@ -223,7 +240,7 @@
                                 {{ in_array("D",$audit->rating_produksi)?"checked":""}}> D
                         </div>
 
-                        <div class="col-sm-4"><br>
+                        <div class="col-sm-4">
                             <input type="checkbox" name="rating_produksi[]" value="Level I"
                                 {{ in_array("Level I",$audit->rating_produksi)?"checked":""}}> Level I
                             <input type="checkbox" name="rating_produksi[]" value="Level II"
@@ -233,7 +250,7 @@
                             <input type="checkbox" name="rating_produksi[]" value="Level IV"
                                 {{ in_array("Level IV",$audit->rating_produksi)?"checked":""}}> Level IV
                         </div>
-                        <div class="col-sm-2 checkbox"><br>
+                        <div class="col-sm-2 checkbox">
                             <input type="checkbox" name="rating_produksi[]" value="TDP"
                                 {{ in_array("TDP",$audit->rating_produksi)?"checked":""}}> TDP
                             <input type="checkbox" name="rating_produksi[]" value="TTP"
@@ -259,7 +276,7 @@
                         </div>
                         </br>
                     </div>
-
+<br>
 
                     <div class="row">
                         <div class="col-sm-2">
