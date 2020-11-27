@@ -17,7 +17,7 @@
                     <li class="breadcrumb-item active">Tambah</li>
                 </ol>
             </div>
-        </div>
+        </div> 
     </div><!-- /.container-fluid -->
 </section>
 <section class="content">
@@ -31,18 +31,15 @@
                             Surat Tugas *
                         </div>
                         <div class="col-sm-4">
-                            <select name="stugas_id" class="form-control select2" style="width: 100%;">
-                                <option value="">- Pilih Surat Tugas</option>
-                                @foreach($stugas as $stugas)
-                                <option value="{{ $stugas->id }}"
-                                    {{ old('stugas_id') == $stugas->id ? 'selected' : null }}>
-                                    {{ $stugas->no_st }} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} |
-                                    {{ $stugas->lokasi }} </option>
-                                @endforeach
+                            <select name="stugas_id" class="form-control select2" style="width: 100%;">   
                             </select>
                         </div>
-                        <a href="{{ route('audit.create') }}" class="btn btn-primary" title="Tambah surat tugas"><i
-                                    class="nav-icon fas fa-plus-circle"></i> </a>
+                        <a href="#modalsurat" class="btn btn-primary" title="Tambah Surat Tugas"
+                                  data-remote="{{ route('stugas.addstugas' ) }}"
+                                  data-toggle="modal"
+                                  data-target="#modalsurat">
+                                  <i class="nav-icon fas fa-plus-circle"></i>
+                                </a>
                     </div><br>
                     <div class="row">
                         <div class="col-sm-2">
@@ -77,18 +74,12 @@
                         <div class="col-sm-4">
                             <select name="sarana_id" class="form-control select2bs4" style="width: 100%;">
                                 <option value="">- Pilih Perusahaan</option>
-                                @foreach($saranas as $sarana)
-                                <option value="{{ $sarana->id }}"
-                                    {{ old('sarana_id') == $sarana->id ? 'selected' : null }}>
-                                    {{ $sarana->nama }} </option>
-                                @endforeach
                             </select>
                         </div>
                         <a href="#mymodal" class="btn btn-primary" title="Tambah Sarana"
                                   data-remote="{{ route('sarana.addsarana' ) }}"
                                   data-toggle="modal"
                                   data-target="#mymodal">
-                                  <!-- data-title="Tambah Sarana"> -->
                                   <i class="nav-icon fas fa-plus-circle"></i>
                                 </a>
                     </div></br>

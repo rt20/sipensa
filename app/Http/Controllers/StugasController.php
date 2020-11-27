@@ -207,16 +207,63 @@ class StugasController extends Controller
         
 
         $stugas->delete();
-       
-
-        // $budget = Budget::find($stugas->budget_id);
-        // # balikin lagi nilainya
-        // $budget->update([
-        //     'realisasi' => $budget->realisasi - $stugas->biaya,
-        //     'sisa' => $budget->sisa + $stugas->biaya
-        // ]);
 
         flash('Data berhasil dihapus')->error();
         return redirect()->route('stugas.index');
+    }
+    public function addstugas()
+    {
+        $budgets = Budget::all();
+        
+        $subdits = Subdit::all();
+        $users = User::all();
+        return view('stugas.addstugas', compact('budgets','subdits','users'));
+    }
+    public function storeAddstugas (Request $request)
+    {
+        $data = new Stugas(request([
+            'no_st',
+            'tgl_st',
+            'tgl_audit',
+            'budget_id',
+            'tambahan' ,
+            'subdit_id',
+            'lokasi',
+        ]));
+        $data->save();
+        #insert ke tabel stugas_has_user
+        foreach($request->user_id as $user_id){
+            $stugas = Stugas::latest()->first();
+            $check = new stugas_has_user;
+            $check['stugas_id'] = $stugas->id; # gimana cara memasukkan id stugas ke column stugas_id?
+            $check->user_id = $user_id;
+            $check->save();
+
+        # query ke anggaran dengan id $audit->id
+        $budget = Budget::find(request('budget_id'));
+        if(request('biaya') > $budget->pagu) {
+            flash('Biaya tidak boleh lebih dari pagu')->error();
+            return redirect()->back();
+        }
+        
+        $biaya = $request->biaya;
+
+        # update anggaran
+        $budget->update([
+            'realisasi' => $budget->realisasi + $biaya,
+            'sisa' => $budget->pagu - ($budget->realisasi + $biaya)
+        ]);
+        }
+        return response()->json([
+            'bool'=>true
+        ]);
+    }
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = Stugas::where('no_st', 'like', '%' . request()->q . '%')->get();
+            return response()->json($data);
+        }
     }
 }

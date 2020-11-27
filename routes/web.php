@@ -24,10 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::post('audit/{id}/set-status', 'AuditController@setStatus')->name('audit.status');
    
    
-   // Route::get('/addsarana', 'AuditController@addsarana')->name('audit.addsarana');
-   
     Route::get('/addsarana', 'SaranaController@addsarana')->name('sarana.addsarana');
     Route::post('/storeAddsarana', 'SaranaController@storeAddsarana')->name('sarana.storeAddsarana');
+    Route::get('/cari', 'SaranaController@loadData');
 
     Route::resource('capa', 'CapaController');
     Route::resource('individu', 'IndividuController');
@@ -38,6 +37,9 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::get('convert.export', 'ConvertController@export')->name('convert.export');   # export data
 
     Route::resource('stugas', 'StugasController');
+    Route::get('/addstugas', 'StugasController@addstugas')->name('stugas.addstugas');
+    Route::post('/storeAddstugas', 'StugasController@storeAddstugas')->name('stugas.storeAddstugas');
+    Route::get('/cari', 'StugasController@loadData');
 
     Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
     Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data

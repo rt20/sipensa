@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 
 class SaranaController extends Controller
 {
-    #membatasi hak akses ke suatu menu
+    #membatasi hak akses ke suatu menu 
     public function __construct(){
         $this->middleware(function($request, $next){
             
@@ -134,5 +134,14 @@ class SaranaController extends Controller
          return response()->json([
             'bool'=>true
         ]);
+    }
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            // $data = DB::table('saranas')->select('id', 'nama')->where('nama', 'LIKE', '%$cari%')->get();
+            $data = Sarana::where('nama', 'like', '%' . request()->q . '%')->get();
+            return response()->json($data);
+        }
     }
 }
