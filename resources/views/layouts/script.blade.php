@@ -3,7 +3,7 @@
 <!-- Bootstrap -->
 <script src="{{ asset("/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
 <!-- Select2 -->
-<script src="{{ asset("adminlte/plugins/select2/js/select2.full.min.js") }}"></script>
+<script src="{{ asset("/adminlte/plugins/select2/js/select2.full.min.js") }}"></script>
 <!-- jQuery UI -->
 <script src="{{ asset("/adminlte/plugins/jquery-ui/jquery-ui.min.js") }}"></script>
 <!-- AdminLTE App -->
