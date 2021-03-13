@@ -1,7 +1,7 @@
 <h4><p class="ajax-res"></p></h4>
     <div class="card-header">
-        <form method="POST" action="{{asset('sarana.addsarana')}}" >
-            @csrf 
+        <form method="POST" action="{{url('sarana/addsarana')}}" >
+            @csrf
             <div class="row">
                 <div class="col-sm-3">
                     Nama Perusahaan

@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <a href="#modalsurat" class="btn btn-primary" title="Tambah Surat Tugas"
-                            data-remote="{{ asset('stugas.addstugas' ) }}" data-toggle="modal"
+                            data-remote="{{ route('stugas.addstugas' ) }}" data-toggle="modal"
                             data-target="#modalsurat">
                             <i class="nav-icon fas fa-plus-circle"></i>
                         </a>
@@ -87,7 +87,7 @@
                             </select>
                         </div>
                         <a href="#mymodal" class="btn btn-primary" title="Tambah Sarana"
-                            data-remote="{{ asset('sarana.addsarana' ) }}" data-toggle="modal" data-target="#mymodal">
+                            data-remote="{{ route('sarana.addsarana' ) }}" data-toggle="modal" data-target="#mymodal">
                             <i class="nav-icon fas fa-plus-circle"></i>
                         </a>
                     </div></br>
