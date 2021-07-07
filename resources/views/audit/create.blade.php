@@ -38,10 +38,11 @@
                             data-target="#modalsurat">
                             <i class="nav-icon fas fa-plus-circle"></i>
                         </a>
-                        <div class="col-sm-auto">
+                        <!-- <div class="col-sm-auto">
                             Referensi
-                        </div>
-                        <div class="col-sm-4">
+                        </div> -->
+                        
+                        <!-- <div class="col-sm-4">
                             <select name="audit_id" class="select2ref" multiple="multiple" data-placeholder="Pilih referensi audit sebelumnya" style="width: 100%;">
                             </select>
                         </div>
@@ -49,14 +50,15 @@
                             data-remote="{{ route('audit.refer' ) }}" data-toggle="modal"
                             data-target="#modalref">
                             <i class="nav-icon fas fa-plus-circle"></i>
-                        </a>
-                    </div><br>
+                        </a> -->
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-sm-2">
                             Jenis Sarana *
                         </div>
-                        <div class="col-sm-4">
-                            <select name="jenis_sarana" class="form-control select2" style="width: 100%;" required>
+                        <div class="col-sm-6">
+                        <select class="js-example-basic-single" name="jenissarana">
                                 <option value="">- Pilih Jenis Sarana</option>
                                 <option value="Produksi">Sarana Produksi IRTP</option>
                                 <option value="Produksi">Sarana Produksi MD</option>
@@ -164,39 +166,39 @@
                         </div>
                         <div class="col-sm-2">
                             <input type="hidden" name="kesimpulan[]" value=" ">
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Label">
+                            <input type="checkbox" id="TMK Label" name="kesimpulan[]" value="TMK Label">
                             TMK Label
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tanpa Izin Edar">
+                            <input type="checkbox" id="Tanpa Izin Edar" name="kesimpulan[]" value="Tanpa Izin Edar">
                             Tanpa Izin Edar
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMS Produk">
+                            <input type="checkbox" id="TMS Produk" name="kesimpulan[]" value="TMS Produk">
                             TMS Produk
                         </div>
                         <div class="col-sm-2">
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Memiliki SKI">
+                            <input type="checkbox" id="Tidak Memiliki SKI" name="kesimpulan[]" value="Tidak Memiliki SKI">
                             Tidak Memiliki SKI
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Mayor">
+                            <input type="checkbox" id="Mayor" name="kesimpulan[]" value="Mayor">
                             Mayor
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Minor">
+                            <input type="checkbox" id="Minor" name="kesimpulan[]" value="Minor">
                             Minor
                             <br>
                         </div>
                         <div class="col-sm-2">
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Kritis Serius">
+                            <input type="checkbox" id="Kritis Serius" name="kesimpulan[]" value="Kritis Serius">
                             Kritis Serius
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="Tidak Ada Temuan">
+                            <input type="checkbox" id="Tidak Ada Temuan" name="kesimpulan[]" value="Tidak Ada Temuan">
                             Tidak Ada Temuan
                             <br>
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="MK Sarana">
+                            <input type="checkbox" id="MK Sarana" name="kesimpulan[]" value="MK Sarana">
                             MK Sarana
                             <br>
                         </div>
                         <div class="col-sm-2">
-                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Sarana">
+                            <input type="checkbox" id="TMK Sarana" name="kesimpulan[]" value="TMK Sarana">
                             TMK Sarana
                             <br>
                         </div>

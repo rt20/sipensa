@@ -138,8 +138,8 @@ class SaranaController extends Controller
     public function loadData(Request $request)
     {
         if ($request->has('q')) {
-            $cari = $request->q;
-            // $data = DB::table('saranas')->select('id', 'nama')->where('nama', 'LIKE', '%$cari%')->get();
+            $carisarana = $request->q;
+            // $data = DB::table('saranas')->select('id', 'nama')->where('nama', 'LIKE', '%$carisarana%')->get();
             $data = Sarana::where('nama', 'like', '%' . request()->q . '%')->get();
             return response()->json($data);
         }

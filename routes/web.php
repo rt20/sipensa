@@ -24,10 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
     Route::post('audit/{id}/set-status', 'AuditController@setStatus')->name('audit.status');
     Route::get('/referAudit', 'AuditController@referAudit')->name('audit.refer');
+    Route::get('/cari', 'AuditController@loadData');
    
     Route::get('/addsarana', 'SaranaController@addsarana')->name('sarana.addsarana');
     Route::post('/storeAddsarana', 'SaranaController@storeAddsarana')->name('sarana.storeAddsarana');
-    Route::get('/cari', 'SaranaController@loadData');
+    Route::get('/carisarana', 'SaranaController@loadData')->name('/carisarana');
 
     Route::resource('capa', 'CapaController');
     Route::resource('individu', 'IndividuController');
@@ -40,7 +41,7 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('stugas', 'StugasController');
     Route::get('/addstugas', 'StugasController@addstugas')->name('stugas.addstugas');
     Route::post('/storeAddstugas', 'StugasController@storeAddstugas')->name('stugas.storeAddstugas');
-    Route::get('/cari', 'StugasController@loadData');
+    Route::get('/cari', 'StugasController@loadData')->name('/cari');
 
     Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
     Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data

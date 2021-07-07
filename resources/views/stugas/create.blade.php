@@ -67,11 +67,11 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-2">
-                            Subdit Pengampu *
+                            Kelompok Substansi *
                         </div>
                         <div class="col-sm-4">
                             <select name="subdit_id" class="form-control form-control-sm" required>
-                                <option value="">- Pilih Subdit</option>
+                                <option value="">- Pilih Kelompok Substansi</option>
                                 @foreach($subdits as $subdit)
                                 <option value="{{ $subdit->id }}"
                                     {{ old('subdit_id') == $subdit->id ? 'selected' : null }}>

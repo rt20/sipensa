@@ -26,8 +26,9 @@
         //Initialize Select2 Elements
         $('.select2').select2(
             {
-            theme: 'bootstrap4', 
+            theme: 'bootstrap4',
             placeholder: 'Pilih Surat Tugas',
+            minimumInputLength: 1,
             allowClear: true,
             ajax: {
                     url: '/cari',
@@ -49,11 +50,12 @@
         )
         //Initialize Select2 Elements
         $('.select2bs4').select2({
-            theme: 'bootstrap4', 
+            theme: 'bootstrap4',
             placeholder: 'Pilih Perusahaan',
+            minimumInputLength: 1,
             allowClear: true,
             ajax: {
-                    url: '/cari',
+                    url: '/carisarana',
                     dataType: 'json',
                     delay: 250,
                     processResults: function (data) {
@@ -69,9 +71,15 @@
                     cache: true
                     }
         })
+        $(document).ready(function() {
+         $('.js-example-basic-single').select2({
+            placeholder: 'Pilih Jenis Sarana',
+         });
+        });
+
         $('.select2ref').select2(
             {
-            theme: 'bootstrap4', 
+            theme: 'bootstrap4',
             placeholder: 'Pilih Referensi Audit',
             allowClear: true,
         }

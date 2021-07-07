@@ -11,7 +11,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) 
+      <!-- Sidebar user (optional)
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{{ asset("/adminlte/img/user2-160x160.jpg") }}" class="img-circle elevation-2" alt="User Image">
@@ -45,24 +45,24 @@
             <ul class="nav nav-treeview">
 
             @if(Auth::user()->roles == '["ADMIN"]')
-      
+
       <li class="nav-item">
         <a href="{{ asset("/user") }}" class="nav-link">
           <i class="nav-icon far fa-grin-beam"></i>
           <p>
             Pegawai
-            
+
           </p>
         </a>
       </li>
-     
+
       @endif
       <li class="nav-item">
             <a href="{{ asset("/budget") }}" class="nav-link">
             <i class="nav-icon fa fa-money-bill-wave"></i>
               <p>
                 Anggaran
-               
+
               </p>
             </a>
           </li>
@@ -71,11 +71,11 @@
               <i class="nav-icon fas fa-warehouse"></i>
               <p>
                 Sarana
-                
+
               </p>
             </a>
           </li>
-            </ul> 
+            </ul>
           </li>
 
           <li class="nav-item has-treeview">
@@ -103,7 +103,7 @@
               </p>
             </a>
           </li>
-            </ul> 
+            </ul>
           </li>
 
           <li class="nav-item has-treeview">
@@ -128,34 +128,33 @@
             <i class="nav-icon fas fa-clipboard-check"></i>
               <p>
                 Audit
-                
+
               </p>
             </a>
           </li>
-            </ul> 
+            </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{ asset("/event") }}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Agenda
-                
+
               </p>
             </a>
-          </li>   
-          <!-- <li class="nav-item">
+          </li>    -->
+          <li class="nav-item">
             <a href="{{ asset("/convert") }}" class="nav-link">
               <i class="nav-icon far fa-file-excel"></i>
               <p>
                 Konversi
-                
+
               </p>
             </a>
-          </li>    -->
+          </li>
         </ul>
-      </nav> 
+      </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
-  
