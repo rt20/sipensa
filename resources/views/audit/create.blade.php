@@ -148,6 +148,9 @@
                             <input type="checkbox" name="jenis_keg[]" value="Surveillan Sertifikasi CPPOB">
                             Surveillan Sertifikasi CPPOB
                             <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool">
+                            Uji Coba Tool
+                            <br>
                             <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_keg[]')}}" >
                Lainnya:<input type="text" name="jenis_keg[]" class="form-control form-control-sm"> -->
                         </div>

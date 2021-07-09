@@ -146,6 +146,10 @@
                                 {{ in_array("Surveillan Sertifikasi CPPOB",$audit->jenis_keg)?"checked":""}}>
                             Surveillan Sertifikasi CPPOB
                             <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool"
+                                {{ in_array("Uji Coba Tool",$audit->jenis_keg)?"checked":""}}>
+                                Uji Coba Tool
+                            <br>
                             <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_kegi')}}" >
                          Lainnya:<input type="text" name="jenis_kegi" class="form-control form-control-sm"> -->
                         </div>

@@ -131,6 +131,10 @@
                             {{ in_array("Surveillan Sertifikasi CPPOB",$audit->jenis_keg)?"checked":""}} disabled>
                         Surveillan Sertifikasi CPPOB
                         <br>
+                        <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool"
+                                {{ in_array("Uji Coba Tool",$audit->jenis_keg)?"checked":""}} disabled>
+                                Uji Coba Tool
+                            <br>
                     </div>
                 </div>
                 <div class="row">
