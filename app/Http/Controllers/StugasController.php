@@ -229,6 +229,7 @@ class StugasController extends Controller
             'tambahan' ,
             'subdit_id',
             'lokasi',
+            'biaya',
         ]));
         $data->save();
         #insert ke tabel stugas_has_user
