@@ -27,7 +27,7 @@
                         Surat Tugas
                     </div>
                     <div class="col-sm-8">
-                    {{$audit->stugas->no_st}} tanggal {{ date('d-M-y', strtotime($audit->stugas->tgl_st))}} tujuan {{ $audit->stugas->lokasi }}
+                    {{$audit->stugas->no_st}} tanggal {{ date('d M y', strtotime($audit->stugas->tgl_st))}} tujuan {{ $audit->stugas->lokasi }}
                     </div>
                 </div>
                 <div class="row">

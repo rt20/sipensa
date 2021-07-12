@@ -1,4 +1,3 @@
-<!-- <h4><p class="ajax-res"></p></h4> -->
 <div class="alert alert-success" style="display:none">
     {{ Session::get('success') }}
 </div>
@@ -114,8 +113,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" name="addstugas" class="btn btn-primary">Simpan</button>
+            <button type="button" name="tutupstugas" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
         </div>
     </form>
 </div>
@@ -139,7 +138,6 @@
                     console.log('res', res);
                     $(".alert-success").css("display", "block");
                     $(".alert-success").append("<P>Surat tugas telah ditambahkan.");
-                    // $(".ajax-res").text('Surat tugas telah ditambahkan.');
                     $('#no_st').val('');
                     $('#tgl_st').val('');
                     $('#lokasi').val('');
