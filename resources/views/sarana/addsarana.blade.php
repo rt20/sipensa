@@ -2,7 +2,7 @@
     {{ Session::get('success') }}
 </div>
 <div class="card-header">
-    <form method="POST" action="{{asset('sarana.addsarana')}}">
+    <form method="POST" action="#">
         @csrf
         <div class="row">
             <div class="col-sm-3">
