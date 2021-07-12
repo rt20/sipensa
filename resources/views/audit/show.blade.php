@@ -18,7 +18,6 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-
 <section class="content" id="atas">
     <div class="card">
         <div class="card-header">
@@ -27,15 +26,8 @@
                     <div class="col-sm-2">
                         Surat Tugas
                     </div>
-                    <div class="col-sm-4">
-                        <select name="stugas_id" class="form-control form-control-sm" disabled required>
-                            <option value="">- Pilih Surat Tugas</option>
-                            @foreach($stugas as $stugas)
-                            <option value="{{ $stugas->no_st | $stugas->lokasi}}" {{$stugas->id ? 'selected':null}}>
-                                {{$stugas->no_st}} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} |
-                                {{ $stugas->lokasi }} </option>
-                            @endforeach
-                        </select>
+                    <div class="col-sm-8">
+                    {{$audit->stugas->no_st}} tanggal {{ date('d-M-y', strtotime($audit->stugas->tgl_st))}} tujuan {{ $audit->stugas->lokasi }}
                     </div>
                 </div>
                 <div class="row">

@@ -41,7 +41,7 @@
                         <!-- <div class="col-sm-auto">
                             Referensi
                         </div> -->
-                        
+
                         <!-- <div class="col-sm-4">
                             <select name="audit_id" class="select2ref" multiple="multiple" data-placeholder="Pilih referensi audit sebelumnya" style="width: 100%;">
                             </select>
@@ -58,7 +58,7 @@
                             Jenis Sarana *
                         </div>
                         <div class="col-sm-6">
-                        <select class="js-example-basic-single" name="jenissarana">
+                            <select class="js-example-basic-single" name="jenissarana">
                                 <option value="">- Pilih Jenis Sarana</option>
                                 <option value="Produksi">Sarana Produksi IRTP</option>
                                 <option value="Produksi">Sarana Produksi MD</option>
@@ -179,7 +179,8 @@
                             TMS Produk
                         </div>
                         <div class="col-sm-2">
-                            <input type="checkbox" id="Tidak Memiliki SKI" name="kesimpulan[]" value="Tidak Memiliki SKI">
+                            <input type="checkbox" id="Tidak Memiliki SKI" name="kesimpulan[]"
+                                value="Tidak Memiliki SKI">
                             Tidak Memiliki SKI
                             <br>
                             <input type="checkbox" id="Mayor" name="kesimpulan[]" value="Mayor">
@@ -272,7 +273,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
             </form>
@@ -304,7 +305,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h3 class="modal-title">Tambah Surat Tugas</h3>
+                <h3 class="modal-title">Tambah Surat Tugas</h3>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -320,7 +321,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h3 class="modal-title">Tambah Data Sarana</h3>
+                <h3 class="modal-title">Tambah Data Sarana</h3>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -350,5 +351,6 @@
             modal.find('.modal-title').html(button.data("title"));
         });
     });
+
 </script>
 @endpush

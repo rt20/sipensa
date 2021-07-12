@@ -28,16 +28,9 @@
                         <div class="col-sm-2">
                             Surat Tugas *
                         </div>
-
                         <div class="col-sm-4">
-                            <select name="stugas_id" class="form-control form-control-sm" disabled required>
-                                <option value="">- Pilih Surat Tugas</option>
-                                @foreach($stugas as $stugas)
-                                <option value="{{ $stugas->no_st | $stugas->lokasi}}" {{$stugas->id ? 'selected':null}}>
-                                    {{$stugas->no_st}} | {{ date('d-M-y', strtotime($stugas->tgl_st))}} |
-                                    {{ $stugas->lokasi }} </option>
-                                @endforeach
-                            </select>
+                        {{$audit->stugas->no_st}}
+                            
                         </div>
                         <div class="col-sm-3">
                             Tanggal Pemeriksaan *
