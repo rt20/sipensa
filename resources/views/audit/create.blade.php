@@ -300,38 +300,7 @@
   </div>
 </div> -->
 
-<!-- modal untuk menambah surat tugas -->
-<div class="modal" id="modalsurat" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Tambah Surat Tugas</h3>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <i class="fa fa-spinner fa-spin"></i>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- add sarana -->
-<div class="modal" id="mymodal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Tambah Data Sarana</h3>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <i class="fa fa-spinner fa-spin"></i>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 @endsection
 @push('after-script')
@@ -353,4 +322,39 @@
     });
 
 </script>
+
+<!-- modal untuk menambah surat tugas -->
+<div class="modal" id="modalsurat" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tambah Surat Tugas</h3>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- add sarana -->
+<div class="modal" id="mymodal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tambah Data Sarana</h3>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>
 @endpush
