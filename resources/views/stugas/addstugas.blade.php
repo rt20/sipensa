@@ -124,7 +124,7 @@
         $("form").on('submit', function (e) {
             e.preventDefault();
             var formData = $('form').serializeArray();
-            //console.log(formData);
+            // console.log(formData);
             // AJAX Functionality
             $.ajax({
                 url: "{{ route('stugas.storeAddstugas' ) }}",

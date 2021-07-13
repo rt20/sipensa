@@ -33,6 +33,9 @@
                             <select name="stugas_id" class="form-control select2" style="width: 100%;">
                             </select>
                         </div>
+                        <!-- <a href="javascript:void(0)"class="btn btn-info" id="addstugas">
+                            <i class="nav-icon fas fa-plus-circle"></i>
+                        </a> -->
                         <a href="#modalsurat" class="btn btn-primary" title="Tambah Surat Tugas"
                             data-remote="{{ route('stugas.addstugas' ) }}" data-toggle="modal"
                             data-target="#modalsurat">
@@ -57,8 +60,8 @@
                         <div class="col-sm-2">
                             Jenis Sarana *
                         </div>
-                        <div class="col-sm-6">
-                            <select class="js-example-basic-single" name="jenissarana">
+                        <div class="col-sm-4">
+                            <select class="jenissarana" name="jenissarana">
                                 <option value="">- Pilih Jenis Sarana</option>
                                 <option value="Produksi">Sarana Produksi IRTP</option>
                                 <option value="Produksi">Sarana Produksi MD</option>
@@ -304,6 +307,136 @@
 
 @endsection
 @push('after-script')
+
+
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2(
+            {
+            theme: 'bootstrap4',
+            placeholder: 'Pilih Surat Tugas',
+            minimumInputLength: 1,
+            allowClear: true,
+            ajax: {
+                    url: '/cari',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                        results:  $.map(data, function (item) {
+                            return {
+                            text: item.no_st,
+                            id: item.id
+                            }
+                        })
+                        };
+                    },
+                    cache: true
+                    }
+        }
+        )
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4',
+            placeholder: 'Pilih Perusahaan',
+            minimumInputLength: 1,
+            allowClear: true,
+            ajax: {
+                    url: '/carisarana',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                        results:  $.map(data, function (item) {
+                            return {
+                            text: item.nama,
+                            id: item.id
+                            }
+                        })
+                        };
+                    },
+                    cache: true
+                    }
+        })
+       
+
+        $('.select2ref').select2(
+            {
+            theme: 'bootstrap4',
+            placeholder: 'Pilih Referensi Audit',
+            allowClear: true,
+        }
+        )
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', {
+            'placeholder': 'dd/mm/yyyy'
+        })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', {
+            'placeholder': 'mm/dd/yyyy'
+        })
+        //Money Euro
+        $('[data-mask]').inputmask()
+
+        //Date range picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+        //Date range picker
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
+        //Date range as a button
+        $('#daterange-btn').daterangepicker({
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                        'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+            },
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                    'MMMM D, YYYY'))
+            }
+        )
+
+        //Timepicker
+        $('#timepicker').datetimepicker({
+            format: 'LT'
+        })
+
+        //Bootstrap Duallistbox
+        $('.duallistbox').bootstrapDualListbox()
+
+        //Colorpicker
+        $('.my-colorpicker1').colorpicker()
+        //color picker with addon
+        $('.my-colorpicker2').colorpicker()
+
+        $('.my-colorpicker2').on('colorpickerChange', function (event) {
+            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+        });
+
+        $("input[data-bootstrap-switch]").each(function () {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+
+    })
+</script>
+
 <!-- modal di add surat tugas -->
 <script>
     jQuery(document).ready(function ($) {
@@ -319,6 +452,10 @@
             modal.find('.modal-body').load(button.data("remote"));
             modal.find('.modal-title').html(button.data("title"));
         });
+        $('.jenissarana').select2({
+            placeholder: 'Pilih Jenis Sarana',
+            allowClear: true,
+         });
     });
 
 </script>

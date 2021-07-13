@@ -221,17 +221,18 @@ class StugasController extends Controller
     }
     public function storeAddstugas (Request $request)
     {
-        $data = new Stugas(request([
-            'no_st',
-            'tgl_st',
-            'tgl_audit',
-            'budget_id',
-            'tambahan' ,
-            'subdit_id',
-            'lokasi',
-            'biaya',
-        ]));
-        $data->save();
+
+        $data = Stugas::create([
+            'no_st' => request('no_st'),
+            'tgl_st' => request('tgl_st'),
+            'tgl_audit' => request('tgl_audit'),
+            'budget_id' => request('budget_id'),
+            'tambahan'  => request('tambahan'),
+            'subdit_id' => request('subdit_id'),
+            'lokasi' => request('lokasi'),
+            'biaya' => request('biaya'),
+        ]);
+
         #insert ke tabel stugas_has_user
         foreach($request->user_id as $user_id){
             $stugas = Stugas::latest()->first();
@@ -255,9 +256,10 @@ class StugasController extends Controller
             'sisa' => $budget->pagu - ($budget->realisasi + $biaya)
         ]);
         }
-        return response()->json([
-            'bool'=>true
-        ]);
+        // return response()->json([
+        //     'bool'=>true
+        // ]);
+        return response()->json($data);
     }
     public function loadData(Request $request)
     {

@@ -131,9 +131,10 @@ class SaranaController extends Controller
             'keterangan' => request('keterangan'),
         ]);
 
-         return response()->json([
-            'bool'=>true
-        ]);
+        //  return response()->json([
+        //     'bool'=>true
+        // ]);
+        return response()->json($data);
     }
     public function loadData(Request $request)
     {
