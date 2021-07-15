@@ -2,7 +2,7 @@
     {{ Session::get('success') }}
 </div>
 <div class="card-header">
-    <form method="POST" action="#">
+    <form method="POST" id="stugas" class="form-horizontal">
         @csrf
         <div class="row">
             <div class="col-sm-2">
@@ -113,15 +113,17 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" name="addstugas" class="btn btn-primary">Simpan</button>
+            <button type="submit" id="stugas" name="addstugas" class="btn btn-primary">Simpan</button>
             <button type="button" name="tutupstugas" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
         </div>
     </form>
 </div>
 </div>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
-        $("form").on('submit', function (e) {
+        $("#stugas").on('submit', function (e) {
             e.preventDefault();
             var formData = $('form').serializeArray();
             // console.log(formData);

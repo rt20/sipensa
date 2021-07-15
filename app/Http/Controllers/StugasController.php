@@ -220,8 +220,7 @@ class StugasController extends Controller
         return view('stugas.addstugas', compact('budgets','subdits','users'));
     }
     public function storeAddstugas (Request $request)
-    {
-
+    { 
         $data = Stugas::create([
             'no_st' => request('no_st'),
             'tgl_st' => request('tgl_st'),

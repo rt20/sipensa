@@ -2,7 +2,7 @@
     {{ Session::get('success') }}
 </div>
 <div class="card-header">
-    <form method="POST" action="#">
+    <form method="POST" id="addsarana" action="#">
         @csrf
         <div class="row">
             <div class="col-sm-3">
@@ -43,7 +43,7 @@
         <br>
 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" id="addsarana" class="btn btn-primary">Simpan</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
         </div>
     </form>
@@ -51,7 +51,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("form").on('submit', function (e) {
+        $("#addsarana").on('submit', function (e) {
             e.preventDefault();
             var formData = $('form').serializeArray();
             //console.log(formData);

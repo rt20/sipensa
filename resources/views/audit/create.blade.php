@@ -22,7 +22,7 @@
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <form action="{{ asset("/audit") }}" method="POST">
+            <form action="{{ route('audit.store') }}" method="POST">
                 @csrf
                 <div class="container">
                     <div class="row">
@@ -33,9 +33,6 @@
                             <select name="stugas_id" class="form-control select2" style="width: 100%;">
                             </select>
                         </div>
-                        <!-- <a href="javascript:void(0)"class="btn btn-info" id="addstugas">
-                            <i class="nav-icon fas fa-plus-circle"></i>
-                        </a> -->
                         <a href="#modalsurat" class="btn btn-primary" title="Tambah Surat Tugas"
                             data-remote="{{ route('stugas.addstugas' ) }}" data-toggle="modal"
                             data-target="#modalsurat">
@@ -261,7 +258,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-2">
-                            Status
+                            Status*
                         </div>
                         <div class="col-sm-4">
                             <select name="status_capa" class="form-control form-control-sm" required>
