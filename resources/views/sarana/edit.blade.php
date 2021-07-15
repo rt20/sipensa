@@ -29,16 +29,16 @@
                 </div>
                 <div class="col-md-6">
                     <label>Jenis Sarana</label>
-                    <input type="text" name="jenis" class="form-control" value="{{$sarana->jenis}}" required>
+                    <input type="text" name="jenis" class="form-control" value="{{$sarana->jenis}}">
                 </div>
                 <div class="col-md-6">
                     <label>Nomor Telepon</label>
-                    <input type="number" name="telepon" class="form-control" value="{{$sarana->telepon}}">
+                    <input type="text" name="telepon" class="form-control" value="{{$sarana->telepon}}">
                 </div>
                 <div class="col-md-6">
                     <label>Alamat Kantor</label>
                     <input type="text" name="alamat_kantor" class="form-control" value="{{$sarana->alamat_kantor}}"
-                        required>
+                        >
                 </div> 
                 <div class="col-md-6">
                     <label>Alamat Sarana</label>

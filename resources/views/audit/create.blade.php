@@ -151,6 +151,12 @@
                             <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool">
                             Uji Coba Tool
                             <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Intensifikasi Pengawasan">
+                            Intensifikasi Pengawasan
+                            <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Post Border">
+                            Post Border
+                            <br>
                             <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_keg[]')}}" >
                Lainnya:<input type="text" name="jenis_keg[]" class="form-control form-control-sm"> -->
                         </div>

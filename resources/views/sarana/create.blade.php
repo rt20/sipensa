@@ -37,7 +37,7 @@
      </div>
      <div class="col-md-6">
           <label>Telepon</label>
-          <input type="number" name="telepon" class="form-control" value="{{old('telepon')}}" >
+          <input type="text" name="telepon" class="form-control" value="{{old('telepon')}}" >
      </div>
      
      <div class="col-md-6">
