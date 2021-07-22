@@ -45,7 +45,7 @@
                     <div class="col-sm-2">
                         Jenis Sarana
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         {{$audit->jenis_sarana}}
                         </br>
                     </div>

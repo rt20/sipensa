@@ -29,8 +29,8 @@
                             Surat Tugas *
                         </div>
                         <div class="col-sm-4">
-                        {{$audit->stugas->no_st}}
-                            
+                            {{$audit->stugas->no_st}}
+
                         </div>
                         <div class="col-sm-3">
                             Tanggal Pemeriksaan *
@@ -40,7 +40,7 @@
                                 value="{{ $audit->tgl_audit }}" disabled>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-sm-2"> <br>
                             Nama Sarana *</br>
@@ -59,13 +59,18 @@
                         <div class="col-sm-2"> <br>
                             Jenis Sarana *</br>
                         </div>
-                        <div class="col-sm-3"><br>
-                            <select name="jenis_sarana" class="form-control form-control-sm" disabled required>
+                        <div class="col-sm-4"><br>
+                            <select name="jenis_sarana" class="form-control form-control-sm" required>
                                 <!-- <option value="">- Pilih Jenis Sarana</option> -->
                                 <option value="{{ $audit->jenis_sarana }}" {{$audit->jenis_sarana ? 'selected':null}}>
                                     {{$audit->jenis_sarana}} </option>
-                                <option value="Produksi">Produksi</option>
-                                <option value="Distribusi">Distribusi</option>
+                                <option value="Sarana Produksi IRTP">Sarana Produksi IRTP</option>
+                                <option value="Sarana Produksi MD">Sarana Produksi MD</option>
+                                <option value="Sarana Produksi ML">Sarana Produksi ML</option>
+                                <option value="Sarana Distribusi Importir">Sarana Distribusi Importir</option>
+                                <option value="Sarana Distribusi Retail">Sarana Distribusi Retail</option>
+                                <option value="Gudang Distribusi">Gudang Distribusi</option>
+                                <option value="Produksi & Distribusi">Produksi & Distribusi</option>
                             </select>
                         </div>
                     </div><br>
@@ -74,7 +79,8 @@
                             Alamat Sarana
                         </div>
                         <div class="col-sm-4">
-                            <textarea name="alamat" class="form-control" required> {{old('alamat',$audit->alamat)}}</textarea>
+                            <textarea name="alamat" class="form-control"
+                                required> {{old('alamat',$audit->alamat)}}</textarea>
                         </div>
                     </div>
                     <div class="card-header">
@@ -141,10 +147,16 @@
                             <br>
                             <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool"
                                 {{ in_array("Uji Coba Tool",$audit->jenis_keg)?"checked":""}}>
-                                Uji Coba Tool
+                            Uji Coba Tool
                             <br>
-                            <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_kegi')}}" >
-                         Lainnya:<input type="text" name="jenis_kegi" class="form-control form-control-sm"> -->
+                            <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool"
+                                {{ in_array(" Intensifikasi Pengawasan",$audit->jenis_keg)?"checked":""}}>
+                             Intensifikasi Pengawasan
+                            <br>
+                            <input type="checkbox" name="jenis_keg[]" value="Uji Coba Tool"
+                                {{ in_array("Post Border",$audit->jenis_keg)?"checked":""}}>
+                            Post Border
+                            <br>
                         </div>
                     </div>
 
@@ -202,21 +214,21 @@
                             Tidak Ada Temuan
                             <br>
                             <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="MK Sarana"
-                            {{ in_array("MK Sarana",$audit->kesimpulan)?"checked":""}} >
-                        MK Sarana
-                        <br>
-                    </div>
-                    <div class="col-sm-2">
-                    <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Sarana"
-                            {{ in_array("TMK Sarana",$audit->kesimpulan)?"checked":""}} >
-                        TMK Sarana
+                                {{ in_array("MK Sarana",$audit->kesimpulan)?"checked":""}}>
+                            MK Sarana
+                            <br>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="kesimpulan" name="kesimpulan[]" value="TMK Sarana"
+                                {{ in_array("TMK Sarana",$audit->kesimpulan)?"checked":""}}>
+                            TMK Sarana
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-2"> <br>
                         </div>
                         <div class="col-sm-2"> <br>
-                        <b>MD/ML</b>
+                            <b>MD/ML</b>
                         </div>
                         <div class="col-sm-2"> <br>
                             <b>PIRT</b>
@@ -226,7 +238,7 @@
                         <div class="col-sm-2">
                             Rating Sarana Produksi
                         </div>
-                      <div class="col-sm-2">
+                        <div class="col-sm-2">
                             <input type="checkbox" name="rating_produksi[]" value="A"
                                 {{ in_array("A",$audit->rating_produksi)?"checked":""}}> A
                             <input type="checkbox" name="rating_produksi[]" value="B"
@@ -273,7 +285,7 @@
                         </div>
                         </br>
                     </div>
-<br>
+                    <br>
 
                     <div class="row">
                         <div class="col-sm-2">

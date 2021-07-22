@@ -58,14 +58,14 @@
                             Jenis Sarana *
                         </div>
                         <div class="col-sm-4">
-                            <select class="jenissarana" name="jenissarana">
+                            <select class="jenissarana" name="jenis_sarana">
                                 <option value="">- Pilih Jenis Sarana</option>
-                                <option value="Produksi">Sarana Produksi IRTP</option>
-                                <option value="Produksi">Sarana Produksi MD</option>
-                                <option value="Produksi">Sarana Produksi ML</option>
-                                <option value="Distribusi">Sarana Distribusi Importir</option>
-                                <option value="Distribusi">Sarana Distribusi Retail</option>
-                                <option value="Distribusi">Gudang Distribusi</option>
+                                <option value="Sarana Produksi IRTP">Sarana Produksi IRTP</option>
+                                <option value="Sarana Produksi MD">Sarana Produksi MD</option>
+                                <option value="Sarana Produksi ML">Sarana Produksi ML</option>
+                                <option value="Sarana Distribusi Importir">Sarana Distribusi Importir</option>
+                                <option value="Sarana Distribusi Retail">Sarana Distribusi Retail</option>
+                                <option value="Gudang Distribusi">Gudang Distribusi</option>
                                 <option value="Produksi & Distribusi">Produksi & Distribusi</option>
                             </select>
                         </div>
