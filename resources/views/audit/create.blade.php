@@ -33,24 +33,30 @@
                             <select name="stugas_id" class="form-control select2" style="width: 100%;">
                             </select>
                         </div>
+                        <div class="col-sm-auto">
                         <a href="#modalsurat" class="btn btn-primary" title="Tambah Surat Tugas"
                             data-remote="{{ route('stugas.addstugas' ) }}" data-toggle="modal"
                             data-target="#modalsurat">
                             <i class="nav-icon fas fa-plus-circle"></i>
                         </a>
-                        <!-- <div class="col-sm-auto">
+                        </div>
+                       
+                    </div>
+                    <br>
+                    <div class="row">
+                    <div class="col-sm-2">
                             Referensi
-                        </div> -->
-
-                        <!-- <div class="col-sm-4">
-                            <select name="audit_id" class="select2ref" multiple="multiple" data-placeholder="Pilih referensi audit sebelumnya" style="width: 100%;">
+                        </div>
+                        <div class="col-sm-4">
+                            <select name="auditref_id[]" class="form-control select2ref" multiple="multiple" style="width: 100%;">
+                            <option value="">- Pilih Referensi Audit</option>
+                                @foreach($audits as $audit)
+                                <option value="{{ $audit->id }}"
+                                    {{ old('auditref_id[]') == $audit->id ? 'selected' : null }}>
+                                    {{ $audit->sarana->nama }} - {{ date('d M y', strtotime($audit->tgl_audit)) }} </option>
+                                @endforeach
                             </select>
                         </div>
-                        <a href="#modalref" class="btn btn-primary" title="Tambah Referensi"
-                            data-remote="{{ route('audit.refer' ) }}" data-toggle="modal"
-                            data-target="#modalref">
-                            <i class="nav-icon fas fa-plus-circle"></i>
-                        </a> -->
                     </div>
                     <br>
                     <div class="row">
@@ -58,7 +64,7 @@
                             Jenis Sarana *
                         </div>
                         <div class="col-sm-4">
-                            <select class="jenissarana" name="jenis_sarana">
+                            <select class="form-control jenissarana" name="jenis_sarana">
                                 <option value="">- Pilih Jenis Sarana</option>
                                 <option value="Sarana Produksi IRTP">Sarana Produksi IRTP</option>
                                 <option value="Sarana Produksi MD">Sarana Produksi MD</option>
@@ -75,7 +81,7 @@
                             Tanggal Audit*
                         </div></br>
                         <div class="col-sm-4"><br>
-                            <input type="date" name="tgl_audit" class="form-control form-control-sm"
+                            <input type="date" name="tgl_audit" class="form-control"
                                 style="width: 100%;" value="{{old('tgl_audit')}}">
                         </div></br>
                     </div><br>
@@ -85,13 +91,14 @@
                         </div>
                         <div class="col-sm-4">
                             <select name="sarana_id" class="form-control select2bs4" style="width: 100%;">
-                                <!-- <option value="">- Pilih Perusahaan</option> -->
                             </select>
                         </div>
+                        <div class="col-sm-auto">
                         <a href="#mymodal" class="btn btn-primary" title="Tambah Sarana"
                             data-remote="{{ route('sarana.addsarana' ) }}" data-toggle="modal" data-target="#mymodal">
                             <i class="nav-icon fas fa-plus-circle"></i>
                         </a>
+                        </div>
                     </div></br>
                     <div class="row">
                         <div class="col-sm-2">
@@ -157,8 +164,6 @@
                             <input type="checkbox" name="jenis_keg[]" value="Post Border">
                             Post Border
                             <br>
-                            <!-- <input type="checkbox" name="jenis_keg[]" value="{{old('jenis_keg[]')}}" >
-               Lainnya:<input type="text" name="jenis_keg[]" class="form-control form-control-sm"> -->
                         </div>
                     </div>
                     <div class="row">
@@ -286,25 +291,7 @@
         </div>
     </div>
 </section>
-<!-- <div class="modal" id="modalsurat" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+
 
 
 
@@ -364,13 +351,17 @@
         })
        
 
-        $('.select2ref').select2(
-            {
+        $('.select2ref').select2({
             theme: 'bootstrap4',
             placeholder: 'Pilih Referensi Audit',
             allowClear: true,
-        }
-        )
+            minimumInputLength: 1,
+        })
+        $('.jenissarana').select2({
+            theme: 'bootstrap4',
+            placeholder: 'Pilih Jenis Sarana',
+            allowClear: true,
+         });
         //Datemask dd/mm/yyyy
         $('#datemask').inputmask('dd/mm/yyyy', {
             'placeholder': 'dd/mm/yyyy'
@@ -455,10 +446,12 @@
             modal.find('.modal-body').load(button.data("remote"));
             modal.find('.modal-title').html(button.data("title"));
         });
-        $('.jenissarana').select2({
-            placeholder: 'Pilih Jenis Sarana',
-            allowClear: true,
-         });
+        // $('#modalref').on('show.bs.modal', function (e) {
+        //     var button = $(e.relatedTarget);
+        //     var modal = $(this);
+        //     modal.find('.modal-body').load(button.data("remote"));
+        //     modal.find('.modal-title').html(button.data("title"));
+        // });
     });
 
 </script>
@@ -497,4 +490,21 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="modal" id="modalref" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Data Audit Sebelumnya</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <i class="fa fa-spinner fa-spin"></i>
+      </div>
+     
+    </div>
+  </div>
+</div> -->
 @endpush

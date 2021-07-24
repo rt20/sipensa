@@ -15,6 +15,7 @@
         "igorescobar/jquery-mask-plugin": "^1.14",
         "laracasts/flash": "^3.1",
         "laravel/framework": "^7.0",
+        "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "maatwebsite/excel": "^3.1",

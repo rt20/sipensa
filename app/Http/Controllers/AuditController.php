@@ -89,7 +89,7 @@ class AuditController extends Controller
     {
         $budgets = Budget::all();
         $saranas = Sarana::all();
-
+        $audits = Audit::all();
         $subdits = Subdit::all();
         $users = User::all();
         $userlogin = Auth::user()->id;
@@ -99,7 +99,7 @@ class AuditController extends Controller
                 ->orderBy('id', 'desc')
                 ->get();
 
-        return view('audit.create', compact('budgets','saranas','subdits','users','stugas'));
+        return view('audit.create', compact('budgets','saranas','audits','subdits','users','stugas'));
     }
 
     public function store(AuditRequest $request)
@@ -122,6 +122,7 @@ class AuditController extends Controller
             'rating_distribusi',
             'biaya',
             'status_capa',
+            'auditref_id',
         ]));
 
         $data->save();
@@ -134,9 +135,16 @@ class AuditController extends Controller
             $check['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
             $check->user_id = $user;
             $check ['status_capa'] = $audit->status_capa;
-           
             $check->save();
     
+             #insert ke tabel auditref      
+            
+             $ref = new audit_has_auditref;
+             $ref['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
+             
+             $ref ['audit_ref'] = $audit->audit_ref;
+             $ref->save();
+
         $totalaudit = Audit::count();
         #update tabel kinerja
         $keputusan = Iku::findOrFail(8);
@@ -252,10 +260,31 @@ class AuditController extends Controller
     }
     public function referAudit()
     {
-        $userlogin = Auth::user()->id;
+        // $userlogin = Auth::user()->id;
 
         $data = Audit::orderBy('id', 'desc')->paginate(10);
        
         return view('audit.refer', compact('data'));
+    }
+
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cariaudit = $request->q;
+            // $data = Audit::where('alamat', 'like', '%' . request()->q . '%')->get();
+
+            $data = DB::table('saranas')
+            ->join('audits','saranas.id','=','audits.sarana_id')
+            ->join('stugas','audits.stugas_id','=','stugas.id')
+            ->join('stugas_has_users','stugas.id','=','stugas_has_users.stugas_id')
+            ->join('users','stugas_has_users.user_id','=','users.id')
+            ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','stugas_has_users.stugas_id','audits.status_capa')
+            ->where('saranas.nama', 'like', '%' . request()->q . '%')
+            ->get();
+
+
+
+            return response()->json($data);
+        }
     }
 }

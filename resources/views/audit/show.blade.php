@@ -33,6 +33,16 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2">
+                        Audit Sebelumnya
+                    </div>
+                    <div class="col-sm-8">
+                        @foreach ($audit->auditref_id as $ref)
+                        {{$ref}}
+                        @endforeach
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
                         Nama Sarana
                     </div>
                     <div class="col-sm-4">

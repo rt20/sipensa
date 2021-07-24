@@ -9,7 +9,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/home" class="nav-link">Home</a>
       </li>
-      
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li> -->
@@ -34,13 +34,13 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
-         
+
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
-          
+
             <!-- Message Start -->
 <!--
             <div class="media">
@@ -56,7 +56,7 @@
             </div>
            -->
             <!-- Message End -->
-            <!-- 
+            <!--
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
@@ -76,7 +76,7 @@
             </div>
             -->
             <!-- Message End -->
-            <!-- 
+            <!--
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
@@ -96,13 +96,13 @@
             </div>
             -->
             <!-- Message End -->
-            
+
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
-    
+
       <!-- Notifications Dropdown Menu -->
       <!--
       <li class="nav-item dropdown">
@@ -136,7 +136,7 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
-    
+
     -->
     <!-- Sidebar toggle button-->
   <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -163,7 +163,7 @@
                 <p>
                   Selamat datang </p>
                   <p>
-                 {{ Auth::user()->name }} 
+                 {{ Auth::user()->name }}
                 </p>
               </li>
               -->
@@ -186,7 +186,7 @@
                     {{ csrf_field() }}
                     </form>
                  </div>
-                 
+
                 @endif
               </li>
             </ul>
@@ -194,8 +194,8 @@
         </ul>
       </div>
     </nav>
- 
-   
+
+
 
 
 

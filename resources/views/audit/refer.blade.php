@@ -1,62 +1,23 @@
-<section class="content">
-<div class="card">
-    <div class="card-header">
-        <a href="{{ route('audit.create') }}" class="btn btn-primary" title="Tambah Audit"><i class="nav-icon fas fa-plus-circle"></i> </a>
-        <a href="{{ route('export') }}" class="btn btn-success">Unduh</a>
-        </div>
-        <div class="card-body">
-        <table class="table">
+<table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Surat Tugas</th>
                     <th scope="col">Nama Sarana</th>
                     <th scope="col">Tgl Audit</th>
                     <th scope="col">Lokasi</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" colspan="2">Aksi</th>
+                   
+                    
                 </tr>
             </thead>
             <tbody>
                 @forelse($data as $row)
                 <tr>
                     <th>{{ ($data->currentPage()-1) * $data->perPage()+$loop->index+1 }}</th>
-                    <td>{{ $row->nama }}</td>
+                    <td>{{ $row->stugas_id }}</td>
+                    <td>{{ $row->sarana_id }}</td>
                     <td>{{ date('d-M-y', strtotime($row->tgl_audit)) }}</td>
-                    <td>{{ $row->lokasi }}</td>
-                    <td>
-                        @if($row->status_capa == 'Ditugaskan melakukan audit')
-                        <span class="badge badge-dark">
-                            @elseif($row->status_capa == 'Telah melaksanakan audit')
-                            <span class="badge badge-primary">
-                                @elseif($row->status_capa == 'Mengirimkan hasil audit ke sarana')
-                                <span class="badge badge-danger">
-                                    @elseif($row->status_capa == 'Menerima laporan TL CAPA')
-                                    <span class="badge badge-warning">
-                                        @elseif($row->status_capa == 'Melakukan evaluasi CAPA')
-                                        <span class="badge badge-info">
-                                            @elseif($row->status_capa == 'Menyelesaikan audit sarana')
-                                            <span class="badge badge-success">
-                                                @else
-                                                <span>
-                                                    @endif
-                                                    {{ $row->status_capa }}
-                                                </span>
-                    </td>
-                    <td align=right>
-                        @if($row->status_capa == 'Ditugaskan melakukan audit')
-                        <a href="{{ route('audit.edit', $row->id) }}" class="btn btn-success btn-sm" title="Ubah">
-                            <i class="fa fa-edit"></i></a>
-                        @endif
-                        <a href="{{ route('audit.show', $row->id) }}" class="btn btn-info btn-sm" title="Detail">
-                            <i class="fa fa-eye"></i></a>
-                        <form action="{{ route('audit.destroy', $row->id)}}" method="post" class="d-inline" title="Hapus">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-sm " onclick="return confirm('Apakah anda yakin ?')">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
+                    <td>{{ $row->alamat }}</td>
                 </tr>
                 @empty
                 <tr>
@@ -67,10 +28,4 @@
             </tbody>
         </table>
 
-    </div>
-
-</div>
-
-{!! $data->render() !!}
-</section>
-@endsection
+        {!! $data->render() !!}

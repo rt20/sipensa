@@ -1,21 +1,15 @@
 <?php
 
 
-Route::get('/', function ($guard = null) {
-    if (Auth::guard($guard)->check()) {
-        return redirect('/home');
-    }
-    else {
-        return view('auth.login');
-    }
-    
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-   
+Route::prefix('/')
+    ->middleware(['auth:sanctum'])
+    ->group(function(){
+
     Route::resource('user', 'UserController');
     Route::resource('sarana', 'SaranaController');
     Route::resource('iku', 'IkuController');
@@ -23,9 +17,9 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('audit', 'AuditController');
 
     Route::post('audit/{id}/set-status', 'AuditController@setStatus')->name('audit.status');
-    Route::get('/referAudit', 'AuditController@referAudit')->name('audit.refer');
-    Route::get('/cari', 'AuditController@loadData');
-   
+    Route::get('/referAudit', 'AuditController@referAudit')->name('/refer');
+    Route::get('/cariaudit', 'AuditController@loadData')->name('/cariaudit');
+
     Route::get('/addsarana', 'SaranaController@addsarana')->name('sarana.addsarana');
     Route::post('/storeAddsarana', 'SaranaController@storeAddsarana')->name('sarana.storeAddsarana');
     Route::get('/carisarana', 'SaranaController@loadData')->name('/carisarana');
@@ -45,24 +39,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('budget/export', 'BudgetController@export')->name('budget.export');    # export data
     Route::post('budget/import', 'BudgetController@import')->name('budget.import');   # import data
-   
-    
+
+
     Route::get('audit/export/', 'AuditController@export')->name('audit.export');    # export data
     Route::get('export','AuditController@export')->name('export'); # export data
-    
-   
-    
-
-
- 
-
- 
-
-   
-   
-    
-
-
-
-
-
+});

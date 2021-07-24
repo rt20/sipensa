@@ -13,7 +13,7 @@ class Audit extends Model
 		'kesimpulan' => 'array',
 		'rating_produksi' => 'array',
 		'rating_distribusi' => 'array',
-		
+		'auditref_id' => 'array',
     ];
     public function budget()
 	{

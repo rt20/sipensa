@@ -40,7 +40,7 @@
 
 
 <!-- modal di refer audit -->
-<script>
+<!-- <script>
     jQuery(document).ready(function ($) {
         $('#modalref').on('show.bs.modal', function (e) {
             var button = $(e.relatedTarget);
@@ -65,4 +65,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
