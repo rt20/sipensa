@@ -35,4 +35,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /var/www/sipensa.balok.id
-            ls
+            git pull origin master
