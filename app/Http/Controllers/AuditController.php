@@ -10,6 +10,7 @@ use App\Models\Audit;
 use App\Models\Capa;
 use App\Models\Subdit;
 use App\Models\Stugas;
+use App\Models\Audit_has_auditref;
 
 use App\User;
 use App\Models\Iku;
@@ -64,7 +65,12 @@ class AuditController extends Controller
         elseif ($user == '["DIREKTUR"]'){
             
           
-            $data = Audit::orderBy('id', 'desc')->paginate(10);
+            $data = DB::table('saranas')
+                    ->join('audits','saranas.id','=','audits.sarana_id')
+                    ->join('stugas','audits.stugas_id','=','stugas.id')
+                    ->select('audits.id','saranas.nama', 'audits.tgl_audit', 'stugas.lokasi','audits.status_capa') 
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
         } 
         else {
           
@@ -122,7 +128,7 @@ class AuditController extends Controller
             'rating_distribusi',
             'biaya',
             'status_capa',
-            'auditref_id',
+            // 'auditref_id',
         ]));
 
         $data->save();
@@ -141,8 +147,7 @@ class AuditController extends Controller
             
              $ref = new audit_has_auditref;
              $ref['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
-             
-             $ref ['audit_ref'] = $audit->audit_ref;
+             $ref ['auditref'] = $request->auditref;
              $ref->save();
 
         $totalaudit = Audit::count();
@@ -162,20 +167,20 @@ class AuditController extends Controller
     public function show($id)
     {
 
-    $audit = Audit::findOrFail($id);
-    $capa = Capa::where('audit_id', $id)
-    ->orderBy('id', 'desc')
-    ->get();
-    $stugas = Stugas::all();
-    $sarana = Sarana::all();
-    $budget = Budget::all();
-    $subdit = Subdit::all();
-    $users = User::all();
+        $audit = Audit::findOrFail($id);
+        $capa = Capa::where('audit_id', $id)
+        ->orderBy('id', 'desc')
+        ->get();
+        $stugas = Stugas::all();
+        $sarana = Sarana::all();
+        $budget = Budget::all();
+        $subdit = Subdit::all();
+        $users = User::all();
 
-    $jenis_keg = Audit::where('id', $id)->pluck('jenis_keg')->toArray();
+        $jenis_keg = Audit::where('id', $id)->pluck('jenis_keg')->toArray();
 
-    return view('audit.show', compact ('audit','budget','sarana','subdit','users','capa','stugas'));
-    }
+        return view('audit.show', compact ('audit','budget','sarana','subdit','users','capa','stugas'));
+        }
     public function edit($id)
     {    
         $audit = Audit::findOrFail($id);       

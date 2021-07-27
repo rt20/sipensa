@@ -48,12 +48,12 @@
                             Referensi
                         </div>
                         <div class="col-sm-4">
-                            <select name="auditref_id[]" class="form-control select2ref" multiple="multiple" style="width: 100%;">
+                            <select name="auditref[]" class="form-control select2ref" multiple="multiple" style="width: 100%;">
                             <option value="">- Pilih Referensi Audit</option>
                                 @foreach($audits as $audit)
                                 <option value="{{ $audit->id }}"
-                                    {{ old('auditref_id[]') == $audit->id ? 'selected' : null }}>
-                                    {{ $audit->sarana->nama }} - {{ date('d M y', strtotime($audit->tgl_audit)) }} </option>
+                                    {{ old('auditref[]') == $audit->id ? 'selected' : null }}>
+                                    {{ $audit->sarana->nama ?? ''}} - {{ date('d M y', strtotime($audit->tgl_audit)) }} </option>
                                 @endforeach
                             </select>
                         </div>

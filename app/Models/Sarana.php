@@ -9,6 +9,6 @@ class Sarana extends Model
     protected $guarded = [];
 
     public function audit(){
-        return $this->hasMany('App\Audit');
+        return $this->hasMany(Audit::class, 'saranas_id');
     }
 }

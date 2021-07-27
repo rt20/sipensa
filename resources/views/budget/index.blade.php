@@ -45,7 +45,6 @@
                         <td>{{ number_format($row->realisasi) }}</td>
                         <td>{{ number_format($row->sisa) }}</td>
                         <td>{{ $row->keterangan }}</td>
-
                         <td>
                             <a href="{{ route('budget.edit', $row->id) }}" class="btn btn-success btn-sm"><i
                                     class="fa fa-edit"></i></a>

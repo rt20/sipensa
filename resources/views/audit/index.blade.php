@@ -86,7 +86,6 @@
         </table>
 
     </div>
-
 </div>
 
 {!! $data->render() !!}

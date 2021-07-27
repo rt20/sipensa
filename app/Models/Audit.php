@@ -13,7 +13,7 @@ class Audit extends Model
 		'kesimpulan' => 'array',
 		'rating_produksi' => 'array',
 		'rating_distribusi' => 'array',
-		'auditref_id' => 'array',
+		
     ];
     public function budget()
 	{
@@ -25,12 +25,16 @@ class Audit extends Model
 	}
 	public function sarana()
 	{
-		return $this->belongsTo(Sarana::class, 'sarana_id');
+		return $this->belongsTo(Sarana::class, 'sarana_id','id');
 	}
 	public function stugas()
 	{
 		return $this->belongsTo(Stugas::class, 'stugas_id');
 	}
+	// public function audit_has_auditref()
+	// {
+	// 	return $this->belongsTo(Audit_has_auditref::class, 'auditref_id');
+	// }
 	public function user()
 	{
 		return $this->belongsTo('App\User');

@@ -46,9 +46,6 @@
                     <td>{{ $row->nama }}</td>
                     <td>{{ $row->jenis }}</td>
                     <td>{{ $row->telepon }}</td>
-
-
-
                     <td>{{ $row->merk }}</td>
 
 

@@ -36,9 +36,8 @@
                         Audit Sebelumnya
                     </div>
                     <div class="col-sm-8">
-                        @foreach ($audit->auditref_id as $ref)
-                        {{$ref}}
-                        @endforeach
+                        {{$audit->auditref_id }}
+                        
                     </div>
                 </div>
                 <div class="row">
