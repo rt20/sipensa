@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \URL::forceScheme('https');
         config(['app.locale' => 'id']);
         date_default_timezone_set('Asia/Jakarta');
     }

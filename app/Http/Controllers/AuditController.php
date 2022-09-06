@@ -104,7 +104,7 @@ class AuditController extends Controller
                 ->where('stugas_has_users.user_id', $userlogin)
                 ->orderBy('id', 'desc')
                 ->get();
-
+ 
         return view('audit.create', compact('budgets','saranas','audits','subdits','users','stugas'));
     }
 
@@ -145,22 +145,24 @@ class AuditController extends Controller
     
              #insert ke tabel auditref      
             
-             $ref = new audit_has_auditref;
-             $ref['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
-             $ref ['auditref'] = $request->auditref;
-             $ref->save();
+            //  $ref = new audit_has_auditref;
+            //  $ref['audit_id'] = $audit->id; # gimana cara memasukkan id audit ke column audit_id?
+            //  $ref ['auditref'] = $request->auditref;
+            //  $ref->save();
 
-        $totalaudit = Audit::count();
-        #update tabel kinerja
-        $keputusan = Iku::findOrFail(8);
-        # update kinerja
-        $keputusan->update([
-            'realisasi' => ($totalaudit / 4000) * 100
-        ]);
+        // $totalaudit = Audit::count();
+        // #update tabel kinerja
+        // $keputusan = Iku::findOrFail(8);
+        // dd($keputusan);
+        // # update kinerja
+        // $keputusan->update([
+        //     'realisasi' => ($totalaudit / 4000) * 100
+        // ]);
 
         # redirect
         flash('Data has been created successfully')->success();
         return redirect()->route('audit.index');
+        
     }
 
     

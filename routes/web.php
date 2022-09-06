@@ -4,7 +4,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::prefix('/')
     ->middleware(['auth:sanctum'])

@@ -8,6 +8,9 @@ class Audit extends Model
 {
 	#agar bisa entri/edit data
 	protected $guarded = [];
+	// protected $fillable = [
+    //     'borrower', 'item_id', 'start','end','agenda','status','is_agree',
+    // ]; 
 	protected $casts = [
 		'jenis_keg' => 'array',
 		'kesimpulan' => 'array',
